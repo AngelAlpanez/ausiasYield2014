@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 19-12-2014 a las 07:39:58
+-- Tiempo de generación: 16-04-2015 a las 07:55:43
 -- Versión del servidor: 5.5.39
 -- Versión de PHP: 5.4.32
 
@@ -719,7 +719,7 @@ CREATE TABLE IF NOT EXISTS `documento` (
   `portada` tinyint(1) DEFAULT NULL COMMENT 'Portada',
   `destacado` tinyint(1) DEFAULT NULL COMMENT 'Destacado',
   `id_tipodocumento` int(6) DEFAULT NULL COMMENT 'Tipo'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
 
 --
 -- Volcado de datos para la tabla `documento`
@@ -894,6 +894,30 @@ INSERT INTO `impuesto` (`id`, `nombre`, `valor`) VALUES
 (20, 'iva 20', '20.00'),
 (21, 'iva 21', '21.00'),
 (22, 'iva 22', '22.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `lineapedido`
+--
+
+CREATE TABLE IF NOT EXISTS `lineapedido` (
+`id` int(15) NOT NULL COMMENT 'Id',
+  `cantidad` int(15) DEFAULT NULL COMMENT 'Cantidad',
+  `id_producto` int(15) DEFAULT NULL COMMENT 'Id Producto',
+  `id_pedido` int(15) DEFAULT NULL COMMENT 'Id Pedido'
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `lineapedido`
+--
+
+INSERT INTO `lineapedido` (`id`, `cantidad`, `id_producto`, `id_pedido`) VALUES
+(1, 1, 3, 1),
+(2, 2, 5, 1),
+(3, 1, 1, 2),
+(4, 3, 4, 2),
+(5, 1, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -1838,40 +1862,18 @@ INSERT INTO `ordenador` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pedido` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
-  `fecha` date DEFAULT NULL COMMENT 'Fecha Pedido',
-  `observaciones` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Observaciones',
-  `id_usuario` int(11) NOT NULL DEFAULT '0' COMMENT 'Id Usuario'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=24 ;
+`id` int(15) NOT NULL COMMENT 'Id',
+  `fecha` date DEFAULT NULL COMMENT 'Fecha',
+  `id_usuario` int(15) DEFAULT NULL COMMENT 'Id Usuario'
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`id`, `fecha`, `observaciones`, `id_usuario`) VALUES
-(1, '2014-07-10', NULL, 1),
-(2, '2013-11-06', 'Reclamación cliente', 2),
-(3, '2014-02-15', NULL, 3),
-(4, '2012-05-01', NULL, 4),
-(5, '2014-12-18', NULL, 5),
-(6, '2014-02-20', NULL, 6),
-(7, '2013-09-11', 'Entrega atrasada', 7),
-(8, '2014-07-07', 'Cliente se declara insolvente', 8),
-(9, '2011-08-02', NULL, 9),
-(10, '2012-06-16', 'Reclamación cliente', 10),
-(11, '2014-11-26', NULL, 24),
-(12, '2013-08-31', NULL, 12),
-(13, '2014-02-22', NULL, 13),
-(14, '2013-01-03', NULL, 14),
-(15, '2011-03-12', 'Reclamación cliente', 15),
-(16, '2013-06-30', NULL, 16),
-(17, '2014-07-28', NULL, 17),
-(18, '2014-09-11', 'Reclamación cliente', 18),
-(19, '2011-09-04', 'Reclamación cliente', 19),
-(20, '2011-02-07', NULL, 20),
-(21, '2014-01-13', NULL, 21),
-(22, '2012-10-17', NULL, 22),
-(23, '2014-04-12', 'Reclamación cliente', 23);
+INSERT INTO `pedido` (`id`, `fecha`, `id_usuario`) VALUES
+(1, '2015-04-06', 1),
+(2, '2015-03-18', 2);
 
 -- --------------------------------------------------------
 
@@ -2044,421 +2046,26 @@ INSERT INTO `pregunta` (`id`, `descripcion`, `id_cuestionario`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `producto` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
-  `codigo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Codigo',
-  `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripcion',
-  `precio` decimal(6,2) DEFAULT NULL COMMENT 'Precio',
-  `id_tipoproducto` int(11) NOT NULL DEFAULT '0' COMMENT 'Id Tipo Producto',
-  `id_proveedor` int(11) NOT NULL DEFAULT '0' COMMENT 'Id Proveedor',
-  `path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'imagen'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=406 ;
+`id` int(15) NOT NULL COMMENT 'Id Producto',
+  `nombre` varchar(255) DEFAULT NULL COMMENT 'Nombre',
+  `precio` double(10,2) DEFAULT NULL COMMENT 'Precio',
+  `stock` int(15) DEFAULT NULL COMMENT 'Stock',
+  `imagen` varchar(500) DEFAULT NULL COMMENT 'Imagen',
+  `id_tipoproducto` int(15) DEFAULT NULL COMMENT 'Id Tipo Producto'
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id`, `codigo`, `descripcion`, `precio`, `id_tipoproducto`, `id_proveedor`, `path`) VALUES
-(1, '778uj8822', 'Broca gorda de paso fino', '6.22', 24, 9, 'images/broca.jpg'),
-(2, '44RR456', 'Taladro', '100.00', 1, 18, 'images/taladro.jpg'),
-(3, '6RRTU3', 'Sierra de calar', '123.00', 2, 3, 'images/sierra.jpg'),
-(4, 'SE2PI', 'Pincel', '23.00', 1, 2, 'images/pincel.jpg'),
-(5, 'ED45E', 'Caja de cambios', '231.00', 11, 1, 'images/caja.jpg'),
-(8, '455T', 'Llave de mano', '23.50', 2, 20, 'images/llave.jpg'),
-(10, '1413D', 'Llave auxiliar de emergencia', '740.91', 1, 13, 'images/llave2.jpg'),
-(11, '1414D', 'Llave auxiliar de repuesto', '864.75', 1, 4, 'images/llave3.jpg'),
-(12, '1415D', 'Llave auxiliar de paso', '1269.10', 1, 4, 'images/llave5.jpg'),
-(13, '1416Dss', 'Llave auxiliar de acople', '1451.25', 11, 7, 'images/llave4.jpg'),
-(14, '1413D', 'Llave auxiliar de emergencia', '1733.93', 1, 1, 'images/noimagen.jpg'),
-(15, '1414D', 'Llave auxiliar de repuesto', '533.68', 1, 4, 'images/noimagen.jpg'),
-(16, '1415D', 'Llave auxiliar de paso', '150.58', 1, 17, 'images/noimagen.jpg'),
-(17, '1416D', 'Llave auxiliar de acople', '1860.79', 1, 11, 'images/noimagen.jpg'),
-(18, '1413D', 'Llave auxiliar de emergencia', '1148.52', 1, 4, 'images/noimagen.jpg'),
-(19, '1414D', 'Llave auxiliar de repuesto', '1021.47', 1, 9, 'images/noimagen.jpg'),
-(20, '1415D', 'Llave auxiliar de paso', '1510.44', 1, 12, 'images/noimagen.jpg'),
-(21, '1416D', 'Llave auxiliar de acople', '885.46', 1, 10, 'images/noimagen.jpg'),
-(22, '1417D', 'Llave auxiliar de mano', '1669.62', 1, 15, 'images/noimagen.jpg'),
-(23, '1413D', 'Llave auxiliar de emergencia', '832.31', 1, 2, 'images/noimagen.jpg'),
-(24, '1414D', 'Llave auxiliar de repuesto', '1930.30', 1, 7, 'images/noimagen.jpg'),
-(25, '1415D', 'Llave auxiliar de paso', '505.35', 11, 8, 'images/noimagen.jpg'),
-(26, '1416D', 'Llave auxiliar de acople', '104.86', 1, 9, 'images/noimagen.jpg'),
-(27, '1417D', 'Llave auxiliar de mano', '891.52', 10, 18, 'images/noimagen.jpg'),
-(28, '1413D', 'Llave auxiliar de emergencia', '521.77', 1, 4, 'images/noimagen.jpg'),
-(29, '1414D', 'Llave auxiliar de repuesto', '1022.15', 1, 10, 'images/noimagen.jpg'),
-(30, '1415D', 'Llave auxiliar de paso', '783.54', 1, 14, 'images/noimagen.jpg'),
-(31, '1416D', 'Llave auxiliar de acople', '505.47', 1, 18, 'images/noimagen.jpg'),
-(32, '1417D', 'Llave auxiliar de mano', '1386.33', 1, 21, 'images/noimagen.jpg'),
-(33, '1539D', 'Llave manual de emergencia', '1412.16', 1, 21, 'images/noimagen.jpg'),
-(34, '15310D', 'Llave manual de repuesto', '1662.15', 1, 20, 'images/noimagen.jpg'),
-(35, '15311D', 'Llave manual de paso', '1236.49', 1, 15, 'images/noimagen.jpg'),
-(36, '15312D', 'Llave manual de acople', '266.80', 1, 18, 'images/noimagen.jpg'),
-(37, '15313D', 'Llave manual de mano', '1234.32', 1, 2, 'images/noimagen.jpg'),
-(38, '14315D', 'Llave con rodadura de emergencia', '913.94', 1, 20, 'images/noimagen.jpg'),
-(39, '14316D', 'Llave con rodadura de repuesto', '817.18', 1, 11, 'images/noimagen.jpg'),
-(40, '14317D', 'Llave con rodadura de paso', '571.70', 1, 15, 'images/noimagen.jpg'),
-(41, '14318D', 'Llave con rodadura de acople', '139.15', 1, 21, 'images/noimagen.jpg'),
-(42, '14319D', 'Llave con rodadura de mano', '1343.85', 1, 17, 'images/noimagen.jpg'),
-(43, '14521D', 'Llave extensivo de emergencia', '1872.10', 1, 3, 'images/noimagen.jpg'),
-(44, '14522D', 'Llave extensivo de repuesto', '1391.89', 1, 4, 'images/noimagen.jpg'),
-(45, '14523D', 'Llave extensivo de paso', '390.53', 1, 12, 'images/noimagen.jpg'),
-(46, '14524D', 'Llave extensivo de acople', '1450.87', 1, 7, 'images/noimagen.jpg'),
-(47, '14525D', 'Llave extensivo de mano', '1332.32', 1, 17, 'images/noimagen.jpg'),
-(48, '14927D', 'Llave intensivo de emergencia', '870.55', 1, 5, 'images/noimagen.jpg'),
-(49, '14928D', 'Llave intensivo de repuesto', '1220.74', 1, 12, 'images/noimagen.jpg'),
-(50, '14929D', 'Llave intensivo de paso', '888.28', 1, 6, 'images/noimagen.jpg'),
-(51, '14930D', 'Llave intensivo de acople', '1022.42', 1, 15, 'images/noimagen.jpg'),
-(52, '14931D', 'Llave intensivo de mano', '98.60', 1, 16, 'images/noimagen.jpg'),
-(53, '14834D', 'Soldadura auxiliar de emergencia', '689.60', 1, 12, 'images/noimagen.jpg'),
-(54, '14835D', 'Soldadura auxiliar de repuesto', '72.57', 1, 11, 'images/noimagen.jpg'),
-(55, '14836D', 'Soldadura auxiliar de paso', '1077.83', 1, 18, 'images/noimagen.jpg'),
-(56, '14837D', 'Soldadura auxiliar de acople', '1181.16', 1, 17, 'images/noimagen.jpg'),
-(57, '14838D', 'Soldadura auxiliar de mano', '1436.36', 1, 9, 'images/noimagen.jpg'),
-(58, '16040D', 'Soldadura manual de emergencia', '249.31', 1, 14, 'images/noimagen.jpg'),
-(59, '16041D', 'Soldadura manual de repuesto', '565.62', 1, 2, 'images/noimagen.jpg'),
-(60, '16042D', 'Soldadura manual de paso', '1681.35', 1, 10, 'images/noimagen.jpg'),
-(61, '16043D', 'Soldadura manual de acople', '1965.29', 1, 1, 'images/noimagen.jpg'),
-(62, '16044D', 'Soldadura manual de mano', '165.41', 1, 19, 'images/noimagen.jpg'),
-(63, '15046D', 'Soldadura con rodadura de emergencia', '780.53', 1, 5, 'images/noimagen.jpg'),
-(64, '15047D', 'Soldadura con rodadura de repuesto', '275.74', 1, 12, 'images/noimagen.jpg'),
-(65, '15048D', 'Soldadura con rodadura de paso', '39.76', 1, 2, 'images/noimagen.jpg'),
-(66, '15049D', 'Soldadura con rodadura de acople', '1567.24', 1, 17, 'images/noimagen.jpg'),
-(67, '15050D', 'Soldadura con rodadura de mano', '1689.91', 1, 15, 'images/noimagen.jpg'),
-(68, '15252D', 'Soldadura extensivo de emergencia', '1943.10', 1, 4, 'images/noimagen.jpg'),
-(69, '15253D', 'Soldadura extensivo de repuesto', '284.44', 1, 16, 'images/noimagen.jpg'),
-(70, '15254D', 'Soldadura extensivo de paso', '1944.10', 1, 7, 'images/noimagen.jpg'),
-(71, '15255D', 'Soldadura extensivo de acople', '1679.93', 1, 8, 'images/noimagen.jpg'),
-(72, '15256D', 'Soldadura extensivo de mano', '480.34', 1, 18, 'images/noimagen.jpg'),
-(73, '15658D', 'Soldadura intensivo de emergencia', '1983.68', 1, 4, 'images/noimagen.jpg'),
-(74, '15659D', 'Soldadura intensivo de repuesto', '225.97', 1, 7, 'images/noimagen.jpg'),
-(75, '15660D', 'Soldadura intensivo de paso', '1947.44', 1, 3, 'images/noimagen.jpg'),
-(76, '15661D', 'Soldadura intensivo de acople', '797.92', 1, 2, 'images/noimagen.jpg'),
-(77, '15662D', 'Soldadura intensivo de mano', '646.47', 1, 12, 'images/noimagen.jpg'),
-(78, '14565D', 'Pieza auxiliar de emergencia', '1446.93', 1, 9, 'images/noimagen.jpg'),
-(79, '14566D', 'Pieza auxiliar de repuesto', '1931.71', 1, 12, 'images/noimagen.jpg'),
-(80, '14567D', 'Pieza auxiliar de paso', '41.84', 1, 10, 'images/noimagen.jpg'),
-(81, '14568D', 'Pieza auxiliar de acople', '1930.13', 1, 16, 'images/noimagen.jpg'),
-(82, '14569D', 'Pieza auxiliar de mano', '1293.80', 1, 6, 'images/noimagen.jpg'),
-(83, '15771D', 'Pieza manual de emergencia', '1232.41', 1, 2, 'images/noimagen.jpg'),
-(84, '15772D', 'Pieza manual de repuesto', '1881.50', 1, 14, 'images/noimagen.jpg'),
-(85, '15773D', 'Pieza manual de paso', '397.42', 1, 2, 'images/noimagen.jpg'),
-(86, '15774D', 'Pieza manual de acople', '348.53', 1, 10, 'images/noimagen.jpg'),
-(87, '15775D', 'Pieza manual de mano', '1385.89', 1, 21, 'images/noimagen.jpg'),
-(88, '14777D', 'Pieza con rodadura de emergencia', '474.46', 1, 11, 'images/noimagen.jpg'),
-(89, '14778D', 'Pieza con rodadura de repuesto', '962.18', 1, 14, 'images/noimagen.jpg'),
-(90, '14779D', 'Pieza con rodadura de paso', '1998.92', 1, 18, 'images/noimagen.jpg'),
-(91, '14780D', 'Pieza con rodadura de acople', '160.78', 1, 6, 'images/noimagen.jpg'),
-(92, '14781D', 'Pieza con rodadura de mano', '1075.25', 1, 16, 'images/noimagen.jpg'),
-(93, '14983D', 'Pieza extensivo de emergencia', '1649.80', 1, 19, 'images/noimagen.jpg'),
-(94, '14984D', 'Pieza extensivo de repuesto', '652.40', 1, 5, 'images/noimagen.jpg'),
-(95, '14985D', 'Pieza extensivo de paso', '1792.11', 1, 11, 'images/noimagen.jpg'),
-(96, '14986D', 'Pieza extensivo de acople', '1601.52', 1, 18, 'images/noimagen.jpg'),
-(97, '14987D', 'Pieza extensivo de mano', '348.46', 1, 18, 'images/noimagen.jpg'),
-(98, '15389D', 'Pieza intensivo de emergencia', '1940.41', 1, 12, 'images/noimagen.jpg'),
-(99, '15390D', 'Pieza intensivo de repuesto', '91.56', 1, 8, 'images/noimagen.jpg'),
-(100, '15391D', 'Pieza intensivo de paso', '995.40', 1, 5, 'images/noimagen.jpg'),
-(101, '15392D', 'Pieza intensivo de acople', '410.51', 1, 1, 'images/noimagen.jpg'),
-(102, '15393D', 'Pieza intensivo de mano', '964.93', 1, 9, 'images/noimagen.jpg'),
-(103, '13196D', 'Bote auxiliar de emergencia', '2.15', 1, 3, 'images/noimagen.jpg'),
-(104, '13197D', 'Bote auxiliar de repuesto', '1283.30', 1, 7, 'images/noimagen.jpg'),
-(105, '13198D', 'Bote auxiliar de paso', '1959.50', 1, 3, 'images/noimagen.jpg'),
-(106, '13199D', 'Bote auxiliar de acople', '494.11', 1, 18, 'images/noimagen.jpg'),
-(107, '131100D', 'Bote auxiliar de mano', '1492.92', 1, 19, 'images/noimagen.jpg'),
-(108, '143102D', 'Bote manual de emergencia', '666.22', 1, 17, 'images/noimagen.jpg'),
-(109, '143103D', 'Bote manual de repuesto', '1668.56', 1, 7, 'images/noimagen.jpg'),
-(110, '143104D', 'Bote manual de paso', '1001.27', 1, 5, 'images/noimagen.jpg'),
-(111, '143105D', 'Bote manual de acople', '1047.92', 1, 6, 'images/noimagen.jpg'),
-(112, '143106D', 'Bote manual de mano', '1918.90', 1, 16, 'images/noimagen.jpg'),
-(113, '133108D', 'Bote con rodadura de emergencia', '1311.16', 1, 17, 'images/noimagen.jpg'),
-(114, '133109D', 'Bote con rodadura de repuesto', '1462.41', 1, 17, 'images/noimagen.jpg'),
-(115, '133110D', 'Bote con rodadura de paso', '1853.38', 1, 11, 'images/noimagen.jpg'),
-(116, '133111D', 'Bote con rodadura de acople', '911.53', 1, 6, 'images/noimagen.jpg'),
-(117, '133112D', 'Bote con rodadura de mano', '957.85', 1, 20, 'images/noimagen.jpg'),
-(118, '135114D', 'Bote extensivo de emergencia', '1026.81', 1, 16, 'images/noimagen.jpg'),
-(119, '135115D', 'Bote extensivo de repuesto', '631.43', 1, 1, 'images/noimagen.jpg'),
-(120, '135116D', 'Bote extensivo de paso', '394.75', 1, 20, 'images/noimagen.jpg'),
-(121, '135117D', 'Bote extensivo de acople', '1816.52', 1, 11, 'images/noimagen.jpg'),
-(122, '135118D', 'Bote extensivo de mano', '334.24', 1, 16, 'images/noimagen.jpg'),
-(123, '139120D', 'Bote intensivo de emergencia', '1289.13', 1, 5, 'images/noimagen.jpg'),
-(124, '139121D', 'Bote intensivo de repuesto', '1593.19', 1, 19, 'images/noimagen.jpg'),
-(125, '139122D', 'Bote intensivo de paso', '732.10', 1, 17, 'images/noimagen.jpg'),
-(126, '139123D', 'Bote intensivo de acople', '1401.72', 1, 8, 'images/noimagen.jpg'),
-(127, '139124D', 'Bote intensivo de mano', '539.40', 1, 9, 'images/noimagen.jpg'),
-(128, '130127D', 'Asadura auxiliar de emergencia', '1785.92', 1, 2, 'images/noimagen.jpg'),
-(129, '130128D', 'Asadura auxiliar de repuesto', '1394.87', 1, 4, 'images/noimagen.jpg'),
-(130, '130129D', 'Asadura auxiliar de paso', '467.30', 1, 14, 'images/noimagen.jpg'),
-(131, '130130D', 'Asadura auxiliar de acople', '1056.51', 1, 17, 'images/noimagen.jpg'),
-(132, '130131D', 'Asadura auxiliar de mano', '986.16', 1, 19, 'images/noimagen.jpg'),
-(133, '142133D', 'Asadura manual de emergencia', '1495.18', 1, 5, 'images/noimagen.jpg'),
-(134, '142134D', 'Asadura manual de repuesto', '758.84', 1, 9, 'images/noimagen.jpg'),
-(135, '142135D', 'Asadura manual de paso', '32.81', 1, 7, 'images/noimagen.jpg'),
-(136, '142136D', 'Asadura manual de acople', '1090.28', 1, 10, 'images/noimagen.jpg'),
-(137, '142137D', 'Asadura manual de mano', '1511.29', 1, 8, 'images/noimagen.jpg'),
-(138, '132139D', 'Asadura con rodadura de emergencia', '911.69', 1, 9, 'images/noimagen.jpg'),
-(139, '132140D', 'Asadura con rodadura de repuesto', '115.90', 1, 1, 'images/noimagen.jpg'),
-(140, '132141D', 'Asadura con rodadura de paso', '1206.30', 1, 20, 'images/noimagen.jpg'),
-(141, '132142D', 'Asadura con rodadura de acople', '515.67', 1, 13, 'images/noimagen.jpg'),
-(142, '132143D', 'Asadura con rodadura de mano', '1396.00', 1, 5, 'images/noimagen.jpg'),
-(143, '134145D', 'Asadura extensivo de emergencia', '1447.87', 1, 6, 'images/noimagen.jpg'),
-(144, '134146D', 'Asadura extensivo de repuesto', '901.75', 1, 17, 'images/noimagen.jpg'),
-(145, '134147D', 'Asadura extensivo de paso', '618.88', 1, 3, 'images/noimagen.jpg'),
-(146, '134148D', 'Asadura extensivo de acople', '1538.53', 1, 7, 'images/noimagen.jpg'),
-(147, '134149D', 'Asadura extensivo de mano', '1390.19', 1, 6, 'images/noimagen.jpg'),
-(148, '138151D', 'Asadura intensivo de emergencia', '468.41', 1, 8, 'images/noimagen.jpg'),
-(149, '138152D', 'Asadura intensivo de repuesto', '923.91', 1, 2, 'images/noimagen.jpg'),
-(150, '138153D', 'Asadura intensivo de paso', '1386.67', 1, 6, 'images/noimagen.jpg'),
-(151, '138154D', 'Asadura intensivo de acople', '442.21', 1, 2, 'images/noimagen.jpg'),
-(152, '138155D', 'Asadura intensivo de mano', '1560.38', 1, 16, 'images/noimagen.jpg'),
-(153, '142158D', 'Mecanizado auxiliar de emergencia', '1718.19', 1, 8, 'images/noimagen.jpg'),
-(154, '142159D', 'Mecanizado auxiliar de repuesto', '1810.92', 1, 15, 'images/noimagen.jpg'),
-(155, '142160D', 'Mecanizado auxiliar de paso', '331.22', 1, 9, 'images/noimagen.jpg'),
-(156, '142161D', 'Mecanizado auxiliar de acople', '691.32', 1, 2, 'images/noimagen.jpg'),
-(157, '142162D', 'Mecanizado auxiliar de mano', '1981.72', 1, 16, 'images/noimagen.jpg'),
-(158, '154164D', 'Mecanizado manual de emergencia', '1871.10', 1, 15, 'images/noimagen.jpg'),
-(159, '154165D', 'Mecanizado manual de repuesto', '1016.25', 1, 5, 'images/noimagen.jpg'),
-(160, '154166D', 'Mecanizado manual de paso', '1819.54', 1, 3, 'images/noimagen.jpg'),
-(161, '154167D', 'Mecanizado manual de acople', '1278.80', 1, 1, 'images/noimagen.jpg'),
-(162, '154168D', 'Mecanizado manual de mano', '852.53', 1, 12, 'images/noimagen.jpg'),
-(163, '144170D', 'Mecanizado con rodadura de emergencia', '1722.69', 1, 18, 'images/noimagen.jpg'),
-(164, '144171D', 'Mecanizado con rodadura de repuesto', '1039.22', 1, 10, 'images/noimagen.jpg'),
-(165, '144172D', 'Mecanizado con rodadura de paso', '1928.89', 1, 20, 'images/noimagen.jpg'),
-(166, '144173D', 'Mecanizado con rodadura de acople', '1498.95', 1, 6, 'images/noimagen.jpg'),
-(167, '144174D', 'Mecanizado con rodadura de mano', '835.24', 1, 10, 'images/noimagen.jpg'),
-(168, '146176D', 'Mecanizado extensivo de emergencia', '714.70', 1, 13, 'images/noimagen.jpg'),
-(169, '146177D', 'Mecanizado extensivo de repuesto', '1822.86', 1, 16, 'images/noimagen.jpg'),
-(170, '146178D', 'Mecanizado extensivo de paso', '1453.82', 1, 16, 'images/noimagen.jpg'),
-(171, '146179D', 'Mecanizado extensivo de acople', '1259.87', 1, 13, 'images/noimagen.jpg'),
-(172, '146180D', 'Mecanizado extensivo de mano', '247.70', 1, 17, 'images/noimagen.jpg'),
-(173, '150182D', 'Mecanizado intensivo de emergencia', '1944.29', 1, 4, 'images/noimagen.jpg'),
-(174, '150183D', 'Mecanizado intensivo de repuesto', '773.89', 1, 13, 'images/noimagen.jpg'),
-(175, '150184D', 'Mecanizado intensivo de paso', '199.13', 1, 7, 'images/noimagen.jpg'),
-(176, '150185D', 'Mecanizado intensivo de acople', '1295.58', 1, 20, 'images/noimagen.jpg'),
-(177, '150186D', 'Mecanizado intensivo de mano', '1456.55', 1, 17, 'images/noimagen.jpg'),
-(178, '131189D', 'Bote auxiliar de emergencia', '213.80', 1, 4, 'images/noimagen.jpg'),
-(179, '131190D', 'Bote auxiliar de repuesto', '1930.60', 1, 9, 'images/noimagen.jpg'),
-(180, '131191D', 'Bote auxiliar de paso', '1559.58', 1, 14, 'images/noimagen.jpg'),
-(181, '131192D', 'Bote auxiliar de acople', '1998.70', 1, 19, 'images/noimagen.jpg'),
-(182, '131193D', 'Bote auxiliar de mano', '546.57', 1, 13, 'images/noimagen.jpg'),
-(183, '143195D', 'Bote manual de emergencia', '338.74', 1, 7, 'images/noimagen.jpg'),
-(184, '143196D', 'Bote manual de repuesto', '632.74', 1, 16, 'images/noimagen.jpg'),
-(185, '143197D', 'Bote manual de paso', '826.72', 1, 20, 'images/noimagen.jpg'),
-(186, '143198D', 'Bote manual de acople', '951.70', 1, 7, 'images/noimagen.jpg'),
-(187, '143199D', 'Bote manual de mano', '1981.94', 1, 17, 'images/noimagen.jpg'),
-(188, '133201D', 'Bote con rodadura de emergencia', '908.67', 1, 21, 'images/noimagen.jpg'),
-(189, '133202D', 'Bote con rodadura de repuesto', '1430.48', 1, 12, 'images/noimagen.jpg'),
-(190, '133203D', 'Bote con rodadura de paso', '136.16', 1, 20, 'images/noimagen.jpg'),
-(191, '133204D', 'Bote con rodadura de acople', '1530.48', 1, 20, 'images/noimagen.jpg'),
-(192, '133205D', 'Bote con rodadura de mano', '716.69', 1, 20, 'images/noimagen.jpg'),
-(193, '135207D', 'Bote extensivo de emergencia', '865.92', 1, 19, 'images/noimagen.jpg'),
-(194, '135208D', 'Bote extensivo de repuesto', '757.25', 1, 16, 'images/noimagen.jpg'),
-(195, '135209D', 'Bote extensivo de paso', '1545.26', 1, 20, 'images/noimagen.jpg'),
-(196, '135210D', 'Bote extensivo de acople', '1546.83', 1, 12, 'images/noimagen.jpg'),
-(197, '135211D', 'Bote extensivo de mano', '1774.47', 1, 1, 'images/noimagen.jpg'),
-(198, '139213D', 'Bote intensivo de emergencia', '722.52', 1, 11, 'images/noimagen.jpg'),
-(199, '139214D', 'Bote intensivo de repuesto', '1578.35', 1, 9, 'images/noimagen.jpg'),
-(200, '139215D', 'Bote intensivo de paso', '639.45', 1, 11, 'images/noimagen.jpg'),
-(201, '139216D', 'Bote intensivo de acople', '1765.88', 1, 9, 'images/noimagen.jpg'),
-(202, '139217D', 'Bote intensivo de mano', '1781.69', 1, 10, 'images/noimagen.jpg'),
-(203, '142220D', 'Manivela auxiliar de emergencia', '1834.30', 1, 1, 'images/noimagen.jpg'),
-(204, '142221D', 'Manivela auxiliar de repuesto', '118.00', 1, 20, 'images/noimagen.jpg'),
-(205, '142222D', 'Manivela auxiliar de paso', '242.33', 1, 10, 'images/noimagen.jpg'),
-(206, '142223D', 'Manivela auxiliar de acople', '64.41', 1, 12, 'images/noimagen.jpg'),
-(207, '142224D', 'Manivela auxiliar de mano', '347.67', 1, 9, 'images/noimagen.jpg'),
-(208, '154226D', 'Manivela manual de emergencia', '1699.28', 1, 9, 'images/noimagen.jpg'),
-(209, '154227D', 'Manivela manual de repuesto', '1059.30', 1, 18, 'images/noimagen.jpg'),
-(210, '154228D', 'Manivela manual de paso', '99.79', 1, 1, 'images/noimagen.jpg'),
-(211, '154229D', 'Manivela manual de acople', '1145.76', 1, 14, 'images/noimagen.jpg'),
-(212, '154230D', 'Manivela manual de mano', '1284.80', 1, 2, 'images/noimagen.jpg'),
-(213, '144232D', 'Manivela con rodadura de emergencia', '813.11', 1, 13, 'images/noimagen.jpg'),
-(214, '144233D', 'Manivela con rodadura de repuesto', '511.33', 1, 16, 'images/noimagen.jpg'),
-(215, '144234D', 'Manivela con rodadura de paso', '50.81', 1, 19, 'images/noimagen.jpg'),
-(216, '144235D', 'Manivela con rodadura de acople', '1361.83', 1, 4, 'images/noimagen.jpg'),
-(217, '144236D', 'Manivela con rodadura de mano', '686.65', 1, 5, 'images/noimagen.jpg'),
-(218, '146238D', 'Manivela extensivo de emergencia', '1950.22', 1, 14, 'images/noimagen.jpg'),
-(219, '146239D', 'Manivela extensivo de repuesto', '1293.73', 1, 12, 'images/noimagen.jpg'),
-(220, '146240D', 'Manivela extensivo de paso', '1080.26', 1, 19, 'images/noimagen.jpg'),
-(221, '146241D', 'Manivela extensivo de acople', '1360.38', 1, 18, 'images/noimagen.jpg'),
-(222, '146242D', 'Manivela extensivo de mano', '1.20', 1, 12, 'images/noimagen.jpg'),
-(223, '150244D', 'Manivela intensivo de emergencia', '1279.91', 1, 7, 'images/noimagen.jpg'),
-(224, '150245D', 'Manivela intensivo de repuesto', '1385.55', 1, 19, 'images/noimagen.jpg'),
-(225, '150246D', 'Manivela intensivo de paso', '176.70', 1, 9, 'images/noimagen.jpg'),
-(226, '150247D', 'Manivela intensivo de acople', '182.66', 1, 12, 'images/noimagen.jpg'),
-(227, '150248D', 'Manivela intensivo de mano', '626.15', 1, 12, 'images/noimagen.jpg'),
-(228, '145251D', 'Pasante auxiliar de emergencia', '1466.40', 1, 1, 'images/noimagen.jpg'),
-(229, '145252D', 'Pasante auxiliar de repuesto', '1450.51', 1, 14, 'images/noimagen.jpg'),
-(230, '145253D', 'Pasante auxiliar de paso', '1374.57', 1, 1, 'images/noimagen.jpg'),
-(231, '145254D', 'Pasante auxiliar de acople', '784.13', 1, 7, 'images/noimagen.jpg'),
-(232, '145255D', 'Pasante auxiliar de mano', '87.63', 1, 10, 'images/noimagen.jpg'),
-(233, '157257D', 'Pasante manual de emergencia', '657.70', 1, 10, 'images/noimagen.jpg'),
-(234, '157258D', 'Pasante manual de repuesto', '1387.29', 1, 19, 'images/noimagen.jpg'),
-(235, '157259D', 'Pasante manual de paso', '503.40', 1, 1, 'images/noimagen.jpg'),
-(236, '157260D', 'Pasante manual de acople', '736.14', 1, 10, 'images/noimagen.jpg'),
-(237, '157261D', 'Pasante manual de mano', '256.20', 1, 5, 'images/noimagen.jpg'),
-(238, '147263D', 'Pasante con rodadura de emergencia', '550.70', 1, 18, 'images/noimagen.jpg'),
-(239, '147264D', 'Pasante con rodadura de repuesto', '1695.50', 1, 9, 'images/noimagen.jpg'),
-(240, '147265D', 'Pasante con rodadura de paso', '1089.29', 1, 14, 'images/noimagen.jpg'),
-(241, '147266D', 'Pasante con rodadura de acople', '18.48', 1, 20, 'images/noimagen.jpg'),
-(242, '147267D', 'Pasante con rodadura de mano', '47.14', 1, 16, 'images/noimagen.jpg'),
-(243, '149269D', 'Pasante extensivo de emergencia', '434.14', 1, 1, 'images/noimagen.jpg'),
-(244, '149270D', 'Pasante extensivo de repuesto', '809.36', 1, 20, 'images/noimagen.jpg'),
-(245, '149271D', 'Pasante extensivo de paso', '1969.16', 1, 18, 'images/noimagen.jpg'),
-(246, '149272D', 'Pasante extensivo de acople', '1986.30', 1, 4, 'images/noimagen.jpg'),
-(247, '149273D', 'Pasante extensivo de mano', '1715.00', 1, 9, 'images/noimagen.jpg'),
-(248, '153275D', 'Pasante intensivo de emergencia', '298.77', 1, 13, 'images/noimagen.jpg'),
-(249, '153276D', 'Pasante intensivo de repuesto', '1201.33', 1, 17, 'images/noimagen.jpg'),
-(250, '153277D', 'Pasante intensivo de paso', '1559.80', 1, 3, 'images/noimagen.jpg'),
-(251, '153278D', 'Pasante intensivo de acople', '808.90', 1, 8, 'images/noimagen.jpg'),
-(252, '153279D', 'Pasante intensivo de mano', '243.46', 1, 10, 'images/noimagen.jpg'),
-(253, '147282D', 'Rejilla auxiliar de emergencia', '565.69', 1, 5, 'images/noimagen.jpg'),
-(254, '147283D', 'Rejilla auxiliar de repuesto', '1520.25', 1, 15, 'images/noimagen.jpg'),
-(255, '147284D', 'Rejilla auxiliar de paso', '947.31', 1, 20, 'images/noimagen.jpg'),
-(256, '147285D', 'Rejilla auxiliar de acople', '1916.62', 1, 11, 'images/noimagen.jpg'),
-(257, '147286D', 'Rejilla auxiliar de mano', '1054.27', 1, 17, 'images/noimagen.jpg'),
-(258, '159288D', 'Rejilla manual de emergencia', '1477.18', 1, 10, 'images/noimagen.jpg'),
-(259, '159289D', 'Rejilla manual de repuesto', '728.78', 1, 13, 'images/noimagen.jpg'),
-(260, '159290D', 'Rejilla manual de paso', '1065.14', 1, 11, 'images/noimagen.jpg'),
-(261, '159291D', 'Rejilla manual de acople', '783.56', 1, 15, 'images/noimagen.jpg'),
-(262, '159292D', 'Rejilla manual de mano', '1045.87', 1, 18, 'images/noimagen.jpg'),
-(263, '149294D', 'Rejilla con rodadura de emergencia', '521.93', 1, 5, 'images/noimagen.jpg'),
-(264, '149295D', 'Rejilla con rodadura de repuesto', '838.17', 1, 13, 'images/noimagen.jpg'),
-(265, '149296D', 'Rejilla con rodadura de paso', '388.80', 1, 6, 'images/noimagen.jpg'),
-(266, '149297D', 'Rejilla con rodadura de acople', '899.40', 1, 14, 'images/noimagen.jpg'),
-(267, '149298D', 'Rejilla con rodadura de mano', '865.31', 1, 8, 'images/noimagen.jpg'),
-(268, '151300D', 'Rejilla extensivo de emergencia', '1998.23', 1, 4, 'images/noimagen.jpg'),
-(269, '151301D', 'Rejilla extensivo de repuesto', '995.65', 2, 17, 'images/noimagen.jpg'),
-(270, '151302D', 'Rejilla extensivo de paso', '1295.32', 1, 3, 'images/noimagen.jpg'),
-(271, '151303D', 'Rejilla extensivo de acople', '95.63', 1, 5, 'images/noimagen.jpg'),
-(272, '151304D', 'Rejilla extensivo de mano', '1518.19', 1, 16, 'images/noimagen.jpg'),
-(273, '155306D', 'Rejilla intensivo de emergencia', '680.96', 1, 2, 'images/noimagen.jpg'),
-(274, '155307D', 'Rejilla intensivo de repuesto', '1717.10', 1, 5, 'images/noimagen.jpg'),
-(275, '155308D', 'Rejilla intensivo de paso', '250.20', 1, 20, 'images/noimagen.jpg'),
-(276, '155309D', 'Rejilla intensivo de acople', '1221.62', 1, 4, 'images/noimagen.jpg'),
-(277, '155310D', 'Rejilla intensivo de mano', '1445.86', 1, 4, 'images/noimagen.jpg'),
-(278, '149313D', 'Torno auxiliar de emergencia', '1961.79', 1, 21, 'images/noimagen.jpg'),
-(279, '149314D', 'Torno auxiliar de repuesto', '898.63', 1, 7, 'images/noimagen.jpg'),
-(280, '149315D', 'Torno auxiliar de paso', '1239.34', 1, 12, 'images/noimagen.jpg'),
-(281, '149316D', 'Torno auxiliar de acople', '136.44', 1, 1, 'images/noimagen.jpg'),
-(282, '149317D', 'Torno auxiliar de mano', '65.80', 1, 7, 'images/noimagen.jpg'),
-(283, '161319D', 'Torno manual de emergencia', '698.41', 1, 15, 'images/noimagen.jpg'),
-(284, '161320D', 'Torno manual de repuesto', '1035.24', 1, 9, 'images/noimagen.jpg'),
-(285, '161321D', 'Torno manual de paso', '213.48', 1, 1, 'images/noimagen.jpg'),
-(286, '161322D', 'Torno manual de acople', '585.84', 1, 20, 'images/noimagen.jpg'),
-(287, '161323D', 'Torno manual de mano', '398.21', 1, 12, 'images/noimagen.jpg'),
-(288, '151325D', 'Torno con rodadura de emergencia', '18.96', 1, 1, 'images/noimagen.jpg'),
-(289, '151326D', 'Torno con rodadura de repuesto', '605.75', 1, 9, 'images/noimagen.jpg'),
-(290, '151327D', 'Torno con rodadura de paso', '1281.98', 1, 2, 'images/noimagen.jpg'),
-(291, '151328D', 'Torno con rodadura de acople', '1307.36', 1, 5, 'images/noimagen.jpg'),
-(292, '151329D', 'Torno con rodadura de mano', '1942.65', 1, 17, 'images/noimagen.jpg'),
-(293, '153331D', 'Torno extensivo de emergencia', '1567.42', 1, 7, 'images/noimagen.jpg'),
-(294, '153332D', 'Torno extensivo de repuesto', '669.41', 1, 6, 'images/noimagen.jpg'),
-(295, '153333D', 'Torno extensivo de paso', '37.46', 1, 9, 'images/noimagen.jpg'),
-(296, '153334D', 'Torno extensivo de acople', '685.73', 1, 6, 'images/noimagen.jpg'),
-(297, '153335D', 'Torno extensivo de mano', '908.11', 1, 2, 'images/noimagen.jpg'),
-(298, '157337D', 'Torno intensivo de emergencia', '1322.17', 1, 15, 'images/noimagen.jpg'),
-(299, '157338D', 'Torno intensivo de repuesto', '526.93', 1, 4, 'images/noimagen.jpg'),
-(300, '157339D', 'Torno intensivo de paso', '1916.52', 1, 16, 'images/noimagen.jpg'),
-(301, '157340D', 'Torno intensivo de acople', '1981.40', 1, 5, 'images/noimagen.jpg'),
-(302, '157341D', 'Torno intensivo de mano', '118.66', 1, 20, 'images/noimagen.jpg'),
-(303, '130344D', 'Accionamiento auxiliar de emergencia', '937.68', 1, 20, 'images/noimagen.jpg'),
-(304, '130345D', 'Accionamiento auxiliar de repuesto', '736.17', 1, 19, 'images/noimagen.jpg'),
-(305, '130346D', 'Accionamiento auxiliar de paso', '1496.24', 1, 16, 'images/noimagen.jpg'),
-(306, '130347D', 'Accionamiento auxiliar de acople', '1153.94', 1, 21, 'images/noimagen.jpg'),
-(307, '130348D', 'Accionamiento auxiliar de mano', '990.70', 1, 14, 'images/noimagen.jpg'),
-(308, '142350D', 'Accionamiento manual de emergencia', '878.80', 1, 10, 'images/noimagen.jpg'),
-(309, '142351D', 'Accionamiento manual de repuesto', '547.44', 1, 5, 'images/noimagen.jpg'),
-(310, '142352D', 'Accionamiento manual de paso', '99.39', 1, 19, 'images/noimagen.jpg'),
-(311, '142353D', 'Accionamiento manual de acople', '726.60', 1, 14, 'images/noimagen.jpg'),
-(312, '142354D', 'Accionamiento manual de mano', '1911.93', 1, 13, 'images/noimagen.jpg'),
-(313, '132356D', 'Accionamiento con rodadura de emergencia', '448.55', 1, 2, 'images/noimagen.jpg'),
-(314, '132357D', 'Accionamiento con rodadura de repuesto', '1460.17', 1, 14, 'images/noimagen.jpg'),
-(315, '132358D', 'Accionamiento con rodadura de paso', '1021.44', 1, 21, 'images/noimagen.jpg'),
-(316, '132359D', 'Accionamiento con rodadura de acople', '1308.49', 1, 21, 'images/noimagen.jpg'),
-(317, '132360D', 'Accionamiento con rodadura de mano', '254.80', 1, 20, 'images/noimagen.jpg'),
-(318, '134362D', 'Accionamiento extensivo de emergencia', '667.56', 1, 15, 'images/noimagen.jpg'),
-(319, '134363D', 'Accionamiento extensivo de repuesto', '611.16', 1, 18, 'images/noimagen.jpg'),
-(320, '134364D', 'Accionamiento extensivo de paso', '1301.32', 1, 4, 'images/noimagen.jpg'),
-(321, '134365D', 'Accionamiento extensivo de acople', '1553.10', 1, 5, 'images/noimagen.jpg'),
-(322, '134366D', 'Accionamiento extensivo de mano', '1261.91', 1, 16, 'images/noimagen.jpg'),
-(323, '138368D', 'Accionamiento intensivo de emergencia', '104.29', 1, 21, 'images/noimagen.jpg'),
-(324, '138369D', 'Accionamiento intensivo de repuesto', '573.91', 1, 14, 'images/noimagen.jpg'),
-(325, '138370D', 'Accionamiento intensivo de paso', '1048.17', 1, 9, 'images/noimagen.jpg'),
-(326, '138371D', 'Accionamiento intensivo de acople', '152.52', 1, 7, 'images/noimagen.jpg'),
-(327, '138372D', 'Accionamiento intensivo de mano', '1018.45', 1, 17, 'images/noimagen.jpg'),
-(328, '135375D', 'Fijación auxiliar de emergencia', '1669.25', 1, 2, 'images/noimagen.jpg'),
-(329, '135376D', 'Fijación auxiliar de repuesto', '692.69', 1, 1, 'images/noimagen.jpg'),
-(330, '135377D', 'Fijación auxiliar de paso', '1877.19', 1, 20, 'images/noimagen.jpg'),
-(331, '135378D', 'Fijación auxiliar de acople', '1948.49', 1, 13, 'images/noimagen.jpg'),
-(332, '135379D', 'Fijación auxiliar de mano', '1690.52', 1, 4, 'images/noimagen.jpg'),
-(333, '147381D', 'Fijación manual de emergencia', '1170.64', 1, 3, 'images/noimagen.jpg'),
-(334, '147382D', 'Fijación manual de repuesto', '1849.95', 1, 3, 'images/noimagen.jpg'),
-(335, '147383D', 'Fijación manual de paso', '1413.25', 1, 8, 'images/noimagen.jpg'),
-(336, '147384D', 'Fijación manual de acople', '1712.32', 1, 6, 'images/noimagen.jpg'),
-(337, '147385D', 'Fijación manual de mano', '1275.20', 1, 10, 'images/noimagen.jpg'),
-(338, '137387D', 'Fijación con rodadura de emergencia', '147.33', 1, 8, 'images/noimagen.jpg'),
-(339, '137388D', 'Fijación con rodadura de repuesto', '780.14', 1, 10, 'images/noimagen.jpg'),
-(340, '137389D', 'Fijación con rodadura de paso', '1320.20', 1, 7, 'images/noimagen.jpg'),
-(341, '137390D', 'Fijación con rodadura de acople', '1645.50', 1, 4, 'images/noimagen.jpg'),
-(342, '137391D', 'Fijación con rodadura de mano', '1315.47', 1, 20, 'images/noimagen.jpg'),
-(343, '139393D', 'Fijación extensivo de emergencia', '414.45', 1, 4, 'images/noimagen.jpg'),
-(344, '139394D', 'Fijación extensivo de repuesto', '1371.36', 1, 2, 'images/noimagen.jpg'),
-(345, '139395D', 'Fijación extensivo de paso', '1531.21', 1, 20, 'images/noimagen.jpg'),
-(346, '139396D', 'Fijación extensivo de acople', '482.74', 1, 11, 'images/noimagen.jpg'),
-(347, '139397D', 'Fijación extensivo de mano', '799.93', 1, 14, 'images/noimagen.jpg'),
-(348, '143399D', 'Fijación intensivo de emergencia', '1098.23', 1, 17, 'images/noimagen.jpg'),
-(349, '143400D', 'Fijación intensivo de repuesto', '153.87', 1, 2, 'images/noimagen.jpg'),
-(350, '143401D', 'Fijación intensivo de paso', '758.62', 1, 2, 'images/noimagen.jpg'),
-(351, '143402D', 'Fijación intensivo de acople', '1044.85', 1, 3, 'images/noimagen.jpg'),
-(352, '143403D', 'Fijación intensivo de mano', '1499.22', 1, 9, 'images/noimagen.jpg'),
-(353, '131406D', 'Bajante auxiliar de emergencia', '1669.68', 1, 15, 'images/noimagen.jpg'),
-(354, '131407D', 'Bajante auxiliar de repuesto', '1661.85', 1, 8, 'images/noimagen.jpg'),
-(355, '131408D', 'Bajante auxiliar de paso', '1493.12', 1, 14, 'images/noimagen.jpg'),
-(356, '131409D', 'Bajante auxiliar de acople', '103.50', 1, 2, 'images/noimagen.jpg'),
-(357, '131410D', 'Bajante auxiliar de mano', '1405.37', 1, 13, 'images/noimagen.jpg'),
-(358, '143412D', 'Bajante manual de emergencia', '759.30', 1, 17, 'images/noimagen.jpg'),
-(359, '143413D', 'Bajante manual de repuesto', '249.28', 1, 3, 'images/noimagen.jpg'),
-(360, '143414D', 'Bajante manual de paso', '1807.14', 1, 7, 'images/noimagen.jpg'),
-(361, '143415D', 'Bajante manual de acople', '677.42', 1, 5, 'images/noimagen.jpg'),
-(362, '143416D', 'Bajante manual de mano', '1644.85', 1, 5, 'images/noimagen.jpg'),
-(363, '133418D', 'Bajante con rodadura de emergencia', '778.27', 1, 11, 'images/noimagen.jpg'),
-(364, '133419D', 'Bajante con rodadura de repuesto', '1797.70', 1, 16, 'images/noimagen.jpg'),
-(365, '133420D', 'Bajante con rodadura de paso', '1709.85', 1, 8, 'images/noimagen.jpg'),
-(366, '133421D', 'Bajante con rodadura de acople', '840.94', 1, 10, 'images/noimagen.jpg'),
-(367, '133422D', 'Bajante con rodadura de mano', '914.48', 1, 5, 'images/noimagen.jpg'),
-(368, '135424D', 'Bajante extensivo de emergencia', '748.47', 1, 19, 'images/noimagen.jpg'),
-(369, '135425D', 'Bajante extensivo de repuesto', '569.43', 1, 15, 'images/noimagen.jpg'),
-(370, '135426D', 'Bajante extensivo de paso', '1963.95', 1, 17, 'images/noimagen.jpg'),
-(371, '135427D', 'Bajante extensivo de acople', '1067.31', 1, 20, 'images/noimagen.jpg'),
-(372, '135428D', 'Bajante extensivo de mano', '1434.10', 1, 8, 'images/noimagen.jpg'),
-(373, '139430D', 'Bajante intensivo de emergencia', '506.59', 1, 20, 'images/noimagen.jpg'),
-(374, '139431D', 'Bajante intensivo de repuesto', '684.40', 1, 14, 'images/noimagen.jpg'),
-(375, '139432D', 'Bajante intensivo de paso', '1264.20', 1, 11, 'images/noimagen.jpg'),
-(376, '139433D', 'Bajante intensivo de acople', '568.73', 1, 14, 'images/noimagen.jpg'),
-(377, '139434D', 'Bajante intensivo de mano', '1227.31', 1, 15, 'images/noimagen.jpg'),
-(378, '148437D', 'Sujeción auxiliar de emergencia', '752.35', 1, 12, 'images/noimagen.jpg'),
-(379, '148438D', 'Sujeción auxiliar de repuesto', '1544.62', 1, 15, 'images/noimagen.jpg'),
-(380, '148439D', 'Sujeción auxiliar de paso', '1139.33', 1, 20, 'images/noimagen.jpg'),
-(381, '148440D', 'Sujeción auxiliar de acople', '1318.88', 1, 10, 'images/noimagen.jpg'),
-(382, '148441D', 'Sujeción auxiliar de mano', '1761.17', 1, 13, 'images/noimagen.jpg'),
-(383, '160443D', 'Sujeción manual de emergencia', '121.30', 1, 12, 'images/noimagen.jpg'),
-(384, '160444D', 'Sujeción manual de repuesto', '1882.49', 1, 2, 'images/noimagen.jpg'),
-(385, '160445D', 'Sujeción manual de paso', '983.30', 1, 17, 'images/noimagen.jpg'),
-(386, '160446D', 'Sujeción manual de acople', '50.97', 1, 13, 'images/noimagen.jpg'),
-(387, '160447D', 'Sujeción manual de mano', '1871.71', 1, 17, 'images/noimagen.jpg'),
-(388, '150449D', 'Sujeción con rodadura de emergencia', '57.28', 1, 3, 'images/noimagen.jpg'),
-(389, '150450D', 'Sujeción con rodadura de repuesto', '1026.66', 1, 6, 'images/noimagen.jpg'),
-(390, '150451D', 'Sujeción con rodadura de paso', '59.18', 1, 1, 'images/noimagen.jpg'),
-(391, '150452D', 'Sujeción con rodadura de acople', '1757.68', 1, 5, 'images/noimagen.jpg'),
-(392, '150453D', 'Sujeción con rodadura de mano', '476.32', 1, 2, 'images/noimagen.jpg'),
-(393, '152455D', 'Sujeción extensivo de emergencia', '1643.30', 1, 16, 'images/noimagen.jpg'),
-(394, '152456D', 'Sujeción extensivo de repuesto', '497.20', 1, 12, 'images/noimagen.jpg'),
-(395, '152457D', 'Sujeción extensivo de paso', '952.70', 1, 12, 'images/noimagen.jpg'),
-(396, '152458D', 'Sujeción extensivo de acople', '1698.40', 1, 2, 'images/noimagen.jpg'),
-(397, '152459D', 'Sujeción extensivo de mano', '475.37', 1, 15, 'images/noimagen.jpg'),
-(398, '156461D', 'Sujeción intensivo de emergencia', '1106.80', 1, 7, 'images/noimagen.jpg'),
-(399, '156462D', 'Sujeción intensivo de repuesto', '1995.17', 1, 12, 'images/noimagen.jpg'),
-(400, '156463D', 'Sujeción intensivo de paso', '813.67', 1, 17, 'images/noimagen.jpg'),
-(401, '156464D', 'Sujeción intensivo de acople', '738.60', 1, 8, 'images/noimagen.jpg'),
-(402, '156465D', 'Sujeción intensivo de mano', '448.52', 1, 11, 'images/noimagen.jpg'),
-(403, 'fsd', 'sdf', '1.00', 1, 7, 'images/noimagen.jpg'),
-(405, 'sfds', 'ghjgh', '2.00', 1, 3, 'images/noimagen.jpg');
+INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `imagen`, `id_tipoproducto`) VALUES
+(1, 'Bateria Yamaha Pro20', 750.00, 1, 'tretrtre', 4),
+(2, 'Fender F10 Acustica', 240.00, 4, 'asdasd', 1),
+(3, 'Microfono Audix OM5', 90.00, 2, 'asdasd', 3),
+(4, 'Bajo Fender 300', 260.00, 4, 'aaaaaaa', 2),
+(5, 'Bajo Ibanez', 480.00, 5, 'ddda', 2),
+(6, 'Microfono BCT MC04', 120.00, 7, 'weweqqew', 3),
+(7, 'Pedal Boss VE20', 300.00, 1, 'fsadew', 5);
 
 -- --------------------------------------------------------
 
@@ -2618,7 +2225,7 @@ CREATE TABLE IF NOT EXISTS `respuesta` (
   `id_usuario` int(11) DEFAULT NULL COMMENT 'Id. Usuario',
   `id_pregunta` int(11) DEFAULT NULL COMMENT 'Id. Pregunta',
   `id_opcion` int(11) DEFAULT NULL COMMENT 'Id. Opción'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='respuesta' AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='respuesta' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -2718,46 +2325,21 @@ INSERT INTO `tipooperacion` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipoproducto` (
-`id` int(11) NOT NULL,
-  `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripción',
-  `id_impuesto` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=32 ;
+`id` int(15) NOT NULL COMMENT 'Id Tipo Producto',
+  `descripcion` varchar(255) DEFAULT NULL COMMENT 'Descripcion'
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Volcado de datos para la tabla `tipoproducto`
 --
 
-INSERT INTO `tipoproducto` (`id`, `descripcion`, `id_impuesto`) VALUES
-(1, 'herramienta manual engrasada', 9),
-(2, 'máquina electrica o electrónica', 18),
-(4, 'Herramienta manual de precisión', 3),
-(5, 'Herramienta automático', 2),
-(6, 'Herramienta descatalogado', 1),
-(7, 'Herramienta inexistente', 20),
-(8, 'Accesorio manual', 13),
-(9, 'Accesorio automático', 4),
-(10, 'Accesorio descatalogado', 4),
-(11, 'Accesorio inexistente', 7),
-(12, 'Producto manual', 1),
-(13, 'Producto automático', 4),
-(14, 'Producto descatalogado', 17),
-(15, 'Producto inexistente', 11),
-(16, 'Artículo manual', 4),
-(17, 'Artículo automático', 9),
-(18, 'Artículo descatalogado', 12),
-(19, 'Artículo inexistente', 10),
-(20, 'Referencia manual', 15),
-(21, 'Referencia automático', 2),
-(22, 'Referencia descatalogado', 7),
-(23, 'Referencia inexistente', 8),
-(24, 'Mercancía manual', 7),
-(25, 'Mercancía automático', 18),
-(26, 'Mercancía descatalogado', 4),
-(27, 'Mercancía inexistente', 10),
-(28, 'Género manual', 14),
-(29, 'Género automático', 3),
-(30, 'Género descatalogado', 21),
-(31, 'Género inexistente', 21);
+INSERT INTO `tipoproducto` (`id`, `descripcion`) VALUES
+(1, 'guitarra'),
+(2, 'bajo'),
+(3, 'microfono'),
+(4, 'bateria'),
+(5, 'pedal'),
+(6, 'accesorio');
 
 -- --------------------------------------------------------
 
@@ -2926,6 +2508,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id_tipousuario` int(11) DEFAULT NULL COMMENT 'Tipo de usuario',
   `id_estado` int(11) DEFAULT NULL COMMENT 'Estado',
   `ciudad` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Ciudad',
+  `direccion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Direccion',
   `firma` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Firma',
   `skin` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Plantilla'
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
@@ -2934,37 +2517,37 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `login`, `password`, `id_tipousuario`, `id_estado`, `ciudad`, `firma`, `skin`) VALUES
-(1, 'pepe', 'pepe', 2, 1, 'Valencia', 'is my life and do what I want', 'main'),
-(2, 'juan', 'juan', 3, 3, 'Madrid', 'http://criticalandia.com críticas de entretenimiento, listas, opiniones...', 'main'),
-(3, 'maria', 'maria', 3, 6, 'Barcelona', 'If you love something, set it free. Unless it''''s a tiger.', 'main'),
-(4, 'antonia', 'antonia', 3, 7, 'Sevilla', '"El único límite a nuestros logros de mañana está en nuestras dudas de hoy."', 'main'),
-(5, 'edu', 'edu', 3, 13, 'Zaragoza', 'Plataforma: ORGULLLO CADISTA no.58', 'main'),
-(6, 'jose', 'jose', 3, 19, 'Teruel', 'Ironía: Figura literaria mediante la cual se da a entender lo contrario de lo que se dice.', 'main'),
-(7, 'silvia', 'silvia', 3, 6, 'Huesca', 'Paso de firmas', 'main'),
-(8, 'pedro', 'pedro', 3, 8, 'Alicante', 'Camisetas y calzado www.pedidoshicks.com', 'main'),
-(9, 'raquel', 'raquel', 3, 15, 'Castellón', 'PEÑA COLCHONERA Socio número 629', 'main'),
-(10, 'daniel', 'daniel', 3, 12, 'Almería', '"Obsesionado es tan sólo la palabra que usan los perezosos para describir a los dedicados"', 'main'),
-(11, 'rafael', 'rafael', 1, 17, 'A Coruña', 'Ista ye a mia tierra, a mia fabla', 'main'),
-(12, 'juan', 'juan', 3, 14, 'Barcelona', 'No todos los catalanes somos independentistas', 'main'),
-(13, 'elena', 'elena', 3, 19, 'Bilbao', 'Buenas tardes', 'main'),
-(14, 'luis', 'luis', 3, 4, 'Lugo', 'Preparado para cualquier combate', 'main'),
-(15, 'alba', 'alba', 3, 5, 'Cuenca', 'Si tienes un Ibiza o un Cordoba, este es tu club: www.clubseatcordoba.com', 'main'),
-(16, 'amparo', 'amparo', 3, 7, 'Ciudad Real', 'No hay dos sin tres', 'main'),
-(17, 'ambrosio', 'ambrosio', 3, 8, 'Guadalajara', 'Tesis+Antítesis=Síntesis. Problema+Acción = Solución.', 'main'),
-(18, 'luisa', 'luisa', 3, 1, 'Huelva', 'Y yo me iré. y se quedará mi huerto con su verde árbol, y con su pozo blanco. Y yo me iré.. Y se quedarán los pájaros cantando', 'main'),
-(19, 'leon', 'leon', 3, 3, 'Granada', 'La Infanta no sabía nada y punto.', 'main'),
-(20, 'rosa', 'rosa', 3, 2, 'Cádiz', 'Viva España', 'main'),
-(21, 'capcom', 'capcom', 3, 17, 'Jerez', 'La gente cree que soy una mala persona, pero no es cierto, yo tengo el corazón de un niño...en un frasco con formol encima de mi escritorio.', 'main'),
-(22, 'teleco', 'teleco', 3, 18, 'Vallecas', 'Foreros de la Comunidad de Madrid Nº25', 'main'),
-(23, 'mercadona', 'mercadona', 3, 13, 'Jaén', 'Y veréis el resurgir poderoso del guerrero, sin miedo a leyes ni a nostalgias.', 'main'),
-(24, 'vistaprint', 'vistaprint', 3, 15, 'Valencia', 'Codeados.com Diseño y Desarrollo web, Imagen Corporativa, SEO, Marketing Digital', 'main'),
-(25, 'google', 'google', 3, 16, 'California', 'Viva google +', 'main'),
-(26, 'konami', 'konami', 3, 6, 'Tokio', 'Viva Castolo, Minanda y Ximelez', 'main'),
-(27, 'orange', 'orange', 3, 7, 'París', 'Viva movistar', 'main'),
-(28, 'samsung', 'samsung', 3, 8, 'Cuenca', 'Viva el iPhone 6', 'main'),
-(29, 'gigabyte', 'gigabyte', 3, 10, 'Oviedo', 'Viva gigabyte', 'main'),
-(30, 'microsoft', 'microsoft', 3, 10, 'Albacete', 'La xbox ONE es la MEJOR CONSOLA', 'main');
+INSERT INTO `usuario` (`id`, `login`, `password`, `id_tipousuario`, `id_estado`, `ciudad`, `direccion`, `firma`, `skin`) VALUES
+(1, 'pepe', 'pepe', 2, 1, 'Valencia', NULL, 'is my life and do what I want', 'main'),
+(2, 'juan', 'juan', 3, 3, 'Madrid', NULL, 'http://criticalandia.com críticas de entretenimiento, listas, opiniones...', 'main'),
+(3, 'maria', 'maria', 3, 6, 'Barcelona', NULL, 'If you love something, set it free. Unless it''''s a tiger.', 'main'),
+(4, 'antonia', 'antonia', 3, 7, 'Sevilla', NULL, '"El único límite a nuestros logros de mañana está en nuestras dudas de hoy."', 'main'),
+(5, 'edu', 'edu', 3, 13, 'Zaragoza', NULL, 'Plataforma: ORGULLLO CADISTA no.58', 'main'),
+(6, 'jose', 'jose', 3, 19, 'Teruel', NULL, 'Ironía: Figura literaria mediante la cual se da a entender lo contrario de lo que se dice.', 'main'),
+(7, 'silvia', 'silvia', 3, 6, 'Huesca', NULL, 'Paso de firmas', 'main'),
+(8, 'pedro', 'pedro', 3, 8, 'Alicante', NULL, 'Camisetas y calzado www.pedidoshicks.com', 'main'),
+(9, 'raquel', 'raquel', 3, 15, 'Castellón', NULL, 'PEÑA COLCHONERA Socio número 629', 'main'),
+(10, 'daniel', 'daniel', 3, 12, 'Almería', NULL, '"Obsesionado es tan sólo la palabra que usan los perezosos para describir a los dedicados"', 'main'),
+(11, 'rafael', 'rafael', 1, 17, 'A Coruña', NULL, 'Ista ye a mia tierra, a mia fabla', 'main'),
+(12, 'juan', 'juan', 3, 14, 'Barcelona', NULL, 'No todos los catalanes somos independentistas', 'main'),
+(13, 'elena', 'elena', 3, 19, 'Bilbao', NULL, 'Buenas tardes', 'main'),
+(14, 'luis', 'luis', 3, 4, 'Lugo', NULL, 'Preparado para cualquier combate', 'main'),
+(15, 'alba', 'alba', 3, 5, 'Cuenca', NULL, 'Si tienes un Ibiza o un Cordoba, este es tu club: www.clubseatcordoba.com', 'main'),
+(16, 'amparo', 'amparo', 3, 7, 'Ciudad Real', NULL, 'No hay dos sin tres', 'main'),
+(17, 'ambrosio', 'ambrosio', 3, 8, 'Guadalajara', NULL, 'Tesis+Antítesis=Síntesis. Problema+Acción = Solución.', 'main'),
+(18, 'luisa', 'luisa', 3, 1, 'Huelva', NULL, 'Y yo me iré. y se quedará mi huerto con su verde árbol, y con su pozo blanco. Y yo me iré.. Y se quedarán los pájaros cantando', 'main'),
+(19, 'leon', 'leon', 3, 3, 'Granada', NULL, 'La Infanta no sabía nada y punto.', 'main'),
+(20, 'rosa', 'rosa', 3, 2, 'Cádiz', NULL, 'Viva España', 'main'),
+(21, 'capcom', 'capcom', 3, 17, 'Jerez', NULL, 'La gente cree que soy una mala persona, pero no es cierto, yo tengo el corazón de un niño...en un frasco con formol encima de mi escritorio.', 'main'),
+(22, 'teleco', 'teleco', 3, 18, 'Vallecas', NULL, 'Foreros de la Comunidad de Madrid Nº25', 'main'),
+(23, 'mercadona', 'mercadona', 3, 13, 'Jaén', NULL, 'Y veréis el resurgir poderoso del guerrero, sin miedo a leyes ni a nostalgias.', 'main'),
+(24, 'vistaprint', 'vistaprint', 3, 15, 'Valencia', NULL, 'Codeados.com Diseño y Desarrollo web, Imagen Corporativa, SEO, Marketing Digital', 'main'),
+(25, 'google', 'google', 3, 16, 'California', NULL, 'Viva google +', 'main'),
+(26, 'konami', 'konami', 3, 6, 'Tokio', NULL, 'Viva Castolo, Minanda y Ximelez', 'main'),
+(27, 'orange', 'orange', 3, 7, 'París', NULL, 'Viva movistar', 'main'),
+(28, 'samsung', 'samsung', 3, 8, 'Cuenca', NULL, 'Viva el iPhone 6', 'main'),
+(29, 'gigabyte', 'gigabyte', 3, 10, 'Oviedo', NULL, 'Viva gigabyte', 'main'),
+(30, 'microsoft', 'microsoft', 3, 10, 'Albacete', NULL, 'La xbox ONE es la MEJOR CONSOLA', 'main');
 
 --
 -- Índices para tablas volcadas
@@ -3043,6 +2626,12 @@ ALTER TABLE `impuesto`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `lineapedido`
+--
+ALTER TABLE `lineapedido`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `mensajeprivado`
 --
 ALTER TABLE `mensajeprivado`
@@ -3082,7 +2671,7 @@ ALTER TABLE `ordenador`
 -- Indices de la tabla `pedido`
 --
 ALTER TABLE `pedido`
- ADD PRIMARY KEY (`id`,`id_usuario`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `permiso`
@@ -3106,7 +2695,7 @@ ALTER TABLE `pregunta`
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
- ADD PRIMARY KEY (`id`,`id_tipoproducto`,`id_proveedor`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `propuesta`
@@ -3160,7 +2749,7 @@ ALTER TABLE `tipooperacion`
 -- Indices de la tabla `tipoproducto`
 --
 ALTER TABLE `tipoproducto`
- ADD PRIMARY KEY (`id`,`id_impuesto`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipopropuesta`
@@ -3241,7 +2830,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREME
 -- AUTO_INCREMENT de la tabla `documento`
 --
 ALTER TABLE `documento`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Num.',AUTO_INCREMENT=50;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Num.',AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT de la tabla `entrega`
 --
@@ -3262,6 +2851,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=6;
 --
 ALTER TABLE `impuesto`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT de la tabla `lineapedido`
+--
+ALTER TABLE `lineapedido`
+MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `mensajeprivado`
 --
@@ -3296,7 +2890,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREME
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=24;
+MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
@@ -3316,7 +2910,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=69;
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=406;
+MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Producto',AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `propuesta`
 --
@@ -3341,7 +2935,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREME
 -- AUTO_INCREMENT de la tabla `respuesta`
 --
 ALTER TABLE `respuesta`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tema`
 --
@@ -3361,7 +2955,7 @@ MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMEN
 -- AUTO_INCREMENT de la tabla `tipoproducto`
 --
 ALTER TABLE `tipoproducto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=32;
+MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Tipo Producto',AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `tipopropuesta`
 --
