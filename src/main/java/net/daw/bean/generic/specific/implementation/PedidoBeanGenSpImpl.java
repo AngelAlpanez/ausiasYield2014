@@ -24,23 +24,22 @@ import java.util.Date;
 
 public class PedidoBeanGenSpImpl extends BeanGenImpl implements BeanInterface {
 
-    @Expose
-    private Date fecha = new Date();
-    @Expose(serialize = false)
-    private Integer id_usuario = 0;
-    @Expose (deserialize = false)
-    private UsuarioBeanGenSpImpl obj_usuario = null;
-    
-    @Expose
-    private String observaciones = "";
-   
-    
      public PedidoBeanGenSpImpl() {
     }
 
     public PedidoBeanGenSpImpl(int id) {
         super(id);
     }
+    
+    @Expose
+    private Date fecha = new Date();
+    
+    @Expose(serialize = false)
+    private Integer id_usuario = 0;
+    @Expose (deserialize = false)
+    private UsuarioBeanGenSpImpl obj_usuario = null;
+    
+    
 
     public Date getFecha() {
         return fecha;
@@ -66,12 +65,5 @@ public class PedidoBeanGenSpImpl extends BeanGenImpl implements BeanInterface {
         this.obj_usuario = obj_usuario;
     }
 
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
     
 }

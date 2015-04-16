@@ -39,12 +39,12 @@ public class CuestionarioControlOperationGenSpImpl extends ControlOperationGenIm
     public String getAllPreguntas(HttpServletRequest request) throws Exception {
         String result = null;
         try {
-            if (perm) {
+            //if (perm) {
                 result = oCuestionarioService.getAllPreguntas(ParameterCooker.prepareId(request));
                 closeDB();
-            } else {
-                result = "error";
-            }
+            //} else {
+            //    result = "error";
+            //}
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":set ERROR: " + ex.getMessage()));
         }

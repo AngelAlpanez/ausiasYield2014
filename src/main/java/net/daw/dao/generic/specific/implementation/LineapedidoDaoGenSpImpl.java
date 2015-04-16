@@ -15,32 +15,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package net.daw.bean.generic.specific.implementation;
+package net.daw.dao.generic.specific.implementation;
 
-import com.google.gson.annotations.Expose;
-import net.daw.bean.generic.implementation.BeanGenImpl;
-import net.daw.bean.publicinterface.BeanInterface;
+import net.daw.dao.generic.implementation.TableDaoGenImpl;
+import java.sql.Connection;
+import net.daw.bean.generic.specific.implementation.LineapedidoBeanGenSpImpl;
 
-public class TipoproductoBeanGenSpImpl extends BeanGenImpl implements BeanInterface {
+public class LineapedidoDaoGenSpImpl extends TableDaoGenImpl<LineapedidoBeanGenSpImpl> {
 
-    public TipoproductoBeanGenSpImpl() {
-
-    }
-
-    public TipoproductoBeanGenSpImpl(Integer id) {
-        super(id);
-    }
-    
-    @Expose
-    private String descripcion = "";
-    
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public LineapedidoDaoGenSpImpl(String strFuente, Connection pooledConnection) throws Exception {
+        super(strFuente, "Lineapedido", pooledConnection);
     }
 
 }

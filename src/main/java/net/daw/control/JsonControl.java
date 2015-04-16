@@ -39,10 +39,13 @@ import net.daw.control.operation.generic.specific.implementation.PreguntaControl
 import net.daw.control.operation.generic.specific.implementation.PublicacionControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.EstadoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.EstadotareaControlOperationGenSpImpl;
+import net.daw.control.operation.generic.specific.implementation.LineapedidoControlOperationGenSpImpl;
+import net.daw.control.operation.generic.specific.implementation.ProductoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.ProyectoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.RespuestaControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.TrabajoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.TipodocumentoControlOperationGenSpImpl;
+import net.daw.control.operation.generic.specific.implementation.TipoproductoControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.TipotareaControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.TipotemaControlOperationGenSpImpl;
 import net.daw.control.operation.generic.specific.implementation.TipousuarioControlOperationGenSpImpl;
@@ -59,7 +62,6 @@ import net.daw.control.operation.specific.implementation.MensajeprivadoControlOp
 import net.daw.control.operation.specific.implementation.PostControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.ProveedorControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.TemaControlOperationSpImpl;
-import net.daw.control.operation.specific.implementation.TipoproductoControlOperationSpImpl;
 import net.daw.control.operation.specific.implementation.TipopropuestaControlOperationSpImpl;
 import net.daw.control.route.generic.specific.implementation.AmistadControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.CuestionarioControlRouteGenSpImpl;
@@ -70,11 +72,14 @@ import net.daw.control.route.generic.specific.implementation.OpcionControlRouteG
 import net.daw.control.route.generic.specific.implementation.PublicacionControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.EstadoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.EstadotareaControlRouteGenSpImpl;
+import net.daw.control.route.generic.specific.implementation.LineapedidoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.PedidoControlRouteGenSpImpl;
+import net.daw.control.route.generic.specific.implementation.ProductoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.ProyectoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.RespuestaControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.TrabajoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.TipodocumentoControlRouteGenSpImpl;
+import net.daw.control.route.generic.specific.implementation.TipoproductoControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.TipotareaControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.TipotemaControlRouteGenSpImpl;
 import net.daw.control.route.generic.specific.implementation.TipousuarioControlRouteGenSpImpl;
@@ -92,7 +97,6 @@ import net.daw.control.route.specific.implementation.ImpuestoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.PropuestaControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.ProveedorControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.TemaControlRouteSpImpl;
-import net.daw.control.route.specific.implementation.TipoproductoControlRouteSpImpl;
 import net.daw.control.route.specific.implementation.TipopropuestaControlRouteSpImpl;
 import net.daw.helper.EstadoHelper;
 import net.daw.helper.EstadoHelper.Tipo_estado;
@@ -164,8 +168,8 @@ public class JsonControl extends HttpServlet {
                         jsonResult = oUsuarioRoute.execute(request, oUsuarioControlOperation);
                         break;
                     case "producto":
-                        ProductoControlRouteSpImpl oProductoRoute = new ProductoControlRouteSpImpl();
-                        ProductoControlOperationSpImpl oProductoControlOperation = new ProductoControlOperationSpImpl(request);
+                        ProductoControlRouteGenSpImpl oProductoRoute = new ProductoControlRouteGenSpImpl();
+                        ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
                         jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
                         break;
                     case "proveedor":
@@ -174,8 +178,8 @@ public class JsonControl extends HttpServlet {
                         jsonResult = oProveedorRoute.execute(request, oProveedorControlOperation);
                         break;
                     case "tipoproducto":
-                        TipoproductoControlRouteSpImpl oTipoproductoRoute = new TipoproductoControlRouteSpImpl();
-                        TipoproductoControlOperationSpImpl oTipoproductoControlOperation = new TipoproductoControlOperationSpImpl(request);
+                        TipoproductoControlRouteGenSpImpl oTipoproductoRoute = new TipoproductoControlRouteGenSpImpl();
+                        TipoproductoControlOperationGenSpImpl oTipoproductoControlOperation = new TipoproductoControlOperationGenSpImpl(request);
                         jsonResult = oTipoproductoRoute.execute(request, oTipoproductoControlOperation);
                         break;
                     case "ordenador":
@@ -265,6 +269,11 @@ public class JsonControl extends HttpServlet {
                         PedidoControlRouteGenSpImpl oPedidoRoute = new PedidoControlRouteGenSpImpl();
                         PedidoControlOperationGenSpImpl oPedidoControlOperation = new PedidoControlOperationGenSpImpl(request);
                         jsonResult = oPedidoRoute.execute(request, oPedidoControlOperation);
+                        break;
+                    case "lineapedido":
+                        LineapedidoControlRouteGenSpImpl oLineapedidoRoute = new LineapedidoControlRouteGenSpImpl();
+                        LineapedidoControlOperationGenSpImpl oLineapedidoControlOperation = new LineapedidoControlOperationGenSpImpl(request);
+                        jsonResult = oLineapedidoRoute.execute(request, oLineapedidoControlOperation);
                         break;
                     case "respuesta":
                         RespuestaControlRouteGenSpImpl oRespuestaRoute = new RespuestaControlRouteGenSpImpl();

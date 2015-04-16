@@ -44,7 +44,7 @@ public class AmistadControlOperationGenSpImpl extends ControlOperationGenImpl {
     public String agregarAmigo(HttpServletRequest request) throws Exception {
         String result = null;
         try {
-            if (perm) {
+            //if (perm) {
                 UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
                 int id_usuario_1 = user.getId();
                 int id_usuario_2 = ParameterCooker.prepareId(request);
@@ -54,9 +54,9 @@ public class AmistadControlOperationGenSpImpl extends ControlOperationGenImpl {
                     result = "Error, un usuario no puede agregarse a sí miismo.";
                 }
                 closeDB();
-            } else {
-                result = "Error, su usuario no tiene permisos para realizar esta operación.";
-            }
+            //} else {
+            //    result = "Error, su usuario no tiene permisos para realizar esta operación.";
+            //}
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":agregarAmigo ERROR: " + ex.getMessage()));
         }
@@ -66,13 +66,13 @@ public class AmistadControlOperationGenSpImpl extends ControlOperationGenImpl {
     public String removeAmigo(HttpServletRequest request) throws Exception {
         String result = null;
         try {
-            if (perm) {
+            //if (perm) {
                 UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
                 result = oAmistadService.removeAmigo(user.getId(), ParameterCooker.prepareId(request));
                 closeDB();
-            } else {
-                result = "Error, su usuario no tiene permisos para realizar esta operación.";
-            }
+            //} else {
+            //    result = "Error, su usuario no tiene permisos para realizar esta operación.";
+            //}
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":removeAmigo ERROR: " + ex.getMessage()));
         }
@@ -82,13 +82,13 @@ public class AmistadControlOperationGenSpImpl extends ControlOperationGenImpl {
     public String existeAmigo(HttpServletRequest request) throws Exception {
         String result = null;
         try {
-            if (perm) {
+            //if (perm) {
                 UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
                 result = oAmistadService.existeAmigo(user.getId(), ParameterCooker.prepareId(request));
                 closeDB();
-            } else {
-                result = "Error, su usuario no tiene permisos para realizar esta operación.";
-            }
+            //} else {
+            //    result = "Error, su usuario no tiene permisos para realizar esta operación.";
+            //}
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":existeAmigo ERROR: " + ex.getMessage()));
         }

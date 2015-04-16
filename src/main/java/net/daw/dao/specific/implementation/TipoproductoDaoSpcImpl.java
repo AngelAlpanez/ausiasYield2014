@@ -98,13 +98,7 @@ public class TipoproductoDaoSpcImpl implements ViewDaoInterface<TipoproductoBean
                     expand--;
                     if (expand > 0) {
                         oTipoproductoBean.setDescripcion(oMysql.getOne(strTableName, "descripcion", oTipoproductoBean.getId()));
-                        oTipoproductoBean.setId_impuesto(Integer.parseInt(oMysql.getOne(strTableName, "id_impuesto", oTipoproductoBean.getId())));
-
-                    ImpuestoBeanGenSpImpl oImpuesto = new ImpuestoBeanGenSpImpl();
-                    oImpuesto.setId(Integer.parseInt(oMysql.getOne(strTableName, "id_impuesto", oTipoproductoBean.getId())));
-                    ImpuestoDaoSpcImpl oImpuestoDAO = new ImpuestoDaoSpcImpl("impuesto", oConnection);
-                    oImpuesto = oImpuestoDAO.get(oImpuesto, AppConfigurationHelper.getJsonDepth());
-                    oTipoproductoBean.setObj_impuesto(oImpuesto);
+                       
                     }
                 }
             } catch (Exception ex) {

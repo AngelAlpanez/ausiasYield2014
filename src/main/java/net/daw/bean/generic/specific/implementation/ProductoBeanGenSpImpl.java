@@ -27,44 +27,37 @@ import net.daw.bean.publicinterface.BeanInterface;
  */
 public class ProductoBeanGenSpImpl extends BeanGenImpl implements BeanInterface {
 
-    @Expose
-    private String codigo = "";
-    @Expose
-    private String descripcion = "";
-    @Expose
-    private Double precio = 0.0;
-    @Expose(serialize = false)
-    private Integer id_tipoproducto = 0; //importante inicializar a 0 las claves ajenas
-    @Expose(deserialize = false)
-    private TipoproductoBeanGenSpImpl obj_tipoproducto = null;
-    @Expose(serialize = false)
-    private Integer id_proveedor = 0; //importante inicializar a 0 las claves ajenas
-    @Expose(deserialize = false)
-    private ProveedorBeanGenSpImpl obj_proveedor = null;
-    @Expose
-    private String path;
-
     public ProductoBeanGenSpImpl() {
     }
 
     public ProductoBeanGenSpImpl(Integer id) {
         super(id);
     }
+    
+    @Expose
+    private String nombre = "";
+    
+    @Expose
+    private Double precio = 0.0;
+    
+    @Expose
+    private Integer stock = 0;
+    
+    @Expose
+    private String imagen = "";
+    
+    @Expose(serialize = false)
+    private Integer id_tipoproducto = 0;
+    @Expose(deserialize = false)
+    private TipoproductoBeanGenSpImpl obj_tipoproducto = null;
 
-    public String getCodigo() {
-        return codigo;
+    
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Double getPrecio() {
@@ -75,56 +68,37 @@ public class ProductoBeanGenSpImpl extends BeanGenImpl implements BeanInterface 
         this.precio = precio;
     }
 
-    /**
-     * @return the id_tipoproducto
-     */
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     public Integer getId_tipoproducto() {
         return id_tipoproducto;
     }
 
-    /**
-     * @param id_tipoproducto the id_tipoproducto to set
-     */
     public void setId_tipoproducto(Integer id_tipoproducto) {
         this.id_tipoproducto = id_tipoproducto;
     }
 
-    /**
-     * @return the obj_producto
-     */
     public TipoproductoBeanGenSpImpl getObj_tipoproducto() {
         return obj_tipoproducto;
     }
 
-    /**
-     * @param obj_producto the obj_producto to set
-     */
     public void setObj_tipoproducto(TipoproductoBeanGenSpImpl obj_tipoproducto) {
         this.obj_tipoproducto = obj_tipoproducto;
     }
-
-    public Integer getId_proveedor() {
-        return id_proveedor;
-    }
-
-    public void setId_proveedor(Integer id_proveedor) {
-        this.id_proveedor = id_proveedor;
-    }
-
-    public ProveedorBeanGenSpImpl getObj_proveedor() {
-        return obj_proveedor;
-    }
-
-    public void setObj_proveedor(ProveedorBeanGenSpImpl obj_proveedor) {
-        this.obj_proveedor = obj_proveedor;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
+    
 
 }
