@@ -24,15 +24,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label" for="codigo">Codigo:</label>
+        <label class="col-sm-2 control-label" for="nombre">Nombre:</label>
         <div class="col-sm-9">
-            <input type="text"  class="form-control pull-left"  id="nia" name="codigo" size="15" placeholder="codigo" />
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label"  for="descripcion">Descripcion:</label>
-        <div class="col-sm-9">
-            <input type="text" id="descripcion" class="form-control"  name="descripcion" size="15" placeholder="descripcion" />
+            <input type="text"  class="form-control pull-left"  id="nia" name="nombre" size="15" placeholder="nombre" />
         </div>
     </div>
     <div class="form-group">
@@ -41,7 +35,18 @@
             <input type="text"  class="form-control pull-left"  id="precio" name="precio" size="15" placeholder="precio" />
         </div>
     </div>
-    
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="stock">Stock:</label>
+        <div class="col-sm-9">
+            <input type="text"  class="form-control pull-left"  id="stock" name="stock" size="15" placeholder="stock" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="imagen">Imagen:</label>
+        <div class="col-sm-9">
+            <input type="text"  class="form-control pull-left"  id="imagen" name="imagen" size="15" placeholder="images/noimagen.jpg" />
+        </div>
+    </div>
     <div class="form-group">
         <label class="col-sm-2 control-label" for="obj_tipoproducto_id">Tipo producto: </label> 
         <div class="col-sm-2">              
@@ -52,23 +57,9 @@
         </div>        
         <label class="col-sm-7" for="obj_tipoproducto_desc" id="obj_tipoproducto_desc"></label>                     
     </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="obj_proveedor_id">ID Proveedor: </label> 
-        <div class="col-sm-2">              
-            <input readonly  class="form-control input-mini"  id="obj_proveedor_id" name="id_proveedor" type="text" size="5" maxlength="5" />  
-        </div>
-        <div class="col-sm-1">              
-            <a class="btn btn-primary btn-sm" id="obj_proveedor_button" href="#"><i class="glyphicon glyphicon-search"></i></a>
-        </div>        
-        <label class="col-sm-7" for="obj_proveedor_desc" id="obj_proveedor_desc"></label>                     
-    </div>
     
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="path">Path:</label>
-        <div class="col-sm-9">
-            <input type="text"  class="form-control pull-left"  id="path" name="path" size="15" placeholder="images/noimagen.jpg" />
-        </div>
-
+    
+    
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div id="messages"></div>

@@ -29,10 +29,10 @@ function fProductoRoutes() {
 
     Path.map("#/producto").to(function () {
         $('#indexContenidoJsp').spinner();
-        oProductoControl.listCuadros($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null, oProductoModel, oProductoView);
+        oProductoControl.list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null, oProductoModel, oProductoView);
         //productoControl.modalListEventsLoading(productoObject, productoView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
         $('#indexContenidoJsp').empty();
-        $('#indexContenidoJsp').append(oProductoControl.getClassNameProducto());
+        //$('#indexContenidoJsp').append(oProductoControl.getClassNameProducto());
         return false;
     });
 

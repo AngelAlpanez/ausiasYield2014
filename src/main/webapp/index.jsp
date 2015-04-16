@@ -354,10 +354,7 @@
         <script src="js/specific/estadotarea/view.js" charset="UTF-8"></script>
         <script src="js/specific/estadotarea/routes.js" charset="UTF-8"></script>
 
-        <script src="js/specific/producto/control.js" charset="UTF-8"></script>
-        <script src="js/specific/producto/model.js" charset="UTF-8"></script>
-        <script src="js/specific/producto/view.js" charset="UTF-8"></script>
-        <script src="js/specific/producto/routes.js" charset="UTF-8"></script>
+        
 
 
         <script src="js/specific/tipodocumento/model.js" charset="UTF-8"></script>

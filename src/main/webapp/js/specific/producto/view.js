@@ -71,25 +71,6 @@ productoView.prototype.getFormValues = function () {
 
 productoView.prototype.doEventsLoading = function () {
     var thisObject = this;
-    $('#productoForm #obj_proveedor_button').unbind('click');
-    $("#productoForm #obj_proveedor_button").click(function () {
-        var oControl = oProveedorControl;  //para probar dejar documento
-        //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "documento");
-
-        $("#productoForm").append(thisObject.getEmptyModal());
-        util().loadForm('#modal01', thisObject.getFormHeader('Elección de proveedor'), "", thisObject.getFormFooter(), true);
-
-        $('#productoForm').append(thisObject.getEmptyModal());
-
-        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oProveedorModel, oProveedorView);
-        oControl.modalListEventsLoading('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), function (id) {
-            $('#obj_proveedor_id').val(id).change();
-            $('#obj_proveedor_desc').text(decodeURIComponent(oProveedorModel.getMeAsAForeignKey(id)));
-            $('#modal01').modal('hide');
-
-        },oProveedorModel, oProveedorView);
-        return false;
-    });
     $('#productoForm #obj_tipoproducto_button').unbind('click');
     $("#productoForm #obj_tipoproducto_button").click(function () {
         var oControl = oTipoproductoControl;  //para probar dejar documento
@@ -110,75 +91,3 @@ productoView.prototype.doEventsLoading = function () {
         return false;
     });
 };
-
-productoView.prototype.okValidation = function (f) {
-    $('#productoForm').on('success.form.bv', f);
-};
-
-productoView.prototype.getEmptyCuadros = function () {
-    $.when(ajax().ajaxCallSync(path + '/jsp?ob=' + this.clase + '&op=cuadros&mode=1', 'GET', '')).done(function (data) {
-        form = data;
-    });
-    return form;
-};
-
-productoView.prototype.getBodyCuadros = function (page, fieldNames) {
-    var thisObject = this;
-    var tabla = "";
-    $.each(page, function (index, value) {
-        tabla += '<div class="wrapper"><div id="cuadro">';
-
-        var id;
-        var path;
-        var precio;
-        var descripcion;
-        var nom = "";
-        var price = "";
-        var it = 0;
-        var it2 = 0;
-
-        $.each(fieldNames, function (index, valor) {
-            if ("id" == valor) {
-                id = value[valor];
-            }
-
-            if ("path" == valor) {
-                path = value[valor];
-            }
-
-            if (path) {
-                tabla += "<div class=\"top\"></div>";
-                tabla += "<div class=\"imageinfo\"><a id=\"" + id + "\"  href=\"jsp#/producto/view/" + id + "\"><img class=\"img-responsive\"src=\"" + path + "\"></a></div>";
-
-            }
-
-            if ("precio" == valor) {
-                precio = value[valor];
-            }
-
-            if (precio && it == 0) {
-                price += "<div class=\"precio\">" + precio + " €</div>";
-                it++;
-            }
-            
-             if ("descripcion" == valor) {
-                descripcion = value[valor];
-            }
-
-            if (descripcion && it2 == 0) {
-                nom += "<div class=\"desc\">" + descripcion + "</div>";
-                it2++;
-            }
-        });
-        
-        tabla += price;
-        tabla += nom;  
-        tabla += '<a class="btn btn-primary botonprod" href="">Añadir al carrito</a>';
-        tabla += '</div></div>';
-    });
-    return tabla;
-};
-
-
-
-

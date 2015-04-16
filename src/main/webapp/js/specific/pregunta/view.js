@@ -17,115 +17,155 @@
  */
 
 
-var preguntaView = function (strClase) {
+var productoView = function (strClase) {
     this.clase = strClase;
 };
-preguntaView.prototype = new view('pregunta');
-preguntaView.prototype.getClassNamePregunta = function () {
+productoView.prototype = new view('producto');
+productoView.prototype.getClassNameProducto = function () {
     return this.getClassName() + "Vista";
 };
-var oPreguntaView = new preguntaView('pregunta');
+var oProductoView = new productoView('producto');
 
-
-preguntaView.prototype.getBodyPageTable = function (page, fieldNames, visibleFields, tdbuttons) {
+productoView.prototype.doEventsLoading = function () {
     var thisObject = this;
-    var tabla = "";
-    $.each(page, function (index, value) {
-        tabla += '<tr>';
-        var numField = 0;
-        var id;
-        var strClaveAjena;
-        $.each(fieldNames, function (index, valor) {
-            if ("id" == valor) {
-                id = value[valor];
-            }
-            ;
-            numField++;
-            if (numField <= visibleFields) {
-                tabla += '<td>';
-                if(valor == "descripcion"){
-                    tabla += '<a href="jsp#/opcion/list/' + 'systemfilter=id_pregunta&systemfilteroperator=equals&systemfiltervalue=' + value.id + '">' + thisObject.printValue(value, valor, true) + '</a>';
-                }else{
-                    tabla += thisObject.printValue(value, valor, true);
-                }
-                tabla += '</td>';
-            }
-        });
-        tabla += '<td>';
-        tabla += tdbuttons(id);
-        tabla += '</td>';
-        tabla += '</tr>';
+    $('#productoForm #obj_usuario_button').unbind('click');
+    $("#productoForm #obj_usuario_button").click(function () {
+        var oControl = oUsuarioControl;  //para probar dejar documento
+        //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "documento");
+
+        $("#productoForm").append(thisObject.getEmptyModal());
+        util().loadForm('#modal01', thisObject.getFormHeader('Elección de usuario'), "", thisObject.getFormFooter(), true);
+
+        $('#productoForm').append(thisObject.getEmptyModal());
+
+        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oUsuarioModel, oUsuarioView);
+        oControl.modalListEventsLoading('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), function (id) {
+            $('#obj_usuario_id').val(id).change();
+            $('#obj_usuario_desc').text(decodeURIComponent(oUsuarioModel.getMeAsAForeignKey(id)));
+            $('#modal01').modal('hide');
+
+        },oUsuarioModel, oUsuarioView);
+        return false;
     });
-    return tabla;
+    $('#productoForm #obj_tema_button').unbind('click');
+    $("#productoForm #obj_tema_button").click(function () {
+        var oControl = oTemaControl;
+
+        $("#productoForm").append(thisObject.getEmptyModal());
+        util().loadForm('#modal01', thisObject.getFormHeader('Elección de tema'), "", thisObject.getFormFooter(), true);
+
+        $('#productoForm').append(thisObject.getEmptyModal());
+
+        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oTemaModel, oTemaView);
+        oControl.modalListEventsLoading('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), function (id) {
+            $('#obj_tema_id').val(id).change();
+            $('#obj_tema_desc').text(decodeURIComponent(oTemaModel.getMeAsAForeignKey(id)));
+            $('#modal01').modal('hide');
+
+        },oTemaModel, oTemaView);
+        return false;
+    });
+    $('#contenido_button').unbind('click');
+    $('#contenido_button').click(function () {
+        //cabecera = '<button id="full-width" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>' + '<h3 id="myModalLabel">Edición de contenidos</h3>';
+        cabecera = thisObject.getFormHeader('Edición de contenidos');
+        //pie = '<button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cerrar</button>';                        
+        pie = '<a class="btn btn-primary" href="http://creoleparser.googlecode.com/svn/trunk/creoleparser/test_pages/CheatSheetPlus.html">Sintaxis</a>';
+        pie += thisObject.getFormFooter();
+        contenido = '<div class="row"><div class="col-md-6">';
+        contenido += '<textarea type="text" id="contenidomodal" name="contenido" rows="20" cols="70" placeholder="contenido"></textarea>';
+        contenido += '</div><div class="col-md-6"><div id="textoparseado"></div></div>';
+        contenido += '</div>';
+
+        $('#productoForm').append(thisObject.getEmptyModal());
+
+        util().loadForm('#modal01', cabecera, contenido, pie, true);
+        var texto = $('#contenido').val();
+        $('#contenidomodal').val(texto);
+        util().creoleParse(texto, $('#textoparseado'));
+        $('#contenido').val($('#contenidomodal').val());
+        $('#contenidomodal').keyup(function () {
+            util().creoleParse($('#contenidomodal').val(), $('#textoparseado'));
+            $('#contenido').val($('#contenidomodal').val());
+        });
+        return false;
+    });
 };
 
 
-preguntaView.prototype.loadButtons = function (id) {
-
+productoView.prototype.loadButtons = function (id) {
+    var page = oProductoModel.getCachedPage();
+    var pagelength = page.length;
+    var idNow = id;
+    var id_usuario;
+    
+    for (var i=0;i<pagelength;i++) {
+        if (page[i]["id"] == idNow) {
+            id_usuario = page[i]["id_usuario"];
+        }
+    }
+    
     var botonera = "";
     botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
     botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
     botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
     botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
+    botonera += '<a class="btn btn-default mp" id="' + id + '"  href="jsp#/' + "mensajeprivado" + '/new/' + id_usuario + '"><i class="glyphicon glyphicon-envelope"></i></a>';
     botonera += '</div></div>';
     return botonera;
-
-}
-preguntaView.prototype.loadFormValues = function (valores, campos) {
-//                    $('#pregunta_form #titulo').val(valores['titulo']);
-//                    $('#pregunta_form #contenido').val(valores['contenido']);
-//                    $('#pregunta_form #alta').val(valores['alta']);
-//                    $('#pregunta_form #cambio').val(valores['cambio']);
-//                    $('#pregunta_form #hits').val(valores['hits']);
-//                    $('#pregunta_form #id_usuario').val(valores['id_usuario']);
-//                    $('#pregunta_form #etiquetas').val(valores['etiquetas']);
-//                    $('#pregunta_form #publicado').val(valores['publicado']);
-//                    $('#pregunta_form #portada').val(valores['portada']);
-    this.doFillForm(valores, campos);
 };
 
-preguntaView.prototype.getFormValues = function () {
-    var valores = [];
-//                    valores['titulo'] = $('#pregunta_form #titulo');
-//                    valores['contenido'] = $('#pregunta_form #contenido');
-//                    valores['alta'] = $('#pregunta_form #alta');
-//                    valores['cambio'] = $('#pregunta_form #cambio');
-//                    valores['hits'] = $('#pregunta_form #hits');
-//                    valores['id_usuario'] = $('#pregunta_form #id_usuario');
-//                    valores['etiquetas'] = $('#pregunta_form #etiquetas');
-//                    valores['publicado'] = $('#pregunta_form #publicado');
-//                    valores['portada'] = $('#pregunta_form #portada');
 
-    var disabled = $('#preguntaForm').find(':input:disabled').removeAttr('disabled');
-    valores = $('#preguntaForm').serializeObject();
-    disabled.attr('disabled', 'disabled');
-    return valores;
-};
-
-preguntaView.prototype.doEventsLoading = function () {
+productoView.prototype.printValue = function (value, valor, recortar) {
     var thisObject = this;
-    $('#preguntaForm #obj_cuestionario_button').unbind('click');
-    $("#preguntaForm #obj_cuestionario_button").click(function () {
-        var oControl = oPreguntaControl;  //para probar dejar pregunta
-        //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "pregunta");
+    var strResult = "";
+    if (/obj_tema/.test(valor)) {
+        if (value[valor].id > 0) {
+            strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].id + ":" + value[valor].nombre + '</a>';
+        } else {
+            strResult = '???';
+        }        
+    } else if (/obj_usuario/.test(valor)) {
+        if (value[valor].id > 0) {
+            strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].id + ":" + value[valor].login + '</a>';
+        } else {
+            strResult = '???';
+        }
+    } else if (/obj_/.test(valor)) {
+        if (value[valor].id > 0) {
+            strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].id + ":" + util().getForeign(value[valor]) + '</a>';
+        } else {
+            strResult = '???';
+        }
+    } else {
+        switch (value[valor]) {
+            case true:
+                strResult = '<i class="glyphicon glyphicon-ok"></i>';
+                break;
+            case false:
+                strResult = '<i class="glyphicon glyphicon-remove"></i>';
+                break;
+            default:
+                strResult = decodeURIComponent(value[valor]);
+                
+                if (/mensaje/.test(valor)) {                    
+                } else {
+                    if (recortar) 
+                        if (strResult.length > 50) //don't show too long fields
+                            strResult = strResult.substr(0, 20) + " ...";
+                }            
 
-        $("#preguntaForm").append(thisObject.getEmptyModal());
-        util().loadForm('#modal01', thisObject.getFormHeader('Elección de usuario'), "", thisObject.getFormFooter(), true);
+            };
+    };
+    return strResult;
+};
 
-        $('#preguntaForm').append(thisObject.getEmptyModal());
-
-        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oPreguntaModel, oPreguntaView);
-        oControl.modalListEventsLoading('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), function (id) {
-            $('#obj_cuestionario_id').val(id).change();
-            $('#obj_cuestionario_desc').text(decodeURIComponent(oCuestionarioModel.getMeAsAForeignKey(id)));
-            $('#modal01').modal('hide');
-
-        },oPreguntaModel, oPreguntaView);
-        return false;
+/*productoView.prototype.getEmptyForm = function () {
+    $.when(ajax().ajaxCallSync(path + '/jsp?ob=' + this.clase + '&op=form&mode=1', 'GET', '')).done(function (data) {
+        form = data;
     });
-    
+    return form;
 };
-
-preguntaView.prototype.okValidation = function (f) {
-    $('#preguntaForm').on('success.form.bv', f);
-};
+productoView.prototype.getPanel = function (titulo, contenido) {
+    return '<div class="panel panel-default"><div class="panel-heading"><h1>' + titulo + '</h1></div><div class="panel-body">' + contenido + '</div></div>';
+};*/
