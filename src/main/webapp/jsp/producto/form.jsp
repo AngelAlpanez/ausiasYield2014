@@ -47,6 +47,9 @@
             <input type="text"  class="form-control pull-left"  id="imagen" name="imagen" size="15" placeholder="images/noimagen.jpg" />
         </div>
     </div>
+    
+    
+    
     <div class="form-group">
         <label class="col-sm-2 control-label" for="obj_tipoproducto_id">Tipo producto: </label> 
         <div class="col-sm-2">              
@@ -55,7 +58,7 @@
         <div class="col-sm-1">              
             <a class="btn btn-primary btn-sm" id="obj_tipoproducto_button" href="#"><i class="glyphicon glyphicon-search"></i></a>
         </div>        
-        <label class="col-sm-7" for="obj_tipoproducto_desc" id="obj_tipoproducto_desc"></label>                     
+        <label class="col-sm-7" for="obj_tipoproducto_desc" id="obj_tipoproducto_desc"></label>                   
     </div>
     
     

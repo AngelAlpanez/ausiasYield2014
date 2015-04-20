@@ -38,18 +38,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="observaciones">Observaciones:</label> 
-        <div class="col-sm-3">      
-            <div class='input-group date' id='cambio_group'>
-                <input type='text' class="form-control" id='cambio' name="observaciones" placeholder="Fecha de cambio" />
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
-        </div>
-    </div>
-
     
     <div class="form-group">
         <label class="col-sm-2 control-label" for="obj_usuario_id">Id_usuario: </label> 
@@ -60,6 +48,19 @@
             <a class="btn btn-primary btn-sm" id="obj_usuario_button" href="#"><i class="glyphicon glyphicon-search"></i></a>
         </div>        
         <label class="col-sm-7" for="obj_usuario_desc" id="obj_usuario_desc"></label>                     
+    </div>
+    
+    
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div id="messages"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" id="submitForm">Guardar</button>
+        </div>
     </div>
 
   </form>
@@ -96,13 +97,6 @@
                                 }                        
                             }
                         },
-                        observaciones: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir contenido'
-                                }
-                            }
-                        },
                         fecha: {
                             validators: {
                                 notEmpty: {
@@ -123,7 +117,9 @@
                                     message: 'El identificador de usuario debe ser un entero'
                                 }
                             }
-                        },                        
+                        }
+                        
+                     }
                 })
                 .on('change', '[name="id_usuario"]', function() {
                     $('#documentoForm').bootstrapValidator('revalidateField', 'id_usuario');
@@ -141,7 +137,8 @@
 // Revalidate the date when user change it
             $('#documentoForm').bootstrapValidator('revalidateField', 'cambio_group');
         });
-    });       
+               
+ 
     });
     
     
