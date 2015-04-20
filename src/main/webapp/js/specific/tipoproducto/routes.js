@@ -59,11 +59,17 @@ function fTipoproductoRoutes() {
         oTipoproductoControl.edit($('#indexContenido'), paramsObject['id'], oTipoproductoModel, oTipoproductoView);
         $('#indexContenidoJsp').empty();
     });
-
     Path.map("#/tipoproducto/new").to(function () {
         $('#indexContenidoJsp').spinner();
-        var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
+        //var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
         oTipoproductoControl.new($('#indexContenido'), null, oTipoproductoModel, oTipoproductoView);
+        $('#indexContenidoJsp').empty();
+        return false;
+    });
+    Path.map("#/tipoproducto/new/:url").to(function () {
+        $('#indexContenidoJsp').spinner();
+        var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
+        oTipoproductoControl.new($('#indexContenido'), paramsObject, oTipoproductoModel, oTipoproductoView);
         $('#indexContenidoJsp').empty();
         return false;
     });

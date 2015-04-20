@@ -50,6 +50,7 @@
     </div>
     <div class="list-group">
         <a  class="list-group-item" id="lnkProducto" href="jsp#/producto">Producto</a>
+        <a  class="list-group-item" id="lnkProducto" href="jsp#/tipoproducto">Tipo de producto</a>
     </div>
 </div>
 
