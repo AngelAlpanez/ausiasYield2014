@@ -30,7 +30,7 @@
         <label class="col-sm-2 control-label" for="fecha">Fecha:</label> 
         <div class="col-sm-3">           
             <div class='input-group date' id='alta_group'>
-                <input type='text' class="form-control" id='fecha' name="fecha" placeholder="Fecha" />
+                <input type='text' class="form-control" id='fecha' name="fecha" placeholder="fecha" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -125,8 +125,8 @@
                     $('#documentoForm').bootstrapValidator('revalidateField', 'id_usuario');
                 })
 
-                .on('change', '[name="id_tipodocumento"]', function() {
-                    $('#documentoForm').bootstrapValidator('revalidateField', 'id_tipodocumento');
+                .on('change', '[name="fecha"]', function() {
+                    $('#documentoForm').bootstrapValidator('revalidateField', 'fecha');
                 })
                 ;
         $('#alta_group').on('dp.change dp.show', function(e) {

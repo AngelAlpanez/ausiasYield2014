@@ -27,17 +27,17 @@ pedidoView.prototype.getClassNamePedido = function () {
 var oPedidoView = new pedidoView('pedido');
 
 
-pedidoView.prototype.loadButtons = function (id) {
-
-    var botonera = "";
-    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
-    botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
-    botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
-    botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
-    botonera += '</div></div>';
-    return botonera;
-
-}
+//pedidoView.prototype.loadButtons = function (id) {
+//
+//    var botonera = "";
+//    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
+//    botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
+//    botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
+//    botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
+//    botonera += '</div></div>';
+//    return botonera;
+//
+//}
 pedidoView.prototype.loadFormValues = function (valores, campos) {
 //                    $('#pedido_form #titulo').val(valores['titulo']);
 //                    $('#pedido_form #contenido').val(valores['contenido']);
@@ -71,11 +71,23 @@ pedidoView.prototype.getFormValues = function () {
 
 pedidoView.prototype.doEventsLoading = function () {
     var thisObject = this;
-   
+    $('#pedidoForm #obj_usuario_button').unbind('click');
+    $("#pedidoForm #obj_usuario_button").click(function () {
+        var oControl = oUsuarioControl;  //para probar dejar documento
+        //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "documento");
 
-   
-};
+        $("#pedidoForm").append(thisObject.getEmptyModal());
+        util().loadForm('#modal01', thisObject.getFormHeader('Elección de usuario'), "", thisObject.getFormFooter(), true);
 
-pedidoView.prototype.okValidation = function (f) {
-    $('#pedidoForm').on('success.form.bv', f);
+        $('#pedidoForm').append(thisObject.getEmptyModal());
+
+        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oUsuarioModel, oUsuarioView);
+        oControl.modalListEventsLoading('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), function (id) {
+            $('#obj_usuario_id').val(id).change();
+            $('#obj_usuario_desc').text(decodeURIComponent(oUsuarioModel.getMeAsAForeignKey(id)));
+            $('#modal01').modal('hide');
+
+        },oUsuarioModel, oUsuarioView);
+        return false;
+    });
 };

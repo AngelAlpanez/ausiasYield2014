@@ -17,75 +17,75 @@
  */
 
 
-function fPedidoRoutes() {
+function fLineapedidoRoutes() {
 
-//    Path.map("#/pedido").to(function () {
+//    Path.map("#/lineapedido").to(function () {
 //        $('#indexContenidoJsp').spinner();
-//        control('pedido').list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);
-//        //pedidoControl.modalListEventsLoading(pedidoObject, pedidoView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
+//        control('lineapedido').list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);
+//        //lineapedidoControl.modalListEventsLoading(lineapedidoObject, lineapedidoView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
 //        $('#indexContenidoJsp').empty();
 //        return false;
 //    });
 
-    Path.map("#/pedido").to(function () {
+    Path.map("#/lineapedido").to(function () {
         $('#indexContenidoJsp').spinner();
-        oPedidoControl.list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null, oPedidoModel, oPedidoView);
-        //pedidoControl.modalListEventsLoading(pedidoObject, pedidoView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
+        oLineapedidoControl.list($('#indexContenido'), param().defaultizeUrlObjectParameters({}), null, oLineapedidoModel, oLineapedidoView);
+        //lineapedidoControl.modalListEventsLoading(lineapedidoObject, lineapedidoView, $('#indexContenido'), param().defaultizeUrlObjectParameters({}), null);        
         $('#indexContenidoJsp').empty();
-        //$('#indexContenidoJsp').append(oPedidoControl.getClassNamePedido());
+        //$('#indexContenidoJsp').append(oLineapedidoControl.getClassNameLineapedido());
         return false;
     });
 
-    Path.map("#/pedido/list/:url").to(function () {
+    Path.map("#/lineapedido/list/:url").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.listCuadros($('#indexContenido'), paramsObject, null, oPedidoModel, oPedidoView);
+        oLineapedidoControl.listCuadros($('#indexContenido'), paramsObject, null, oLineapedidoModel, oLineapedidoView);
         $('#indexContenidoJsp').empty();
         return false;
     });
 
-    Path.map("#/pedido/view/:id").to(function () {
+    Path.map("#/lineapedido/view/:id").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.view($('#indexContenido'), paramsObject['id'], oPedidoModel, oPedidoView);
+        oLineapedidoControl.view($('#indexContenido'), paramsObject['id'], oLineapedidoModel, oLineapedidoView);
         $('#indexContenidoJsp').empty();
 
         return false;
     });
 
-    Path.map("#/pedido/edit/:id").to(function () {
+    Path.map("#/lineapedido/edit/:id").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.edit($('#indexContenido'), paramsObject['id'], oPedidoModel, oPedidoView);
+        oLineapedidoControl.edit($('#indexContenido'), paramsObject['id'], oLineapedidoModel, oLineapedidoView);
         $('#indexContenidoJsp').empty();
     });
-    Path.map("#/pedido/new").to(function () {
+    Path.map("#/lineapedido/new").to(function () {
         $('#indexContenidoJsp').spinner();
         //var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.new($('#indexContenido'), null, oPedidoModel, oPedidoView);
+        oLineapedidoControl.new($('#indexContenido'), null, oLineapedidoModel, oLineapedidoView);
         $('#indexContenidoJsp').empty();
         return false;
     });
-    Path.map("#/pedido/new/:url").to(function () {
+    Path.map("#/lineapedido/new/:url").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.new($('#indexContenido'), paramsObject, oPedidoModel, oPedidoView);
-        $('#indexContenidoJsp').empty();
-        return false;
-    });
-
-    Path.map("#/pedido/remove/:id").to(function () {
-        $('#indexContenidoJsp').spinner();
-        var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.remove($('#indexContenido'), paramsObject['id'], oPedidoModel, oPedidoView);
+        oLineapedidoControl.new($('#indexContenido'), paramsObject, oLineapedidoModel, oLineapedidoView);
         $('#indexContenidoJsp').empty();
         return false;
     });
 
-    Path.map("#/pedido/duplicate/:id").to(function () {
+    Path.map("#/lineapedido/remove/:id").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.duplicate($('#indexContenido'), paramsObject['id'], oPedidoModel, oPedidoView);
+        oLineapedidoControl.remove($('#indexContenido'), paramsObject['id'], oLineapedidoModel, oLineapedidoView);
+        $('#indexContenidoJsp').empty();
+        return false;
+    });
+
+    Path.map("#/lineapedido/duplicate/:id").to(function () {
+        $('#indexContenidoJsp').spinner();
+        var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
+        oLineapedidoControl.duplicate($('#indexContenido'), paramsObject['id'], oLineapedidoModel, oLineapedidoView);
         $('#indexContenidoJsp').empty();
         return false;
     });

@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2014 rafa
+ * Copyright (C) 2014 raznara
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -16,11 +16,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-var pedidoControl = function (strClase) {
+var lineapedidoModel = function (strClase) {
     this.clase = strClase;
 };
-pedidoControl.prototype = new control('pedido');
-pedidoControl.prototype.getClassNamePedido = function () {
-    return this.getClassName() + "Control";
+lineapedidoModel.prototype = new model('lineapedido');
+lineapedidoModel.prototype.getClassNameLineapedido = function () {
+    return this.getClassName() + "Modelo";
 };
-var oPedidoControl = new pedidoControl('pedido');
+var oLineapedidoModel = new lineapedidoModel('lineapedido');

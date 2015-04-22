@@ -355,6 +355,10 @@
         <script src="js/specific/estadotarea/routes.js" charset="UTF-8"></script>
 
         
+        <script src="js/specific/lineapedido/control.js" charset="UTF-8"></script>
+        <script src="js/specific/lineapedido/model.js" charset="UTF-8"></script>
+        <script src="js/specific/lineapedido/view.js" charset="UTF-8"></script>
+        <script src="js/specific/lineapedido/routes.js" charset="UTF-8"></script>
 
 
         <script src="js/specific/tipodocumento/model.js" charset="UTF-8"></script>
@@ -401,6 +405,8 @@
                 fProductoRoutes();
                 fTipoproductoRoutes();
                 fTipodocumentoRoutes();
+                
+                fLineapedidoRoutes();
 
 
 
