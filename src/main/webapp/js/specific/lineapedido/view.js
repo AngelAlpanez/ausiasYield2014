@@ -71,23 +71,23 @@ lineapedidoView.prototype.getFormValues = function () {
 
 lineapedidoView.prototype.doEventsLoading = function () {
     var thisObject = this;
-    $('#lineapedidoForm #obj_tipolineapedido_button').unbind('click');
-    $("#lineapedidoForm #obj_tipolineapedido_button").click(function () {
-        var oControl = oTipolineapedidoControl;  //para probar dejar documento
+    $('#lineapedidoForm #obj_producto_button').unbind('click');
+    $("#lineapedidoForm #obj_producto_button").click(function () {
+        var oControl = oProductoControl;  //para probar dejar documento
         //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "documento");
 
         $("#lineapedidoForm").append(thisObject.getEmptyModal());
-        util().loadForm('#modal01', thisObject.getFormHeader('Elección de tipo lineapedido'), "", thisObject.getFormFooter(), true);
+        util().loadForm('#modal01', thisObject.getFormHeader('Elección de producto'), "", thisObject.getFormFooter(), true);
 
         $('#lineapedidoForm').append(thisObject.getEmptyModal());
 
-        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oTipolineapedidoModel, oTipolineapedidoView);
+        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oProductoModel, oProductoView);
         oControl.modalListEventsLoading('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), function (id) {
-            $('#obj_tipolineapedido_id').val(id).change();
-            $('#obj_tipolineapedido_desc').text(decodeURIComponent(oTipolineapedidoModel.getMeAsAForeignKey(id)));
+            $('#obj_producto_id').val(id).change();
+            $('#obj_producto_desc').text(decodeURIComponent(oProductoModel.getMeAsAForeignKey(id)));
             $('#modal01').modal('hide');
 
-        },oTipolineapedidoModel, oTipolineapedidoView);
+        },oProductoModel, oProductoView);
         return false;
     });
 };
