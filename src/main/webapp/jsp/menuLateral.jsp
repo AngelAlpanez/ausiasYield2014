@@ -53,6 +53,7 @@
         <a  class="list-group-item" id="lnkTipoproducto" href="jsp#/tipoproducto">Tipo de producto</a>
         <a  class="list-group-item" id="lnkPedido" href="jsp#/pedido">Pedido</a>
         <a  class="list-group-item" id="lnkPedido" href="jsp#/lineapedido">Linea de pedido</a>
+        <a  class="list-group-item" id="lnkUsuario" href="jsp#/usuario">Usuario</a>
     </div>
 </div>
 

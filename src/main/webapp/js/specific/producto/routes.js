@@ -39,7 +39,7 @@ function fProductoRoutes() {
     Path.map("#/producto/list/:url").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oProductoControl.listCuadros($('#indexContenido'), paramsObject, null, oProductoModel, oProductoView);
+        //oProductoControl.listCuadros($('#indexContenido'), paramsObject, null, oProductoModel, oProductoView);
         $('#indexContenidoJsp').empty();
         return false;
     });

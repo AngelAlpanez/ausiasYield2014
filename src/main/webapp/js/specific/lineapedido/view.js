@@ -90,4 +90,24 @@ lineapedidoView.prototype.doEventsLoading = function () {
         },oProductoModel, oProductoView);
         return false;
     });
+    
+    $('#lineapedidoForm #obj_pedido_button').unbind('click');
+    $("#lineapedidoForm #obj_pedido_button").click(function () {
+        var oControl = oPedidoControl;  //para probar dejar documento
+        //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "documento");
+
+        $("#lineapedidoForm").append(thisObject.getEmptyModal());
+        util().loadForm('#modal01', thisObject.getFormHeader('Elección de pedido'), "", thisObject.getFormFooter(), true);
+
+        $('#lineapedidoForm').append(thisObject.getEmptyModal());
+
+        oControl.list('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), true, oPedidoModel, oPedidoView);
+        oControl.modalListEventsLoading('#modal01 #modal-body', param().defaultizeUrlObjectParameters({}), function (id) {
+            $('#obj_pedido_id').val(id).change();
+            $('#obj_pedido_desc').text(decodeURIComponent(oPedidoModel.getMeAsAForeignKey(id)));
+            $('#modal01').modal('hide');
+
+        },oPedidoModel, oPedidoView);
+        return false;
+    });
 };
