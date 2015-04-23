@@ -39,7 +39,7 @@ function fPedidoRoutes() {
     Path.map("#/pedido/list/:url").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oPedidoControl.listCuadros($('#indexContenido'), paramsObject, null, oPedidoModel, oPedidoView);
+        oPedidoControl.list($('#indexContenido'), paramsObject, null, oPedidoModel, oPedidoView);
         $('#indexContenidoJsp').empty();
         return false;
     });

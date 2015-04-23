@@ -39,7 +39,7 @@ function fLineapedidoRoutes() {
     Path.map("#/lineapedido/list/:url").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oLineapedidoControl.listCuadros($('#indexContenido'), paramsObject, null, oLineapedidoModel, oLineapedidoView);
+        oLineapedidoControl.list($('#indexContenido'), paramsObject, null, oLineapedidoModel, oLineapedidoView);
         $('#indexContenidoJsp').empty();
         return false;
     });
