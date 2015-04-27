@@ -87,7 +87,7 @@
         </div>
 
 
-        <% if (user != null) {%>
+        
 
         <div class="container">
             <div class="row">
@@ -110,26 +110,7 @@
             </div>
         </div>            
 
-        <% } else {%>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="indexContenidoJsp">
-                        <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />                
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12" id="contenidoParseado"></div>   
-            </div>
-            <div class="row">
-                <div class="col-md-12"><hr><footer><p class="pull-right">&copy; <%=EstadoHelper.getAutor()%>: <%=EstadoHelper.getMailAutor()%> (<%=EstadoHelper.getAnyo()%>) - <%=EstadoHelper.getLicenciaLink()%></p></footer></div>   
-            </div>
-        </div>  
-
-
-        <% }%>
 
         <!-- carga de javascript   -->
 
