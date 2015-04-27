@@ -74,9 +74,9 @@
                 <div class="collapse navbar-collapse">
 
                     <ul class="nav navbar-nav">
-                        <%if (user != null) {%>
+                        
                         <jsp:include page="jsp/menuSuperior.jsp" /> 
-                        <% }%>
+                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <jsp:include page="jsp/usuario/infologin.jsp" />
