@@ -74,9 +74,7 @@
                 <div class="collapse navbar-collapse">
 
                     <ul class="nav navbar-nav">
-                        
                         <jsp:include page="jsp/menuSuperior.jsp" /> 
-                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <jsp:include page="jsp/usuario/infologin.jsp" />
@@ -97,7 +95,7 @@
                 <div class="col-md-10">
                     <div id="indexContenido"></div>
                     <div id="indexContenidoJsp">
-                        <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />                
+                        <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />              
                     </div>
 
                 </div>

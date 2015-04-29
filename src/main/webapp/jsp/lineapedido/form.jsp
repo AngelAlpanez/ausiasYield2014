@@ -26,7 +26,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label" for="cantidad">Cantidad:</label>
         <div class="col-sm-9">
-            <input type="text"  class="form-control pull-left"  id="nia" name="cantidad" size="15" placeholder="cantidad" />
+            <input type="text"  class="form-control pull-left"  id="cantidad" name="cantidad" size="15" placeholder="cantidad" />
         </div>
     </div>
     

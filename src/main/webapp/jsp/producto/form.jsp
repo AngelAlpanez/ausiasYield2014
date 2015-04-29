@@ -26,7 +26,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label" for="nombre">Nombre:</label>
         <div class="col-sm-9">
-            <input type="text"  class="form-control pull-left"  id="nia" name="nombre" size="15" placeholder="nombre" />
+            <input type="text"  class="form-control pull-left"  id="nombre" name="nombre" size="15" placeholder="nombre" />
         </div>
     </div>
     <div class="form-group">

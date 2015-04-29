@@ -41,6 +41,19 @@
         </div>
     </div>
     
+    <div class="form-group">
+        <label class="col-sm-2 control-label"  for="ciudad">Ciudad:</label>
+        <div class="col-sm-10">
+            <input type="text"  class="form-control"  id="ciudad" name="ciudad" size="15" placeholder="¿Dónde vives?" />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-sm-2 control-label"  for="direccion">Direccion:</label>
+        <div class="col-sm-10">
+            <input type="text"  class="form-control"  id="direccion" name="direccion" size="15" placeholder="¿Dónde vives?" />
+        </div>
+    </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label" for="obj_tipousuario_id">Tipo de usuario: </label> 
@@ -53,12 +66,7 @@
         <label class="col-sm-7" for="obj_usuario_desc" id="obj_tipousuario_desc"></label>                     
     </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label"  for="ciudad">Ciudad:</label>
-        <div class="col-sm-10">
-            <input type="text"  class="form-control"  id="ciudad" name="ciudad" size="15" placeholder="¿Dónde vives?" />
-        </div>
-    </div>
+    
 
     
 
