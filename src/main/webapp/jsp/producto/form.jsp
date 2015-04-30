@@ -41,13 +41,8 @@
             <input type="text"  class="form-control pull-left"  id="stock" name="stock" size="15" placeholder="stock" />
         </div>
     </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="imagen">Imagen:</label>
-        <div class="col-sm-9">
-            <input type="text"  class="form-control pull-left"  id="imagen" name="imagen" size="15" placeholder="images/noimagen.jpg" />
-        </div>
-    </div>
     
+
     
     
     <div class="form-group">
@@ -70,10 +65,10 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-primary" id="submitForm">Guardar</button>
-            </div>
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" id="submitForm">Guardar</button>
         </div>
+    </div>
 
 </form>
 

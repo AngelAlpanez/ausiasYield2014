@@ -34,20 +34,14 @@ productoView.prototype.loadButtons = function (id) {
     botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
     botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
     botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
+    botonera += '<a class="btn btn-default upload" id="' + id + '"  href="jsp#/' + this.clase + '/upload/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
     botonera += '</div></div>';
     return botonera;
 
 }
-productoView.prototype.loadFormValues = function (valores, campos) {
-//                    $('#producto_form #titulo').val(valores['titulo']);
-//                    $('#producto_form #contenido').val(valores['contenido']);
-//                    $('#producto_form #alta').val(valores['alta']);
-//                    $('#producto_form #cambio').val(valores['cambio']);
-//                    $('#producto_form #hits').val(valores['hits']);
-//                    $('#producto_form #id_usuario').val(valores['id_usuario']);
-//                    $('#producto_form #etiquetas').val(valores['etiquetas']);
-//                    $('#producto_form #publicado').val(valores['publicado']);
-//                    $('#producto_form #portada').val(valores['portada']);
+
+actividadView.prototype.loadFormValues = function (valores, campos) {
+    
     this.doFillForm(valores, campos);
 };
 
@@ -65,6 +59,14 @@ productoView.prototype.getFormValues = function () {
 
     var disabled = $('#productoForm').find(':input:disabled').removeAttr('disabled');
     valores = $('#productoForm').serializeObject();
+    disabled.attr('disabled', 'disabled');
+    return valores;
+};
+
+productoView.prototype.getFormValuesImagen = function () {
+    var valores = [];
+    var disabled = $('#imagenForm').find(':input:disabled').removeAttr('disabled');
+    valores = $('#imagenForm').serializeObject();
     disabled.attr('disabled', 'disabled');
     return valores;
 };

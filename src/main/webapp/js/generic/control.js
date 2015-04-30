@@ -78,6 +78,10 @@ control.prototype.edit = function (place, id, oModel, oView) {
         });
     });
 };
+
+
+
+
 control.prototype.remove = function (place, id, oModel, oView) {
     var thisObject = this;
     $(place).empty();

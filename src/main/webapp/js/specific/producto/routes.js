@@ -83,11 +83,10 @@ function fProductoRoutes() {
         return false;
     });
 
-    Path.map("#/producto/duplicate/:id").to(function () {
+    Path.map("#/producto/upload/:id").to(function () {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oProductoControl.duplicate($('#indexContenido'), paramsObject['id'], oProductoModel, oProductoView);
+        oProductoControl.upload($('#indexContenido'), paramsObject['id'], oProductoModel, oProductoView);
         $('#indexContenidoJsp').empty();
-        return false;
     });
 }

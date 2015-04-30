@@ -16,6 +16,18 @@
         <servlet-name>ControlJsp</servlet-name>
         <url-pattern>/jsp</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>subir</servlet-name>
+        <servlet-class>net.daw.imagenes.subir</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>subir</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    
+    
     <session-config>
         <session-timeout>
             30

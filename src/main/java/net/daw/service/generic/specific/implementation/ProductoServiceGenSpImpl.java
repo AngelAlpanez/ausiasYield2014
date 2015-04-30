@@ -25,4 +25,5 @@ public class ProductoServiceGenSpImpl extends TableServiceGenImpl {
     public ProductoServiceGenSpImpl(String strObject, String pojo, Connection con) {
         super(strObject, pojo, con);
     }
+    
 }
