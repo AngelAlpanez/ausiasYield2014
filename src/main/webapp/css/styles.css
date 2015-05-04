@@ -21,6 +21,77 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 body {
-    background: url("../images/fondo.jpg") no-repeat center center fixed;
+    background: url("../images/fondo1.jpg") no-repeat center center fixed;
     background-size: cover;
+    overflow-x: hidden;
+}
+
+.menuSuperior1 a, .menuSuperior2 a{
+    color: white !important;
+    text-decoration: none !important;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.menuSuperior1 a:hover, .menuSuperior2 a:hover {
+    color: gray !important;
+}
+
+.menuSuperior1{
+    background: url("../images/textura.jpg")no-repeat center;
+    background-size: 100% auto;
+}
+.menuSuperior1 img{
+    width: 140px;
+    height: 120px;
+}
+
+.menuSuperior1 li {
+    text-decoration: none;
+    list-style: none;
+    float: left;
+    margin-top: 20px;
+    padding-right: 20px;
+}
+
+.menuInfo {
+    background: black;
+    width: 820px;
+    height: 60px;
+    position: absolute;
+    margin-top: 25px;
+    border-radius: 25px;
+    margin-left: 350px;
+    font-size: 15px;
+    
+}
+
+
+
+.menuHeader {
+    float: left;
+}
+
+.infoSesion {
+    float: right;
+    margin-right: 50px;
+}
+
+.menuSuperior2 {
+    background: black;
+    height: 50px;
+    padding: 0;
+}
+
+.menuSuperior2 li {
+    list-style: none;
+    float: left;
+    padding-left: 40px;
+    font-size: 15px;
+    line-height: 50px;
+}
+
+
+#indexContenidoJsp{
+    background: white;
 }

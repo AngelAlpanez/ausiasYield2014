@@ -39,6 +39,8 @@
         <title>Ajax Yield</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/styles.css">
+        
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- <link rel="stylesheet" href="css/jquery-ui.css"> -->
@@ -46,8 +48,9 @@
         <link rel="stylesheet" href="css/bootstrapValidator.min.css">
         <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css"  />
         <link rel="stylesheet" href="css/producto.css">
-        <link rel="stylesheet" href="css/skin/main.css">
-        <link rel="stylesheet" href="css/styles.css">
+        
+        
+        
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -61,27 +64,31 @@
         <![endif]-->
 
         <!-- Fixed navbar -->
-        <div class="navbar navbar-default navbar-fixed-top">
+        <div class="menuSuperior1">
             <div class="container barra">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="jsp"><%=AppInformationHelper.getAppName()%></a>
-                </div>
-                <div class="collapse navbar-collapse">
-
-                    <ul class="nav navbar-nav">
-                        <jsp:include page="jsp/menuSuperior.jsp" /> 
+                    <img src="images/logo.png" />
+                </div>               
+                <div class="menuInfo">
+                    <ul class="menuHeader">
+                        <li><a href="jsp">Inicio</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    
+                    <ul class="infoSesion">
                         <jsp:include page="jsp/usuario/infologin.jsp" />
                     </ul>
-
-                </div><!--/.nav-collapse -->
+                </div>
             </div>
+        </div>
+                    
+        <div class="menuSuperior2">
+            <ul class="row">
+                <li class="col-md-2 col-md-offset-1"><a href="jsp#/producto">Productos</a></li>
+                <li class="col-md-2"><a href="jsp#/tipoproducto">Tipos de producto</a></li>
+                <li class="col-md-2"><a href="jsp#/pedido">Pedidos</a></li>
+                <li class="col-md-2"><a href="jsp#/lineapedido">Lineas de pedido</a></li>
+                <li class="col-md-2"><a href="jsp#/usuario">Usuarios</a></li>
+            </ul>
         </div>
 
 
@@ -124,7 +131,9 @@
         <script type="text/javascript"  src="./js/vendor/bootstrapValidator.min.js"></script>
         <script type="text/javascript"  src="./js/vendor/language/es_ES.js"></script>
         <script type="text/javascript"  src="./js/vendor/creole-parser.js"></script>
-
+        
+        <script type="text/javascript" src="./js/vendor/backstrech.js"></script>
+        <script type="text/javascript" src="./js/vendor/scripts.js"></script>
         <!--
         <script type="text/javascript"  src="./js/vendor/jquery-ui.js"></script>
         <script src="./js/vendor/jquery.validate.min.js"></script>

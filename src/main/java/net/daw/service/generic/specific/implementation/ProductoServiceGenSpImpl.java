@@ -17,13 +17,44 @@
  */
 package net.daw.service.generic.specific.implementation;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.daw.service.generic.implementation.TableServiceGenImpl;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import net.daw.bean.generic.specific.implementation.ProductoBeanGenSpImpl;
+import net.daw.dao.generic.specific.implementation.ProductoDaoGenSpImpl;
+import net.daw.helper.EncodingUtilHelper;
+import net.daw.helper.ExceptionBooster;
 
 public class ProductoServiceGenSpImpl extends TableServiceGenImpl {
 
     public ProductoServiceGenSpImpl(String strObject, String pojo, Connection con) {
         super(strObject, pojo, con);
+    }
+    
+    
+    public String upload(String jason) throws Exception {
+        String resultado = null;
+        try {
+            oConnection.setAutoCommit(false);
+            ProductoDaoGenSpImpl oProductoDAO = new ProductoDaoGenSpImpl(strObjectName, oConnection);
+            ProductoBeanGenSpImpl oProducto = new ProductoBeanGenSpImpl();
+            Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
+            jason = EncodingUtilHelper.decodeURIComponent(jason);
+            oProducto = gson.fromJson(jason, oProducto.getClass());
+            oProducto = oProductoDAO.set(oProducto);
+            Map<String, String> data = new HashMap<>();
+            data.put("status", "200");
+            data.put("message", Integer.toString(oProducto.getId()));
+            resultado = gson.toJson(data);
+            oConnection.commit();
+        } catch (Exception ex) {
+            oConnection.rollback();
+            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":set ERROR: " + ex.getMessage()));
+        }
+        return resultado;
     }
     
 }

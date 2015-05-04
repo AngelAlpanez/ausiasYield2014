@@ -25,10 +25,7 @@
         String level = user.getObj_tipousuario().getDescripcion();
 %>
 <li>
-    <%-- 
-    <a href="#"> <i class="icon-user">Estás logueado como <%=usuario%> / <%=user.getTipoUsuario()%></i></a>
-    --%>
-    <a href="#"> <i class="icon-user">Bienvenido, <%=usuario%> (<%=level%>)</i></a>
+    <a href="#">Bienvenido, <%=usuario%> (<%=level%>)</a>
 </li>
 <li><a href="jsp?ob=usuario&op=logout">Cerrar Sesión</a></li>
     <%} else {%>

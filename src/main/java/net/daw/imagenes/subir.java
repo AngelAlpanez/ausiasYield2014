@@ -34,6 +34,8 @@ public class subir extends HttpServlet {
                 
                 //update del campo imagen de la base de datos
                 
+                
+                
             } catch (Exception ex) {
                 request.setAttribute("message", "File Upload Failed: " + ex);
                 strMessage += "<a href=\""+"http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
