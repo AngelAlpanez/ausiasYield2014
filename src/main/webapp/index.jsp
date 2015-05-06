@@ -88,13 +88,14 @@
                 <li class="col-md-2"><a href="jsp#/pedido">Pedidos</a></li>
                 <li class="col-md-2"><a href="jsp#/lineapedido">Lineas de pedido</a></li>
                 <li class="col-md-2"><a href="jsp#/usuario">Usuarios</a></li>
+                
             </ul>
         </div>
 
 
         
 
-        <div class="container">
+        <div class="container contenido">
             <div class="row">
                 <!--<div class="col-md-2" id="menuLateral">
                     <jsp:include page="jsp/menuLateral.jsp" />
@@ -102,7 +103,7 @@
                 <div class="col-md-10">
                     <div id="indexContenido"></div>
                     <div id="indexContenidoJsp">
-                        <jsp:include page='<%=(String) request.getAttribute("contenido")%>' />              
+                        <jsp:include page='<%=(String) request.getAttribute("contenido")%>' /> 
                     </div>
 
                 </div>

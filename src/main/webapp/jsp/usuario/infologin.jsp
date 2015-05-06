@@ -25,8 +25,12 @@
         String level = user.getObj_tipousuario().getDescripcion();
 %>
 <li>
-    <a href="#">Bienvenido, <%=usuario%> (<%=level%>)</a>
+    <a href="#">Bienvenido, <%=usuario%></a>
+</li>
+<li>
+    <a href="jsp?ob=userzone">Perfil</a>
 </li>
 <li><a href="jsp?ob=usuario&op=logout">Cerrar Sesión</a></li>
     <%} else {%>
-<li><a href="jsp?op=login01&ob=usuario">Iniciar Sesión</a></li><%}%>
+<li><a href="jsp?op=login01&ob=usuario">Iniciar Sesión</a></li>
+<li><a href="http://localhost:8081/ausiasYield2014/jsp#/usuario/new">Registrarse</a></li><%}%>

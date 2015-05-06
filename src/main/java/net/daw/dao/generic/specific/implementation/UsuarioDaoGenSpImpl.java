@@ -19,12 +19,9 @@ package net.daw.dao.generic.specific.implementation;
 
 import net.daw.dao.generic.implementation.TableDaoGenImpl;
 import java.sql.Connection;
-import net.daw.bean.generic.specific.implementation.EstadoBeanGenSpImpl;
-import net.daw.bean.generic.specific.implementation.TipousuarioBeanGenSpImpl;
 import net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl;
 import net.daw.data.specific.implementation.MysqlDataSpImpl;
 import net.daw.helper.AppConfigurationHelper;
-import net.daw.helper.ExceptionBooster;
 
 public class UsuarioDaoGenSpImpl extends TableDaoGenImpl<UsuarioBeanGenSpImpl> {
     private String strTableName = "usuario";   

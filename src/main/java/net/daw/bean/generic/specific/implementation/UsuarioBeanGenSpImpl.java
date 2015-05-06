@@ -33,6 +33,8 @@ public class UsuarioBeanGenSpImpl extends BeanGenImpl implements BeanInterface {
     private TipousuarioBeanGenSpImpl obj_tipousuario = null;
     @Expose
     private String ciudad = "";
+    @Expose
+    private String direccion = "";
 
 
     public String getLogin() {
@@ -73,6 +75,14 @@ public class UsuarioBeanGenSpImpl extends BeanGenImpl implements BeanInterface {
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
 }

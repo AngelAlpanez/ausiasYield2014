@@ -74,6 +74,12 @@ public class JspControl extends HttpServlet {
                     mode = "wrappered";
                 }
             }
+            
+            if (ob.equalsIgnoreCase("userzone")) {
+                
+                request.setAttribute("contenido", "/jsp/usuario/userzone.jsp");
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            }
             //login & logout management
             if (ob.equalsIgnoreCase("usuario")) {
                 if (op.equalsIgnoreCase("login02")) {
