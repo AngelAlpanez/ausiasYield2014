@@ -2,11 +2,17 @@ package net.daw.imagenes;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
+import net.daw.bean.generic.specific.implementation.ProductoBeanGenSpImpl;
+import net.daw.connection.implementation.BoneConnectionPoolImpl;
+import net.daw.connection.publicinterface.ConnectionInterface;
+import net.daw.dao.generic.specific.implementation.ProductoDaoGenSpImpl;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -32,6 +38,13 @@ public class subir extends HttpServlet {
                 strMessage += "<a href=\""+"http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
                 request.setAttribute("message", strMessage);
                 
+            ConnectionInterface  DataConnectionSource = new BoneConnectionPoolImpl();
+            Connection oConnection = DataConnectionSource.newConnection();
+                        
+            ProductoBeanGenSpImpl oProductoBean = new ProductoBeanGenSpImpl();
+            ProductoDaoGenSpImpl oProductoDAO= new ProductoDaoGenSpImpl("producto",oConnection);
+            oProductoDAO.get(oProductoBean, oProductoBean.getId());
+            JOptionPane.showMessageDialog(null, oProductoBean.getId());
                 //update del campo imagen de la base de datos
                 
                 
