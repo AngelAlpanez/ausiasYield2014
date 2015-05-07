@@ -1,9 +1,13 @@
 package net.daw.imagenes;
 
+import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +26,8 @@ public class subir extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
+        String oo;
+        oo=request.getParameter("id");
         String name = "";
         String strMessage="";
         if (ServletFileUpload.isMultipartContent(request)) {
@@ -35,16 +41,19 @@ public class subir extends HttpServlet {
                 }
                 strMessage = "<h1>File Uploaded Successfully</h1>";
                 strMessage += "<img src=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/" + "/images/" + name + "\"  width=\"150\" /><br/>";
-                strMessage += "<a href=\""+"http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
+                strMessage += "<a href=\""+"http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp" + "\">Return</a><br/>";
                 request.setAttribute("message", strMessage);
+                
+            
+            
                 
             ConnectionInterface  DataConnectionSource = new BoneConnectionPoolImpl();
             Connection oConnection = DataConnectionSource.newConnection();
-                        
+
             ProductoBeanGenSpImpl oProductoBean = new ProductoBeanGenSpImpl();
             ProductoDaoGenSpImpl oProductoDAO= new ProductoDaoGenSpImpl("producto",oConnection);
             oProductoDAO.get(oProductoBean, oProductoBean.getId());
-            JOptionPane.showMessageDialog(null, oProductoBean.getId());
+            //JOptionPane.showMessageDialog(null, oProductoBean.getId());
                 //update del campo imagen de la base de datos
                 
                 

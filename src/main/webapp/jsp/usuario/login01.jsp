@@ -20,6 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-2 login">
+            <img src="./images/login.png" />
             <h1>Iniciar sesión</h1>
             <form class="form-signin" id="loginForm" action="jsp" role="form" method="post">                                    
                 <input type="hidden" name="ob" value="usuario" />

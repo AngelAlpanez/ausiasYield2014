@@ -34,18 +34,17 @@ control.prototype.upload = function (place, id, oModel, oView) {
     $(place).append(oView.getPanel("Edición de " + this.clase, oView.getEmptyView("imagen","unwrappered")));
     var oDocumentoModel = oModel;
     oDocumentoModel.loadAggregateViewOne(id);
-    
     oView.loadFormValues(oDocumentoModel.getCachedOne(), oDocumentoModel.getCachedFieldNames());
     
     //$('#id').attr("disabled", true);
     //oView.doEventsLoading();
-    $('#submitForm').unbind('click');
-    $('#submitForm').click(function () {
+    //$('#submitForm').unbind('click');
+    //$('#submitForm').click(function () {
     //    oView.okValidation(function (e) {
-            resultado = oModel.setOne({json: JSON.stringify(oView.getFormValuesImagen())});
+    //        resultado = oModel.setOne({json: JSON.stringify(oView.getFormValuesImagen())});
     //        oView.doResultOperationNotifyToUser(place, resultado["status"], "Se ha actualizado el registro con id=" + resultado["message"], resultado["message"], true);
     //        e.preventDefault();
     //        return false;
     //    });
-    });
+    //});
 };
