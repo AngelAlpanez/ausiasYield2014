@@ -30,7 +30,7 @@
 <li>
     <a href="jsp?ob=userzone">Perfil</a>
 </li>
-<li><a href="jsp?ob=usuario&op=logout"><img class="logout" src="./images/logout.png" /></a></li>
+<li><a href="jsp?ob=usuario&op=logout"><img class="logoutButton" src="./images/logout.png" /></a></li>
     <%} else {%>
 <li><a href="jsp?op=login01&ob=usuario">Iniciar Sesión</a></li>
 <li><a href="http://localhost:8081/ausiasYield2014/jsp#/usuario/new">Registrarse</a></li><%}%>

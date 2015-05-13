@@ -16,5 +16,21 @@
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 --%>
 
+<form class="form-horizontal" role="form" action="#" id="productoForm" name="formulario">
+   
+    
+    
+    
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div id="messages"></div>
+            </div>
+        </div>
 
-<meta http-equiv="refresh" content="0; url=jsp"> 
+        <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" id="submitForm">Comprar</button>
+        </div>
+    </div>
+
+</form>

@@ -129,7 +129,7 @@ body {
 	border:1px solid #dcdcdc;
 	display:inline-block;
 	color:#666666;
-	font-family:Trebuchet MS;
+	
 	font-size:16px;
 	font-weight:bold;
 	font-style:normal;
@@ -140,7 +140,7 @@ body {
 	text-align:center;
 	text-shadow:1px 1px 0px #ffffff;
         
-        margin-left: 170px;
+        margin-left: 40px;
         outline: none;
 }
 .loginButton:hover {
@@ -156,4 +156,29 @@ body {
 
 .contenido {
     margin-top: 60px;
+}
+
+.logoutButton {
+    max-width: 25px;
+    max-height: 20px;
+}
+
+.loginImage{
+    float: left;
+}
+.loginForm {
+    float: left;
+}
+
+.inputLogin {
+    margin-left: 22px;
+}
+
+.registrarseButton {
+    margin-left: 90px;
+}
+
+* {
+    
+    font-family: 'Signika', sans-serif;
 }

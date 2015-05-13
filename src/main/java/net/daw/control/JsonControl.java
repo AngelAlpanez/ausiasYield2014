@@ -144,7 +144,7 @@ public class JsonControl extends HttpServlet {
             retardo(0);
             retardo(0); //debug delay
             String jsonResult = "";
-            if (request.getSession().getAttribute("usuarioBean") != null) {
+            //if (request.getSession().getAttribute("usuarioBean") != null) {
 
                 switch (ParameterCooker.prepareObject(request)) {
                     case "documento":
@@ -327,9 +327,9 @@ public class JsonControl extends HttpServlet {
                     default:
                         ExceptionBooster.boost(new Exception(this.getClass().getName() + ":processRequest ERROR: no such operation"));
                 }
-            } else {
-                jsonResult = "{\"error\" : \"No active server session\"}";
-            }
+            //} else {
+                //jsonResult = "{\"error\" : \"No active server session\"}";
+            //}
             if (jsonResult.equals("error")) {
                 Map<String, String> data = new HashMap<>();
                 data.put("status", "403");

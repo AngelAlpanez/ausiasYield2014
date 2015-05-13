@@ -110,14 +110,14 @@
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
-                        titulo: {
+                        password: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un título'
+                                    message: 'Debe introducir una contraseña'
                                 },
                                 stringLength: {
-                                    max: 255,
-                                    message: 'El título debe tener como máximo 255 caracteres'
+                                    max: 15,
+                                    message: 'La contraseña debe tener como máximo 15 caracteres'
                                 }
                             }
                         },

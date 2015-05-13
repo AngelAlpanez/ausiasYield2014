@@ -39,6 +39,9 @@
         <title>Ajax Yield</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+        
+        <link href='http://fonts.googleapis.com/css?family=Signika:400,300' rel='stylesheet' type='text/css'>
+        
         <link rel="stylesheet" href="css/styles.css">
         
         <link rel="stylesheet" href="css/bootstrap.min.css">

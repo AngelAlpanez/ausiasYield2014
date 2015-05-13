@@ -1,11 +1,10 @@
 package net.daw.imagenes;
 
-import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Array;
 import java.sql.Connection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
-import net.daw.bean.generic.specific.implementation.ProductoBeanGenSpImpl;
 import net.daw.connection.implementation.BoneConnectionPoolImpl;
 import net.daw.connection.publicinterface.ConnectionInterface;
 import net.daw.dao.generic.specific.implementation.ProductoDaoGenSpImpl;
@@ -26,10 +24,10 @@ public class subir extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
-        String oo;
-        oo=request.getParameter("id");
         String name = "";
-        String strMessage="";
+        String strMessage = "";
+        HashMap<String, String> hash = new HashMap<>();
+
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
                 List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -37,36 +35,43 @@ public class subir extends HttpServlet {
                     if (!item.isFormField()) {
                         name = new File(item.getName()).getName();
                         item.write(new File(".//..//webapps//images//" + name));
+
+                    } else {
+                        hash.put(item.getFieldName(), item.getString());
+
                     }
+
                 }
                 strMessage = "<h1>File Uploaded Successfully</h1>";
-                strMessage += "<img src=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/" + "/images/" + name + "\"  width=\"150\" /><br/>";
-                strMessage += "<a href=\""+"http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp" + "\">Return</a><br/>";
-                request.setAttribute("message", strMessage);
-                
-            
-            
-                
-            ConnectionInterface  DataConnectionSource = new BoneConnectionPoolImpl();
-            Connection oConnection = DataConnectionSource.newConnection();
 
-            ProductoBeanGenSpImpl oProductoBean = new ProductoBeanGenSpImpl();
-            ProductoDaoGenSpImpl oProductoDAO= new ProductoDaoGenSpImpl("producto",oConnection);
-            oProductoDAO.get(oProductoBean, oProductoBean.getId());
-            //JOptionPane.showMessageDialog(null, oProductoBean.getId());
+                Iterator it = hash.entrySet().iterator();
+                Map.Entry e = (Map.Entry) it.next();
+                strMessage += e.getKey() + " " + e.getValue() + "<br/>";
+                int id = Integer.parseInt(e.getValue().toString());
+
                 //update del campo imagen de la base de datos
-                
-                
-                
+                ConnectionInterface DataConnectionSource = new BoneConnectionPoolImpl();
+                Connection oConnection = DataConnectionSource.newConnection();
+
+                String ruta = "<img src=\"/images/" + name + "\"  width=\"150\" />";
+
+                ProductoDaoGenSpImpl oProductoDAO = new ProductoDaoGenSpImpl("producto", oConnection);
+                oProductoDAO.updateOne(id, "producto", "imagen", ruta);
+
+                strMessage += "<img src=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/" + "/images/" + name + "\"  width=\"150\" /><br/>";
+                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
+                request.setAttribute("message", strMessage);
+
             } catch (Exception ex) {
                 request.setAttribute("message", "File Upload Failed: " + ex);
-                strMessage += "<a href=\""+"http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
+                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
             }
         } else {
             request.setAttribute("message", "Only serve file upload requests");
-            strMessage += "<a href=\""+"http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
+            strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
         }
         request.getRequestDispatcher("/result.jsp").forward(request, response);
+
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

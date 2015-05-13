@@ -48,3 +48,27 @@ control.prototype.upload = function (place, id, oModel, oView) {
     //    });
     //});
 };
+
+
+control.prototype.carrito = function (place, id, oModel, oView) {
+    var thisObject = this;
+    
+    
+    
+    $(place).empty();
+    $(place).append(oView.getPanel("Edición de " + this.clase, oView.getEmptyView("carrito","unwrappered")));
+    
+    
+    
+    //$('#id').attr("disabled", true);
+    //oView.doEventsLoading();
+    //$('#submitForm').unbind('click');
+    //$('#submitForm').click(function () {
+    //    oView.okValidation(function (e) {
+    //        resultado = oModel.setOne({json: JSON.stringify(oView.getFormValuesImagen())});
+    //        oView.doResultOperationNotifyToUser(place, resultado["status"], "Se ha actualizado el registro con id=" + resultado["message"], resultado["message"], true);
+    //        e.preventDefault();
+    //        return false;
+    //    });
+    //});
+};

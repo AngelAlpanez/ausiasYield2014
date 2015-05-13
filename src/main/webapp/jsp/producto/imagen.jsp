@@ -1,9 +1,13 @@
-<script type="text/javascript">
+
+    <script type="text/javascript">
         $(document).ready(function () {
+            
             $("#uploadForm").submit(function () {
                 var form = document.getElementById('uploadForm');
+                var id = document.getElementById("id").value;
                 //$("#spinner").append('<img src="spinner.gif"></div>').fadeIn(1000);
-
+                oformData= new FormData(form);
+                oformData.append("id", id);
                 this.timer = setTimeout(function () {
                     $.ajax({
                         url: 'upload',
@@ -11,7 +15,7 @@
                         contentType: false,
                         enctype: 'multipart/form-data',
                         mimeType:"multipart/form-data",
-                        data: new FormData(form), 
+                        data: oformData, 
                         //data: 'filename=' + $('#file').val(),
                         type: 'post',
                         success: function (msg) {

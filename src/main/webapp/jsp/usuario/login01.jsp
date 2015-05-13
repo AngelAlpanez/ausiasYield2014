@@ -20,21 +20,21 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-2 login">
-            <img src="./images/login.png" />
+            <img class="loginImage" src="./images/login.png" />
             <h1>Iniciar sesión</h1>
-            <form class="form-signin" id="loginForm" action="jsp" role="form" method="post">                                    
+            <form class="form-signin loginForm" id="loginForm" action="jsp" role="form" method="post">                                    
                 <input type="hidden" name="ob" value="usuario" />
                 <input type="hidden" name="op" value="login02" />                
                 
                 <label class="control-label" for="inputLogin" style="margin-top: 15px">Usuario:</label>
-                <input value="rafael" class=""  id="inputLogin" type="text" placeholder="Nombre de usuario" required="" autofocus="" name="login" /><br />
+                <input value="rafael" class="inputLogin"  id="inputLogin" type="text" placeholder="Nombre de usuario" required="" autofocus="" name="login" /><br />
                 
                 <label class="control-label" for="password" style="margin-top: 15px">Contraseña:</label>
-                <input value="rafael" class="" type="password" id="inputPassword" placeholder="Contraseña"  required="" name="password" />                                                               
+                <input value="rafael" class="" type="password" id="inputPassword" placeholder="Contraseña"  required="" name="password" /><br />                                                            
                                
-                <button class="loginButton" type="submit"  style="margin-top: 15px">Iniciar sesión</button>
+                <button class="loginButton" type="submit"  style="margin-top: 15px">Iniciar sesión</button><br /><br />
                 
-                <a href="http://localhost:8081/ausiasYield2014/jsp#/usuario/new">Registrarse</a>
+                <a class="registrarseButton" href="http://localhost:8081/ausiasYield2014/jsp#/usuario/new">Registrarse</a>
             </form>
         </div>
     </div>

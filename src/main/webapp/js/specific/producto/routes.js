@@ -89,4 +89,11 @@ function fProductoRoutes() {
         oProductoControl.upload($('#indexContenido'), paramsObject['id'], oProductoModel, oProductoView);
         $('#indexContenidoJsp').empty();
     });
+    
+    Path.map("#/producto/carrito/:id").to(function () {
+        $('#indexContenidoJsp').spinner();
+        var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
+        oProductoControl.carrito($('#indexContenido'), paramsObject['id'], oProductoModel, oProductoView);
+        $('#indexContenidoJsp').empty();
+    });
 }
