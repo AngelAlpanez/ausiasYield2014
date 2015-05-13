@@ -1,3 +1,4 @@
+<%@page import="net.daw.helper.EncodingUtilHelper"%>
 <%@page import="net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl"%>
 <%
     int id_tipousuario = 0, id_usuario = 0;
@@ -7,8 +8,8 @@
         id_tipousuario = user.getId_tipousuario();
         id_usuario = user.getId();
         nombre = user.getLogin();
-        ciudad = user.getCiudad();
-        direccion = user.getDireccion();
+        ciudad = EncodingUtilHelper.decodeURIComponent(user.getCiudad());
+        direccion = EncodingUtilHelper.decodeURIComponent(user.getDireccion());
     }
 %>
 

@@ -105,6 +105,10 @@ body {
     box-shadow: 13px 13px 13px 1px rgba(0,0,0,0.68);
 }
 
+.login h1 {
+    margin-left: 300px;
+}
+
 .loginButton {
 	-moz-box-shadow:inset 0px 0px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 0px 0px 0px #ffffff;
@@ -156,6 +160,15 @@ body {
 
 .contenido {
     margin-top: 60px;
+    border-radius: 25px;
+}
+
+.loginFinal {
+    background: white;
+    color: black;
+    height: 200px;
+    margin: 0 auto;
+    
 }
 
 .logoutButton {

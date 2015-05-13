@@ -87,25 +87,14 @@
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
-                        codigo: {
+                        nombre: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un codigo'
+                                    message: 'Debe introducir un nombre'
                                 },
                                 stringLength: {
                                     max: 255,
-                                    message: 'El codigo debe tener como máximo 255 caracteres'
-                                }
-                            }
-                        },
-                        descripcion: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir una descripcion'
-                                },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'La descripcion debe tener como máximo 255 caracteres'
+                                    message: 'El nombre debe tener como máximo 255 caracteres'
                                 }
                             }
                         },
@@ -113,6 +102,20 @@
                             validators: {
                                 notEmpty: {
                                     message: 'Debe introducir un precio'
+                                },
+                                double: {
+                                    message: 'El precio debe ser un numero decimal (ej. 50.20)'
+                                },
+                                stringLength: {
+                                    max: 255,
+                                    message: 'el precio debe tener como máximo 11 caracteres'
+                                }
+                            }
+                        },
+                        stock: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir un stock'
                                 },
                                 integer: {
                                     message: 'El precio debe ser un entero'
@@ -128,7 +131,7 @@
                         id_tipoproducto: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un ID Tipo producto'
+                                    message: 'Debe introducir un tipo de producto'
                                 },
                                 stringLength: {
                                     max: 255,
@@ -137,37 +140,11 @@
 
                             }
                         },
-                        id_proveedor: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir un ID Proveedor'
-                                },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'El proveedor debe tener como máximo 255 caracteres'
-                                }
-
-                            }
-                        },
-                        path: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir un path'
-                                },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'El path debe tener como máximo 255 caracteres'
-                                }
-
-                            }
-                        }
+                       
 
                     }
                 })
-                .on('change', '[name="id_proveedor"]', function() {
-                    $('#productoForm').bootstrapValidator('revalidateField', 'id_proveedor');
-                })
-
+                
                 .on('change', '[name="id_tipoproducto"]', function() {
                     $('#productoForm').bootstrapValidator('revalidateField', 'id_tipoproducto');
                 })

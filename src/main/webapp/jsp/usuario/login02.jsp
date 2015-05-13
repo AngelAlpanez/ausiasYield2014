@@ -18,10 +18,15 @@
 
 <%@page import="net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl"%>
 <% UsuarioBeanGenSpImpl oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean"); %>
-<% if (oUsuario==null){ %>
-    <h1>Vd. no ha entrado en el sistema</h1>
-    <h4>Ha habido un problema con su autenticación. Revise su login o su password.</h4>
-<% } else { %>
-    <h1>Vd. ha entrado en el sistema</h1>
-    <h4>Bienvenido, <%=oUsuario.getLogin() %>. Ahora puede operar con los menús de la aplicación.</h4>
-<% } %>
+<% if (oUsuario == null) { %>
+<div class="row">
+    <div class="col-md-7 col-md-offset-3 loginFinal">    
+        <h1>Nombre de usuario o contraseña incorrectos.</h1>
+        <h4>Por favor, inténtelo de nuevo.</h4>
+        <a href="jsp?op=login01&ob=usuario" >Reintentar</a>
+        <% } else {%>
+        <h1>Vd. ha entrado en el sistema</h1>
+        <h4>Bienvenido, <%=oUsuario.getLogin()%>. Ahora puede operar con los menús de la aplicación.</h4>
+        <% }%>
+    </div>
+</div>
