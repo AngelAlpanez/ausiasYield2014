@@ -22,13 +22,13 @@
     if (user != null) {
         String us = user.getLogin();
         String usuario = us.substring(0, 1).toUpperCase() + us.substring(1);
-        String level = user.getObj_tipousuario().getDescripcion();
+        Integer id_usuario = user.getId();
 %>
 <li>
     <a href="#">Bienvenido, <%=usuario%></a>
 </li>
 <li>
-    <a href="jsp?ob=userzone">Perfil</a>
+    <a href="jsp#/perfil/view/<%=id_usuario%>">Perfil</a>
 </li>
 <li><a href="jsp?ob=usuario&op=logout"><img class="logoutButton" src="./images/logout.png" /></a></li>
     <%} else {%>

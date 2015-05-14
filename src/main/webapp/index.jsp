@@ -39,11 +39,11 @@
         <title>Ajax Yield</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        
+
         <link href='http://fonts.googleapis.com/css?family=Signika:400,300' rel='stylesheet' type='text/css'>
-        
+
         <link rel="stylesheet" href="css/styles.css">
-        
+
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- <link rel="stylesheet" href="css/jquery-ui.css"> -->
@@ -51,9 +51,9 @@
         <link rel="stylesheet" href="css/bootstrapValidator.min.css">
         <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css"  />
         <link rel="stylesheet" href="css/producto.css">
-        
-        
-        
+
+
+
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -76,14 +76,14 @@
                     <ul class="menuHeader">
                         <li><a href="jsp">Inicio</a></li>
                     </ul>
-                    
+
                     <ul class="infoSesion">
                         <jsp:include page="jsp/usuario/infologin.jsp" />
                     </ul>
                 </div>
             </div>
         </div>
-                    
+
         <div class="menuSuperior2">
             <ul class="row">
                 <li class="col-md-2 col-md-offset-1"><a href="jsp#/producto">Productos</a></li>
@@ -91,18 +91,18 @@
                 <li class="col-md-2"><a href="jsp#/pedido">Pedidos</a></li>
                 <li class="col-md-2"><a href="jsp#/lineapedido">Lineas de pedido</a></li>
                 <li class="col-md-2"><a href="jsp#/usuario">Usuarios</a></li>
-                
+
             </ul>
         </div>
 
 
-        
+
 
         <div class="container contenido">
             <div class="row">
                 <!--<div class="col-md-2" id="menuLateral">
-                    <jsp:include page="jsp/menuLateral.jsp" />
-                </div>-->
+                <jsp:include page="jsp/menuLateral.jsp" />
+            </div>-->
                 <div class="col-md-10">
                     <div id="indexContenido"></div>
                     <div id="indexContenidoJsp">
@@ -135,7 +135,7 @@
         <script type="text/javascript"  src="./js/vendor/bootstrapValidator.min.js"></script>
         <script type="text/javascript"  src="./js/vendor/language/es_ES.js"></script>
         <script type="text/javascript"  src="./js/vendor/creole-parser.js"></script>
-        
+
         <script type="text/javascript" src="./js/vendor/backstrech.js"></script>
         <script type="text/javascript" src="./js/vendor/scripts.js"></script>
         <!--
@@ -341,11 +341,16 @@
         <script src="js/specific/estadotarea/view.js" charset="UTF-8"></script>
         <script src="js/specific/estadotarea/routes.js" charset="UTF-8"></script>
 
-        
+
         <script src="js/specific/lineapedido/control.js" charset="UTF-8"></script>
         <script src="js/specific/lineapedido/model.js" charset="UTF-8"></script>
         <script src="js/specific/lineapedido/view.js" charset="UTF-8"></script>
         <script src="js/specific/lineapedido/routes.js" charset="UTF-8"></script>
+
+        <script src="js/specific/perfil/control.js" charset="UTF-8"></script>
+        <script src="js/specific/perfil/model.js" charset="UTF-8"></script>
+        <script src="js/specific/perfil/view.js" charset="UTF-8"></script>
+        <script src="js/specific/perfil/routes.js" charset="UTF-8"></script>
 
 
         <script src="js/specific/tipodocumento/model.js" charset="UTF-8"></script>
@@ -392,9 +397,10 @@
                 fProductoRoutes();
                 fTipoproductoRoutes();
                 fTipodocumentoRoutes();
-                
+
                 fLineapedidoRoutes();
 
+                fPerfilRoutes();
 
 
                 Path.listen();

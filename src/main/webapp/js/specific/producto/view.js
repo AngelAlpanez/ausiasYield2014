@@ -94,3 +94,39 @@ productoView.prototype.doEventsLoading = function () {
         return false;
     });
 };
+
+productoView.prototype.printValue = function (value, valor, recortar) {
+
+    var thisObject = this;
+    var strResult = "";
+    if (/obj_/.test(valor)) {
+        if (value[valor].id > 0) {
+            if (valor == "obj_tipoproducto") {
+                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].descripcion + '</a>';
+            } 
+            
+
+        } else {
+            strResult = '???';
+        }
+    } else {
+        switch (value[valor]) {
+            case true:
+                strResult = '<i class="glyphicon glyphicon-ok"></i>';
+                break;
+            case false:
+                strResult = '<i class="glyphicon glyphicon-remove"></i>';
+                break;
+            default:
+                strResult = decodeURIComponent(value[valor]);
+                //if (typeof fieldContent == "string") {
+                if (recortar)
+                    if (strResult.length > 50) //don't show too long fields
+                        strResult = strResult.substr(0, 20) + " ...";
+                //}
+        }
+        ;
+    }
+    ;
+    return strResult;
+};

@@ -15,7 +15,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-
 package net.daw.control;
 
 import com.google.gson.Gson;
@@ -144,7 +143,7 @@ public class JsonControl extends HttpServlet {
             retardo(0);
             retardo(0); //debug delay
             String jsonResult = "";
-            //if (request.getSession().getAttribute("usuarioBean") != null) {
+            if (request.getSession().getAttribute("usuarioBean") != null) {
 
                 switch (ParameterCooker.prepareObject(request)) {
                     case "documento":
@@ -166,11 +165,6 @@ public class JsonControl extends HttpServlet {
                         UsuarioControlRouteGenSpImpl oUsuarioRoute = new UsuarioControlRouteGenSpImpl();
                         UsuarioControlOperationGenSpImpl oUsuarioControlOperation = new UsuarioControlOperationGenSpImpl(request);
                         jsonResult = oUsuarioRoute.execute(request, oUsuarioControlOperation);
-                        break;
-                    case "producto":
-                        ProductoControlRouteGenSpImpl oProductoRoute = new ProductoControlRouteGenSpImpl();
-                        ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
-                        jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
                         break;
                     case "proveedor":
                         ProveedorControlRouteSpImpl oProveedorRoute = new ProveedorControlRouteSpImpl();
@@ -311,7 +305,7 @@ public class JsonControl extends HttpServlet {
                         EstadotareaControlRouteGenSpImpl oEstadotareaRoute = new EstadotareaControlRouteGenSpImpl();
                         EstadotareaControlOperationGenSpImpl oEstadotareaControlOperation = new EstadotareaControlOperationGenSpImpl(request);
                         jsonResult = oEstadotareaRoute.execute(request, oEstadotareaControlOperation);
-                        break; 
+                        break;
                     case "proyecto":
                         ProyectoControlRouteGenSpImpl oProyectoRoute = new ProyectoControlRouteGenSpImpl();
                         ProyectoControlOperationGenSpImpl oProyectoControlOperation = new ProyectoControlOperationGenSpImpl(request);
@@ -322,14 +316,23 @@ public class JsonControl extends HttpServlet {
                         TipotareaControlOperationGenSpImpl oTipotareaControlOperation = new TipotareaControlOperationGenSpImpl(request);
                         jsonResult = oTipotareaRoute.execute(request, oTipotareaControlOperation);
                         break;
-                        
-
+                        case "producto":
+                        ProductoControlRouteGenSpImpl oProductoRoute = new ProductoControlRouteGenSpImpl();
+                    ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
+                    jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
+                        break;
                     default:
                         ExceptionBooster.boost(new Exception(this.getClass().getName() + ":processRequest ERROR: no such operation"));
                 }
-            //} else {
-                //jsonResult = "{\"error\" : \"No active server session\"}";
-            //}
+            } else {
+                if (ParameterCooker.prepareObject(request).equals("producto")) {
+                    ProductoControlRouteGenSpImpl oProductoRoute = new ProductoControlRouteGenSpImpl();
+                    ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
+                    jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
+                } else {
+                    jsonResult = "{\"error\" : \"No active server session\"}";
+                }
+            }
             if (jsonResult.equals("error")) {
                 Map<String, String> data = new HashMap<>();
                 data.put("status", "403");

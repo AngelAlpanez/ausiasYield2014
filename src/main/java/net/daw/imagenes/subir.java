@@ -59,16 +59,16 @@ public class subir extends HttpServlet {
                 oProductoDAO.updateOne(id, "producto", "imagen", ruta);
 
                 strMessage += "<img src=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/" + "/images/" + name + "\"  width=\"150\" /><br/>";
-                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
+                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Return</a><br/>";
                 request.setAttribute("message", strMessage);
 
             } catch (Exception ex) {
                 request.setAttribute("message", "File Upload Failed: " + ex);
-                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
+                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Return</a><br/>";
             }
         } else {
             request.setAttribute("message", "Only serve file upload requests");
-            strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/juploading" + "\">Return</a><br/>";
+            strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Return</a><br/>";
         }
         request.getRequestDispatcher("/result.jsp").forward(request, response);
 

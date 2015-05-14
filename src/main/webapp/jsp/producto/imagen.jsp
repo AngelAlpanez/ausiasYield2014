@@ -5,7 +5,7 @@
             $("#uploadForm").submit(function () {
                 var form = document.getElementById('uploadForm');
                 var id = document.getElementById("id").value;
-                //$("#spinner").append('<img src="spinner.gif"></div>').fadeIn(1000);
+                
                 oformData= new FormData(form);
                 oformData.append("id", id);
                 this.timer = setTimeout(function () {
@@ -39,7 +39,7 @@
         <div>
             <h3>Choose File to Upload in Server </h3>
             <form id="uploadForm" action="upload" method="post" enctype="multipart/form-data">
-                <input type="hidden" id="id" class="form-control"  name="id" placeholder="id" />
+                <input type="hidden" id="id" name="id" placeholder="id" />
                 
                 <input type="file" name="file" id="file"/><br/><br/>
                 
