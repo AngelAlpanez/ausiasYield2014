@@ -316,10 +316,10 @@ public class JsonControl extends HttpServlet {
                         TipotareaControlOperationGenSpImpl oTipotareaControlOperation = new TipotareaControlOperationGenSpImpl(request);
                         jsonResult = oTipotareaRoute.execute(request, oTipotareaControlOperation);
                         break;
-                        case "producto":
+                    case "producto":
                         ProductoControlRouteGenSpImpl oProductoRoute = new ProductoControlRouteGenSpImpl();
-                    ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
-                    jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
+                        ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
+                        jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
                         break;
                     default:
                         ExceptionBooster.boost(new Exception(this.getClass().getName() + ":processRequest ERROR: no such operation"));
@@ -329,6 +329,10 @@ public class JsonControl extends HttpServlet {
                     ProductoControlRouteGenSpImpl oProductoRoute = new ProductoControlRouteGenSpImpl();
                     ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
                     jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
+                } else if (ParameterCooker.prepareObject(request).equals("usuario")) {
+                    UsuarioControlRouteGenSpImpl oUsuarioRoute = new UsuarioControlRouteGenSpImpl();
+                    UsuarioControlOperationGenSpImpl oUsuarioControlOperation = new UsuarioControlOperationGenSpImpl(request);
+                    jsonResult = oUsuarioRoute.execute(request, oUsuarioControlOperation);
                 } else {
                     jsonResult = "{\"error\" : \"No active server session\"}";
                 }

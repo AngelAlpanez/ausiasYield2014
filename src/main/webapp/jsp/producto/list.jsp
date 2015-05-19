@@ -144,7 +144,7 @@
     <div class="col-md-12" id="menuLateralList">
         <table class="table table-responsive table-hover table-striped table-condensed">
             <thead id="tableHeaders"></thead>
-            <tbody id="tableBody"></tbody>
+            <tbody class="tablaProductos" id="tableBody"></tbody>
         </table>
         <div id="datos"></div>
         <div id="datos2"></div>

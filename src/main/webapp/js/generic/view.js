@@ -299,6 +299,7 @@ view.prototype.getBodyPageTable = function (page, fieldNames, visibleFields, tdb
         tabla += '</td>';
         tabla += '</tr>';
     });
+    
     return tabla;
 };
 

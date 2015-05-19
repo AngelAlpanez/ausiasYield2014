@@ -15,32 +15,47 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-$(document).ready(function(){
+$(document).ready(function () {
+    
+    
+    
 //    $(window).resize(function(){
 //        var ancho = $(window).width();
 //        var anchofinal = ancho - 800;
 //        $(".menuInfo").css("left", anchofinal);
 //    });
 
-$(function(){
+    $(function () {
         var imagenes = [
             "images/fondo1.jpg"
-            , "images/fondo4.jpg"
-            , "images/fondo2.jpg"
-            , "images/fondo3.jpg"
+                    , "images/fondo4.jpg"
+                    , "images/fondo2.jpg"
+                    , "images/fondo3.jpg"
         ];
- 
-        $(imagenes).each(function(){
-            $("<img/>")[0].src = this; 
+
+        $(imagenes).each(function () {
+            $("<img/>")[0].src = this;
         });
 
         var index = 0;
- 
+
         $.backstretch(imagenes[index], {speed: 2500});
- 
-        setInterval(function() {
+
+        setInterval(function () {
             index = (index >= imagenes.length - 1) ? 0 : index + 1;
             $.backstretch(imagenes[index]);
         }, 6000);
     });
+
+
+
+    $(".tablaProductos td:nth-child(5)").each(function () {
+        $(this).prependTo($(this).parent());
+        if ( $(this).html() === "") {
+            $(this).html("<img src=\"images/no-image.png    \" />");
+        }
+    });
+
+
+    
 });

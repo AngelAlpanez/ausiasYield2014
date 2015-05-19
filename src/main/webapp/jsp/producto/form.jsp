@@ -42,6 +42,9 @@
         </div>
     </div>
     
+    
+    <input type="hidden"  class="form-control pull-left"  id="imagen" name="imagen" size="15"/>
+
 
     
     
@@ -76,7 +79,9 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-
+    
+        
+   
         //http://jqueryvalidation.org/documentation/
         $('#productoForm')
                 .bootstrapValidator({

@@ -98,8 +98,8 @@ pedidoView.prototype.printValue = function (value, valor, recortar) {
     var strResult = "";
     if (/obj_/.test(valor)) {
         if (value[valor].id > 0) {
-            if (valor == "obj_tipousuario") {
-                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].descripcion + '</a>';
+            if (valor == "obj_usuario") {
+                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].login + '</a>';
             }
 
         } else {

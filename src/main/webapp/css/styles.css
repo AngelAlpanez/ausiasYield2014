@@ -195,3 +195,35 @@ body {
     
     font-family: 'Signika', sans-serif;
 }
+
+
+
+.tablaProductos td:nth-child(2) {
+    position: absolute;
+    display: none;
+    
+}
+
+.tablaProductos td:nth-child(3) {
+    position: absolute;
+    margin-top: 30px;
+    border:0;
+}
+
+.tablaProductos td:nth-child(4) {
+    position: absolute;
+    margin-top: 60px;
+    border:0;
+}
+
+.tablaProductos td:nth-child(5) {
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 50px;
+    border:0;
+}
+
+.tablaProductos img {
+    width: 220px;
+    height: 210px;
+}

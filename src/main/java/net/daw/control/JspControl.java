@@ -69,7 +69,7 @@ public class JspControl extends HttpServlet {
             //security check
             if (request.getSession().getAttribute("usuarioBean") == null) { //si no hay sesion
 
-                if (ob.equals("producto") && op.equals("list")) {
+                if (ob.equals("usuario")  || (ob.equals("producto") && op.equals("list"))) {
                     
                 } else {
                     ob = "usuario";
@@ -80,11 +80,7 @@ public class JspControl extends HttpServlet {
                 }
             }
 
-            if (ob.equalsIgnoreCase("userzone")) {
-
-                request.setAttribute("contenido", "/jsp/usuario/userzone.jsp");
-                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-            }
+            
             //login & logout management
             if (ob.equalsIgnoreCase("usuario")) {
                 if (op.equalsIgnoreCase("login02")) {

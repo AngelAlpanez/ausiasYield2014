@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
+import net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl;
 import net.daw.control.operation.publicinterface.ControlOperationInterface;
 import net.daw.service.generic.implementation.TableServiceGenImpl;
 import net.daw.connection.implementation.BoneConnectionPoolImpl;
@@ -180,8 +181,11 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     public String set(HttpServletRequest request) throws Exception {
         String result = "";
         //if (perm) {
+        
+
             result = oService.set(ParameterCooker.prepareJson(request));
             closeDB();
+        
         //} else {
         //    result = "error";
         //}
