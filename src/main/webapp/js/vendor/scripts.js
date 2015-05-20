@@ -56,6 +56,7 @@ $(document).ready(function () {
         }
     });
 
-
+    $(".tablaProductos td:nth-child(4)").append(" &#128;");
+    $(".tablaProductos td:nth-child(5)").prepend("Stock: ");
     
 });

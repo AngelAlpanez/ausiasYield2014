@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.3.11.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 16-04-2015 a las 07:55:43
--- Versión del servidor: 5.5.39
--- Versión de PHP: 5.4.32
+-- Tiempo de generación: 20-05-2015 a las 05:48:07
+-- Versión del servidor: 5.5.42
+-- Versión de PHP: 5.4.39
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,19 +27,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `actividad` (
-`id` int(11) NOT NULL COMMENT 'Numero',
+  `id` int(11) NOT NULL COMMENT 'Numero',
   `enunciado` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Enunciado',
   `fecha` date DEFAULT NULL COMMENT 'Fecha Actividad',
   `evaluacion` int(11) DEFAULT NULL COMMENT 'Evaluacion',
   `activo` tinyint(1) DEFAULT NULL COMMENT '¿ Activo ?'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `actividad`
 --
 
 INSERT INTO `actividad` (`id`, `enunciado`, `fecha`, `evaluacion`, `activo`) VALUES
-(1, 'Actividad 01', '2014-10-09', 1, 1),
+(1, 'Actividad 01', '2015-05-01', 2, 0),
 (2, 'Actividad 02', '2014-11-12', 1, 0),
 (3, 'Actividad 03', '2014-11-05', 2, 1),
 (4, 'Actividad 04', '2014-11-18', 2, 1),
@@ -67,10 +67,10 @@ INSERT INTO `actividad` (`id`, `enunciado`, `fecha`, `evaluacion`, `activo`) VAL
 --
 
 CREATE TABLE IF NOT EXISTS `amistad` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `id_usuario_1` int(11) DEFAULT NULL COMMENT 'Usuario',
   `id_usuario_2` int(11) DEFAULT NULL COMMENT 'Amigo'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `amistad`
@@ -105,12 +105,12 @@ INSERT INTO `amistad` (`id`, `id_usuario_1`, `id_usuario_2`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cliente` (
-`id` int(6) NOT NULL COMMENT 'Identificador',
+  `id` int(6) NOT NULL COMMENT 'Identificador',
   `nombre` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Nombre',
   `ape1` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Primer Apellido',
   `ape2` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Segundo Apellido',
   `email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Correo Electronico'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=251 ;
+) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -347,11 +347,11 @@ INSERT INTO `cliente` (`id`, `nombre`, `ape1`, `ape2`, `email`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `comentario` (
-`id` int(11) NOT NULL COMMENT 'Num de comentario',
+  `id` int(11) NOT NULL COMMENT 'Num de comentario',
   `contenido` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Contenido',
   `id_usuario` int(11) DEFAULT NULL COMMENT 'Num de Usuario',
   `id_propuesta` int(11) DEFAULT NULL COMMENT 'Num propuesta'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `comentario`
@@ -398,13 +398,13 @@ INSERT INTO `comentario` (`id`, `contenido`, `id_usuario`, `id_propuesta`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `compra` (
-`id` int(6) NOT NULL,
+  `id` int(6) NOT NULL,
   `id_cliente` int(6) DEFAULT NULL,
   `id_producto` int(6) DEFAULT NULL,
   `cantidad` int(6) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `id_factura` int(6) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=193 ;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `compra`
@@ -605,9 +605,9 @@ INSERT INTO `compra` (`id`, `id_cliente`, `id_producto`, `cantidad`, `fecha`, `i
 --
 
 CREATE TABLE IF NOT EXISTS `cuestionario` (
-`id` int(11) NOT NULL COMMENT 'id',
+  `id` int(11) NOT NULL COMMENT 'id',
   `tipo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tipo'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='cuestionario' AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='cuestionario';
 
 --
 -- Volcado de datos para la tabla `cuestionario`
@@ -642,11 +642,11 @@ INSERT INTO `cuestionario` (`id`, `tipo`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `detalle_pedido` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `cantidad` int(11) DEFAULT NULL COMMENT 'Cantidad',
   `id_pedido` int(11) NOT NULL DEFAULT '0' COMMENT 'Id Pedido',
   `id_producto` int(11) NOT NULL DEFAULT '0' COMMENT 'Id Producto'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `detalle_pedido`
@@ -707,7 +707,7 @@ INSERT INTO `detalle_pedido` (`id`, `cantidad`, `id_pedido`, `id_producto`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `documento` (
-`id` int(6) NOT NULL COMMENT 'Num.',
+  `id` int(6) NOT NULL COMMENT 'Num.',
   `titulo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Titulo',
   `contenido` longtext COLLATE utf8_unicode_ci COMMENT 'Contenido',
   `alta` date DEFAULT NULL COMMENT 'Alta',
@@ -719,7 +719,7 @@ CREATE TABLE IF NOT EXISTS `documento` (
   `portada` tinyint(1) DEFAULT NULL COMMENT 'Portada',
   `destacado` tinyint(1) DEFAULT NULL COMMENT 'Destacado',
   `id_tipodocumento` int(6) DEFAULT NULL COMMENT 'Tipo'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `documento`
@@ -763,12 +763,12 @@ INSERT INTO `documento` (`id`, `titulo`, `contenido`, `alta`, `cambio`, `hits`, 
 --
 
 CREATE TABLE IF NOT EXISTS `entrega` (
-`id` int(11) NOT NULL COMMENT 'Id',
+  `id` int(11) NOT NULL COMMENT 'Id',
   `nota` int(2) DEFAULT NULL COMMENT 'Nota',
   `fecha` date DEFAULT NULL COMMENT 'Fecha Entrega',
   `id_documento` int(11) DEFAULT NULL COMMENT 'Num Documento',
   `id_actividad` int(11) DEFAULT NULL COMMENT 'Num Actividad'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `entrega`
@@ -803,9 +803,9 @@ INSERT INTO `entrega` (`id`, `nota`, `fecha`, `id_documento`, `id_actividad`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `estado` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `tipo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Estado'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `estado`
@@ -840,9 +840,9 @@ INSERT INTO `estado` (`id`, `tipo`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `estadotarea` (
-`id` int(11) NOT NULL COMMENT 'ID',
+  `id` int(11) NOT NULL COMMENT 'ID',
   `descripcion` varchar(255) DEFAULT NULL COMMENT 'Descripción'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `estadotarea`
@@ -862,10 +862,10 @@ INSERT INTO `estadotarea` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `impuesto` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Impuesto',
   `valor` decimal(4,2) DEFAULT NULL COMMENT 'Valor Impuesto'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `impuesto`
@@ -902,11 +902,11 @@ INSERT INTO `impuesto` (`id`, `nombre`, `valor`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `lineapedido` (
-`id` int(15) NOT NULL COMMENT 'Id',
+  `id` int(15) NOT NULL COMMENT 'Id',
   `cantidad` int(15) DEFAULT NULL COMMENT 'Cantidad',
   `id_producto` int(15) DEFAULT NULL COMMENT 'Id Producto',
   `id_pedido` int(15) DEFAULT NULL COMMENT 'Id Pedido'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `lineapedido`
@@ -926,13 +926,13 @@ INSERT INTO `lineapedido` (`id`, `cantidad`, `id_producto`, `id_pedido`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `mensajeprivado` (
-`id` int(6) NOT NULL COMMENT 'ID',
+  `id` int(6) NOT NULL COMMENT 'ID',
   `fechaenvio` datetime DEFAULT NULL COMMENT 'Fecha de envío',
   `id_usuario_1` int(6) DEFAULT NULL COMMENT 'ID Usuario envía',
   `id_usuario_2` int(6) DEFAULT NULL COMMENT 'ID Usuario recibe',
   `asunto` varchar(255) DEFAULT NULL COMMENT 'Asunto',
   `mensaje` longtext COMMENT 'Mensaje'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `mensajeprivado`
@@ -967,10 +967,10 @@ INSERT INTO `mensajeprivado` (`id`, `fechaenvio`, `id_usuario_1`, `id_usuario_2`
 --
 
 CREATE TABLE IF NOT EXISTS `metadocumento` (
-`id` int(11) NOT NULL COMMENT 'Id',
+  `id` int(11) NOT NULL COMMENT 'Id',
   `titulo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Tiulo Documento',
   `fecha` date DEFAULT NULL COMMENT 'Fecha Documento'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `metadocumento`
@@ -1005,11 +1005,11 @@ INSERT INTO `metadocumento` (`id`, `titulo`, `fecha`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `metadocumentos` (
-`id` int(11) NOT NULL COMMENT 'Id Documento',
+  `id` int(11) NOT NULL COMMENT 'Id Documento',
   `orden` int(11) DEFAULT NULL COMMENT 'Orden Documento',
   `id_documento` int(11) DEFAULT NULL COMMENT 'Numero de Documento',
   `id_metadocumento` int(11) DEFAULT NULL COMMENT 'Numero de Metadocumento'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `metadocumentos`
@@ -1101,10 +1101,10 @@ INSERT INTO `objeto` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `opcion` (
-`id` int(11) NOT NULL COMMENT 'id',
+  `id` int(11) NOT NULL COMMENT 'id',
   `valor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Valor',
   `id_pregunta` int(11) DEFAULT NULL COMMENT 'Pregunta'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='opcion' AUTO_INCREMENT=257 ;
+) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='opcion';
 
 --
 -- Volcado de datos para la tabla `opcion`
@@ -1375,11 +1375,11 @@ INSERT INTO `opcion` (`id`, `valor`, `id_pregunta`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `operacion` (
-`id` int(6) NOT NULL COMMENT 'ID Operación',
+  `id` int(6) NOT NULL COMMENT 'ID Operación',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripción',
   `id_objeto` int(6) DEFAULT NULL COMMENT 'ID Objeto',
   `id_tipooperacion` int(6) DEFAULT NULL COMMENT 'ID Tipo Operación'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=460 ;
+) ENGINE=InnoDB AUTO_INCREMENT=460 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `operacion`
@@ -1842,9 +1842,9 @@ INSERT INTO `operacion` (`id`, `descripcion`, `id_objeto`, `id_tipooperacion`) V
 --
 
 CREATE TABLE IF NOT EXISTS `ordenador` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripción'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `ordenador`
@@ -1862,17 +1862,17 @@ INSERT INTO `ordenador` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pedido` (
-`id` int(15) NOT NULL COMMENT 'Id',
+  `id` int(15) NOT NULL COMMENT 'Id',
   `fecha` date DEFAULT NULL COMMENT 'Fecha',
   `id_usuario` int(15) DEFAULT NULL COMMENT 'Id Usuario'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `pedido`
 --
 
 INSERT INTO `pedido` (`id`, `fecha`, `id_usuario`) VALUES
-(1, '2015-04-06', 1),
+(1, '2015-04-07', 1),
 (2, '2015-03-18', 2);
 
 -- --------------------------------------------------------
@@ -1882,11 +1882,11 @@ INSERT INTO `pedido` (`id`, `fecha`, `id_usuario`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `permiso` (
-`id` int(6) NOT NULL COMMENT 'ID Permiso',
+  `id` int(6) NOT NULL COMMENT 'ID Permiso',
   `id_tipousuario` int(6) DEFAULT NULL COMMENT 'ID Tipo de usuario',
   `id_tipooperacion` int(6) DEFAULT NULL COMMENT 'ID Tipo Operación',
   `permitido` tinyint(1) DEFAULT NULL COMMENT 'Permitido'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `permiso`
@@ -1907,14 +1907,14 @@ INSERT INTO `permiso` (`id`, `id_tipousuario`, `id_tipooperacion`, `permitido`) 
 --
 
 CREATE TABLE IF NOT EXISTS `post` (
-`id` int(6) NOT NULL COMMENT 'ID',
+  `id` int(6) NOT NULL COMMENT 'ID',
   `titulo` varchar(255) DEFAULT NULL COMMENT 'Título',
   `mensaje` longtext COMMENT 'Mensaje',
   `fechacreacion` datetime DEFAULT NULL COMMENT 'Fecha Creación',
   `fechamodificacion` datetime DEFAULT NULL COMMENT 'Fecha Modificación',
   `id_tema` int(6) DEFAULT NULL COMMENT 'ID Tema',
   `id_usuario` int(6) DEFAULT NULL COMMENT 'ID Usuario'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `post`
@@ -1964,10 +1964,10 @@ INSERT INTO `post` (`id`, `titulo`, `mensaje`, `fechacreacion`, `fechamodificaci
 --
 
 CREATE TABLE IF NOT EXISTS `pregunta` (
-`id` int(11) NOT NULL COMMENT 'id',
+  `id` int(11) NOT NULL COMMENT 'id',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripcion',
   `id_cuestionario` int(11) DEFAULT NULL COMMENT 'Cuestionario'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='pregunta' AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='pregunta';
 
 --
 -- Volcado de datos para la tabla `pregunta`
@@ -2046,26 +2046,27 @@ INSERT INTO `pregunta` (`id`, `descripcion`, `id_cuestionario`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `producto` (
-`id` int(15) NOT NULL COMMENT 'Id Producto',
+  `id` int(15) NOT NULL COMMENT 'Id Producto',
   `nombre` varchar(255) DEFAULT NULL COMMENT 'Nombre',
   `precio` double(10,2) DEFAULT NULL COMMENT 'Precio',
   `stock` int(15) DEFAULT NULL COMMENT 'Stock',
-  `imagen` varchar(500) DEFAULT NULL COMMENT 'Imagen',
+  `imagen` varchar(500) DEFAULT '<img>' COMMENT 'Imagen',
   `id_tipoproducto` int(15) DEFAULT NULL COMMENT 'Id Tipo Producto'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `imagen`, `id_tipoproducto`) VALUES
-(1, 'Bateria Yamaha Pro20', 750.00, 1, 'tretrtre', 4),
-(2, 'Fender F10 Acustica', 240.00, 4, 'asdasd', 1),
-(3, 'Microfono Audix OM5', 90.00, 2, 'asdasd', 3),
-(4, 'Bajo Fender 300', 260.00, 4, 'aaaaaaa', 2),
-(5, 'Bajo Ibanez', 480.00, 5, 'ddda', 2),
-(6, 'Microfono BCT MC04', 120.00, 7, 'weweqqew', 3),
-(7, 'Pedal Boss VE20', 300.00, 1, 'fsadew', 5);
+(1, 'Bateria%20Yamaha%20Pro20', 760.00, 1, '<img src="/images/drumyamaha.jpg"  width="150" />', 4),
+(2, 'Fender%20F100%20Acustica', 240.00, 4, '<img src="/images/acfender.jpg"  width="150" />', 1),
+(3, 'Microfono%20Audix%20OM50', 90.00, 2, '<img src="/images/audixom5.jpg"  width="150" />', 3),
+(4, 'Bajo Fender 300', 260.00, 4, '<img src="/images/bassfender.jpg"  width="150" />', 2),
+(5, 'Bajo Ibanez', 480.00, 5, '<img src="/images/ibanezarzir.jpg"  width="150" />', 2),
+(6, 'Microfono BCT MC04', 120.00, 7, '<img src="/images/bctmc04.jpg"  width="150" />', 3),
+(7, 'Pedal Boss VE20', 300.00, 1, '<img src="/images/bossve20.jpg"  width="150" />', 5),
+(17, 'Plaro%20Ride%20Zyldjhan%2022''', 160.00, 12, '<img src="/images/ride.jpg"  width="150" />', 4);
 
 -- --------------------------------------------------------
 
@@ -2074,13 +2075,13 @@ INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `imagen`, `id_tipopro
 --
 
 CREATE TABLE IF NOT EXISTS `propuesta` (
-`id` int(11) NOT NULL COMMENT 'Num_propuesta',
+  `id` int(11) NOT NULL COMMENT 'Num_propuesta',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripcion',
   `fecha` date DEFAULT NULL COMMENT 'Fecha_Propuesta',
   `puntuacion` int(11) DEFAULT NULL COMMENT 'Puntuacion',
   `id_tipopropuesta` int(11) DEFAULT NULL COMMENT 'Num del Tipo de Propuesta',
   `id_usuario` int(11) DEFAULT NULL COMMENT 'Num de Usuario'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `propuesta`
@@ -2111,7 +2112,7 @@ INSERT INTO `propuesta` (`id`, `descripcion`, `fecha`, `puntuacion`, `id_tipopro
 --
 
 CREATE TABLE IF NOT EXISTS `proveedor` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `nia` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'CIF',
   `nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Nombre Proveedor',
   `telefono` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Telefono Proveedor',
@@ -2120,7 +2121,7 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
   `web` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Sitio web',
   `fax` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Número Fax',
   `localidad` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Localidad'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `proveedor`
@@ -2156,9 +2157,9 @@ INSERT INTO `proveedor` (`id`, `nia`, `nombre`, `telefono`, `direccion`, `email`
 --
 
 CREATE TABLE IF NOT EXISTS `proyecto` (
-`id` int(11) NOT NULL COMMENT 'id',
+  `id` int(11) NOT NULL COMMENT 'id',
   `descripcion` varchar(250) DEFAULT NULL COMMENT 'descripción'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `proyecto`
@@ -2182,11 +2183,11 @@ INSERT INTO `proyecto` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `publicacion` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `contenido` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Contenido',
   `id_usuario` int(11) DEFAULT NULL COMMENT 'Usuario',
   `fechacreacion` datetime DEFAULT NULL COMMENT 'Fecha de creación'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `publicacion`
@@ -2221,11 +2222,11 @@ INSERT INTO `publicacion` (`id`, `contenido`, `id_usuario`, `fechacreacion`) VAL
 --
 
 CREATE TABLE IF NOT EXISTS `respuesta` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `id_usuario` int(11) DEFAULT NULL COMMENT 'Id. Usuario',
   `id_pregunta` int(11) DEFAULT NULL COMMENT 'Id. Pregunta',
   `id_opcion` int(11) DEFAULT NULL COMMENT 'Id. Opción'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='respuesta' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='respuesta';
 
 -- --------------------------------------------------------
 
@@ -2234,12 +2235,12 @@ CREATE TABLE IF NOT EXISTS `respuesta` (
 --
 
 CREATE TABLE IF NOT EXISTS `tema` (
-`id` int(6) NOT NULL COMMENT 'Id',
+  `id` int(6) NOT NULL COMMENT 'Id',
   `nombre` varchar(255) DEFAULT NULL COMMENT 'Título del tema',
   `fechacreacion` datetime DEFAULT NULL COMMENT 'Fecha de creación',
   `id_tipotema` int(6) DEFAULT NULL COMMENT 'Categoría',
   `id_usuario` int(6) DEFAULT NULL COMMENT 'Creador del tema'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tema`
@@ -2274,10 +2275,10 @@ INSERT INTO `tema` (`id`, `nombre`, `fechacreacion`, `id_tipotema`, `id_usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `tipodocumento` (
-`id` int(6) NOT NULL,
+  `id` int(6) NOT NULL,
   `descripcion` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `privado` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tipodocumento`
@@ -2302,9 +2303,9 @@ INSERT INTO `tipodocumento` (`id`, `descripcion`, `privado`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipooperacion` (
-`id` int(6) NOT NULL COMMENT 'Identificador',
+  `id` int(6) NOT NULL COMMENT 'Identificador',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripción'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tipooperacion`
@@ -2325,9 +2326,9 @@ INSERT INTO `tipooperacion` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipoproducto` (
-`id` int(15) NOT NULL COMMENT 'Id Tipo Producto',
+  `id` int(15) NOT NULL COMMENT 'Id Tipo Producto',
   `descripcion` varchar(255) DEFAULT NULL COMMENT 'Descripcion'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tipoproducto`
@@ -2348,9 +2349,9 @@ INSERT INTO `tipoproducto` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipopropuesta` (
-`id` int(11) NOT NULL COMMENT 'Num del tipo de propuesta',
+  `id` int(11) NOT NULL COMMENT 'Num del tipo de propuesta',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripcion'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tipopropuesta`
@@ -2373,9 +2374,9 @@ INSERT INTO `tipopropuesta` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipotarea` (
-`id` int(11) NOT NULL COMMENT 'Id',
+  `id` int(11) NOT NULL COMMENT 'Id',
   `descripcion` varchar(250) DEFAULT NULL COMMENT 'Descripción'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tipotarea`
@@ -2399,9 +2400,9 @@ INSERT INTO `tipotarea` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipotema` (
-`id` int(6) NOT NULL COMMENT 'ID Categoría',
+  `id` int(6) NOT NULL COMMENT 'ID Categoría',
   `nombre` varchar(255) DEFAULT NULL COMMENT 'Nombre categoría'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tipotema`
@@ -2436,9 +2437,9 @@ INSERT INTO `tipotema` (`id`, `nombre`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tipousuario` (
-`id` int(11) NOT NULL COMMENT 'Identificador',
+  `id` int(11) NOT NULL COMMENT 'Identificador',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripción'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tipousuario`
@@ -2456,13 +2457,13 @@ INSERT INTO `tipousuario` (`id`, `descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `trabajo` (
-`id` int(11) NOT NULL COMMENT 'Id',
+  `id` int(11) NOT NULL COMMENT 'Id',
   `descripcion` varchar(255) DEFAULT NULL COMMENT 'Descripción',
   `fechaentrega` datetime DEFAULT NULL COMMENT 'Fecha Entrega',
   `id_usuario` int(6) DEFAULT NULL COMMENT 'ID Usuario',
   `id_tipotarea` int(6) DEFAULT NULL COMMENT 'ID Tipo tarea',
   `id_estadotarea` int(6) DEFAULT NULL COMMENT 'ID Estado tarea'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `trabajo`
@@ -2502,52 +2503,53 @@ INSERT INTO `trabajo` (`id`, `descripcion`, `fechaentrega`, `id_usuario`, `id_ti
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-`id` int(6) NOT NULL COMMENT 'Identificador',
+  `id` int(6) NOT NULL COMMENT 'Identificador',
   `login` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Nombre de usuario',
   `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Contraseña',
   `id_tipousuario` int(11) DEFAULT NULL COMMENT 'Tipo de usuario',
-  `id_estado` int(11) DEFAULT NULL COMMENT 'Estado',
   `ciudad` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Ciudad',
-  `direccion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Direccion',
-  `firma` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Firma',
-  `skin` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Plantilla'
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+  `direccion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Direccion'
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `login`, `password`, `id_tipousuario`, `id_estado`, `ciudad`, `direccion`, `firma`, `skin`) VALUES
-(1, 'pepe', 'pepe', 2, 1, 'Valencia', NULL, 'is my life and do what I want', 'main'),
-(2, 'juan', 'juan', 3, 3, 'Madrid', NULL, 'http://criticalandia.com críticas de entretenimiento, listas, opiniones...', 'main'),
-(3, 'maria', 'maria', 3, 6, 'Barcelona', NULL, 'If you love something, set it free. Unless it''''s a tiger.', 'main'),
-(4, 'antonia', 'antonia', 3, 7, 'Sevilla', NULL, '"El único límite a nuestros logros de mañana está en nuestras dudas de hoy."', 'main'),
-(5, 'edu', 'edu', 3, 13, 'Zaragoza', NULL, 'Plataforma: ORGULLLO CADISTA no.58', 'main'),
-(6, 'jose', 'jose', 3, 19, 'Teruel', NULL, 'Ironía: Figura literaria mediante la cual se da a entender lo contrario de lo que se dice.', 'main'),
-(7, 'silvia', 'silvia', 3, 6, 'Huesca', NULL, 'Paso de firmas', 'main'),
-(8, 'pedro', 'pedro', 3, 8, 'Alicante', NULL, 'Camisetas y calzado www.pedidoshicks.com', 'main'),
-(9, 'raquel', 'raquel', 3, 15, 'Castellón', NULL, 'PEÑA COLCHONERA Socio número 629', 'main'),
-(10, 'daniel', 'daniel', 3, 12, 'Almería', NULL, '"Obsesionado es tan sólo la palabra que usan los perezosos para describir a los dedicados"', 'main'),
-(11, 'rafael', 'rafael', 1, 17, 'A Coruña', NULL, 'Ista ye a mia tierra, a mia fabla', 'main'),
-(12, 'juan', 'juan', 3, 14, 'Barcelona', NULL, 'No todos los catalanes somos independentistas', 'main'),
-(13, 'elena', 'elena', 3, 19, 'Bilbao', NULL, 'Buenas tardes', 'main'),
-(14, 'luis', 'luis', 3, 4, 'Lugo', NULL, 'Preparado para cualquier combate', 'main'),
-(15, 'alba', 'alba', 3, 5, 'Cuenca', NULL, 'Si tienes un Ibiza o un Cordoba, este es tu club: www.clubseatcordoba.com', 'main'),
-(16, 'amparo', 'amparo', 3, 7, 'Ciudad Real', NULL, 'No hay dos sin tres', 'main'),
-(17, 'ambrosio', 'ambrosio', 3, 8, 'Guadalajara', NULL, 'Tesis+Antítesis=Síntesis. Problema+Acción = Solución.', 'main'),
-(18, 'luisa', 'luisa', 3, 1, 'Huelva', NULL, 'Y yo me iré. y se quedará mi huerto con su verde árbol, y con su pozo blanco. Y yo me iré.. Y se quedarán los pájaros cantando', 'main'),
-(19, 'leon', 'leon', 3, 3, 'Granada', NULL, 'La Infanta no sabía nada y punto.', 'main'),
-(20, 'rosa', 'rosa', 3, 2, 'Cádiz', NULL, 'Viva España', 'main'),
-(21, 'capcom', 'capcom', 3, 17, 'Jerez', NULL, 'La gente cree que soy una mala persona, pero no es cierto, yo tengo el corazón de un niño...en un frasco con formol encima de mi escritorio.', 'main'),
-(22, 'teleco', 'teleco', 3, 18, 'Vallecas', NULL, 'Foreros de la Comunidad de Madrid Nº25', 'main'),
-(23, 'mercadona', 'mercadona', 3, 13, 'Jaén', NULL, 'Y veréis el resurgir poderoso del guerrero, sin miedo a leyes ni a nostalgias.', 'main'),
-(24, 'vistaprint', 'vistaprint', 3, 15, 'Valencia', NULL, 'Codeados.com Diseño y Desarrollo web, Imagen Corporativa, SEO, Marketing Digital', 'main'),
-(25, 'google', 'google', 3, 16, 'California', NULL, 'Viva google +', 'main'),
-(26, 'konami', 'konami', 3, 6, 'Tokio', NULL, 'Viva Castolo, Minanda y Ximelez', 'main'),
-(27, 'orange', 'orange', 3, 7, 'París', NULL, 'Viva movistar', 'main'),
-(28, 'samsung', 'samsung', 3, 8, 'Cuenca', NULL, 'Viva el iPhone 6', 'main'),
-(29, 'gigabyte', 'gigabyte', 3, 10, 'Oviedo', NULL, 'Viva gigabyte', 'main'),
-(30, 'microsoft', 'microsoft', 3, 10, 'Albacete', NULL, 'La xbox ONE es la MEJOR CONSOLA', 'main');
+INSERT INTO `usuario` (`id`, `login`, `password`, `id_tipousuario`, `ciudad`, `direccion`) VALUES
+(1, 'pepe', 'pepe', 2, 'Valencia', ''),
+(2, 'juan', 'juan', 3, 'Madrid', NULL),
+(3, 'maria', 'maria', 3, 'Barcelona', NULL),
+(4, 'antonia', 'antonia', 3, 'Sevilla', NULL),
+(5, 'edu', 'edu', 3, 'Zaragoza', NULL),
+(6, 'jose', 'jose', 3, 'Teruel', NULL),
+(7, 'silvia', 'silvia', 3, 'Huesca', NULL),
+(8, 'pedro', 'pedro', 3, 'Alicante', NULL),
+(9, 'raquel', 'raquel', 3, 'Castellón', NULL),
+(10, 'daniel', 'daniel', 3, 'Almería', NULL),
+(11, 'rafael', 'rafael', 1, 'A%20Coru%C3%B1a', 'C/%20Mar%2C%2012%20pta.%205'),
+(12, 'juan', 'juan', 3, 'Barcelona', NULL),
+(13, 'elena', 'elena', 3, 'Bilbao', NULL),
+(14, 'luis', 'luis', 3, 'Lugo', NULL),
+(15, 'alba', 'alba', 3, 'Cuenca', NULL),
+(16, 'amparo', 'amparo', 3, 'Ciudad Real', NULL),
+(17, 'ambrosio', 'ambrosio', 3, 'Guadalajara', NULL),
+(18, 'luisa', 'luisa', 3, 'Huelva', NULL),
+(19, 'leon', 'leon', 3, 'Granada', NULL),
+(20, 'rosa', 'rosa', 3, 'Cádiz', NULL),
+(21, 'capcom', 'capcom', 3, 'Jerez', NULL),
+(22, 'teleco', 'teleco', 3, 'Vallecas', NULL),
+(23, 'mercadona', 'mercadona', 3, 'Jaén', NULL),
+(24, 'vistaprint', 'vistaprint', 3, 'Valencia', NULL),
+(25, 'google', 'google', 3, 'California', NULL),
+(26, 'konami', 'konami', 3, 'Tokio', NULL),
+(27, 'orange', 'orange', 3, 'París', NULL),
+(28, 'samsung', 'samsung', 3, 'Cuenca', NULL),
+(29, 'gigabyte', 'gigabyte', 3, 'Oviedo', NULL),
+(30, 'microsoft', 'microsoft', 3, 'Albacete', NULL),
+(31, 'angel', 'angel', 1, '', ''),
+(32, 'angel2', 'angel2', 2, '', ''),
+(33, 'angel2', 'angel2', 2, '', ''),
+(34, 'angelillo', 'angel2', 2, '', '');
 
 --
 -- Índices para tablas volcadas
@@ -2557,235 +2559,235 @@ INSERT INTO `usuario` (`id`, `login`, `password`, `id_tipousuario`, `id_estado`,
 -- Indices de la tabla `actividad`
 --
 ALTER TABLE `actividad`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `amistad`
 --
 ALTER TABLE `amistad`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `comentario`
 --
 ALTER TABLE `comentario`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `compra`
 --
 ALTER TABLE `compra`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `cuestionario`
 --
 ALTER TABLE `cuestionario`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
- ADD PRIMARY KEY (`id`,`id_pedido`,`id_producto`);
+  ADD PRIMARY KEY (`id`,`id_pedido`,`id_producto`);
 
 --
 -- Indices de la tabla `documento`
 --
 ALTER TABLE `documento`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `entrega`
 --
 ALTER TABLE `entrega`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `estado`
 --
 ALTER TABLE `estado`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `estadotarea`
 --
 ALTER TABLE `estadotarea`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `impuesto`
 --
 ALTER TABLE `impuesto`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `lineapedido`
 --
 ALTER TABLE `lineapedido`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `mensajeprivado`
 --
 ALTER TABLE `mensajeprivado`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `metadocumento`
 --
 ALTER TABLE `metadocumento`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `metadocumentos`
 --
 ALTER TABLE `metadocumentos`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `opcion`
 --
 ALTER TABLE `opcion`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `operacion`
 --
 ALTER TABLE `operacion`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `ordenador`
 --
 ALTER TABLE `ordenador`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pedido`
 --
 ALTER TABLE `pedido`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `permiso`
 --
 ALTER TABLE `permiso`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `post`
 --
 ALTER TABLE `post`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pregunta`
 --
 ALTER TABLE `pregunta`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `propuesta`
 --
 ALTER TABLE `propuesta`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `respuesta`
 --
 ALTER TABLE `respuesta`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tema`
 --
 ALTER TABLE `tema`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipodocumento`
 --
 ALTER TABLE `tipodocumento`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipooperacion`
 --
 ALTER TABLE `tipooperacion`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipoproducto`
 --
 ALTER TABLE `tipoproducto`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipopropuesta`
 --
 ALTER TABLE `tipopropuesta`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipotarea`
 --
 ALTER TABLE `tipotarea`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipotema`
 --
 ALTER TABLE `tipotema`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `tipousuario`
 --
 ALTER TABLE `tipousuario`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `trabajo`
 --
 ALTER TABLE `trabajo`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -2795,197 +2797,197 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `actividad`
 --
 ALTER TABLE `actividad`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero',AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero',AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `amistad`
 --
 ALTER TABLE `amistad`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=251;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=251;
 --
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Num de comentario',AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Num de comentario',AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=193;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=193;
 --
 -- AUTO_INCREMENT de la tabla `cuestionario`
 --
 ALTER TABLE `cuestionario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT de la tabla `documento`
 --
 ALTER TABLE `documento`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Num.',AUTO_INCREMENT=49;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Num.',AUTO_INCREMENT=49;
 --
 -- AUTO_INCREMENT de la tabla `entrega`
 --
 ALTER TABLE `entrega`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `estado`
 --
 ALTER TABLE `estado`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `estadotarea`
 --
 ALTER TABLE `estadotarea`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `impuesto`
 --
 ALTER TABLE `impuesto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `lineapedido`
 --
 ALTER TABLE `lineapedido`
-MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=6;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `mensajeprivado`
 --
 ALTER TABLE `mensajeprivado`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=21;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `metadocumento`
 --
 ALTER TABLE `metadocumento`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `metadocumentos`
 --
 ALTER TABLE `metadocumentos`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id Documento',AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id Documento',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `opcion`
 --
 ALTER TABLE `opcion`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=257;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=257;
 --
 -- AUTO_INCREMENT de la tabla `operacion`
 --
 ALTER TABLE `operacion`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID Operación',AUTO_INCREMENT=460;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID Operación',AUTO_INCREMENT=460;
 --
 -- AUTO_INCREMENT de la tabla `ordenador`
 --
 ALTER TABLE `ordenador`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=3;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
 ALTER TABLE `permiso`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID Permiso',AUTO_INCREMENT=7;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID Permiso',AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `post`
 --
 ALTER TABLE `post`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=36;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT de la tabla `pregunta`
 --
 ALTER TABLE `pregunta`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Producto',AUTO_INCREMENT=8;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Producto',AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `propuesta`
 --
 ALTER TABLE `propuesta`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Num_propuesta',AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Num_propuesta',AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `proyecto`
 --
 ALTER TABLE `proyecto`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `publicacion`
 --
 ALTER TABLE `publicacion`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `respuesta`
 --
 ALTER TABLE `respuesta`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tema`
 --
 ALTER TABLE `tema`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=21;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `tipodocumento`
 --
 ALTER TABLE `tipodocumento`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tipooperacion`
 --
 ALTER TABLE `tipooperacion`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=7;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `tipoproducto`
 --
 ALTER TABLE `tipoproducto`
-MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Tipo Producto',AUTO_INCREMENT=7;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Tipo Producto',AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `tipopropuesta`
 --
 ALTER TABLE `tipopropuesta`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Num del tipo de propuesta',AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Num del tipo de propuesta',AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tipotarea`
 --
 ALTER TABLE `tipotarea`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `tipotema`
 --
 ALTER TABLE `tipotema`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID Categoría',AUTO_INCREMENT=21;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'ID Categoría',AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `tipousuario`
 --
 ALTER TABLE `tipousuario`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `trabajo`
 --
 ALTER TABLE `trabajo`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=31;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=35;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
