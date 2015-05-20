@@ -17,12 +17,12 @@
  */
 
 
-$(document).ready(function () {
+
     
     $(".productosLink").click(function () {
-        $("#indexContenido").css("background", "black");
+        window.location = "http://localhost:8081/ausiasYield2014/jsp#/producto";
         location.reload();
+        
     });
     
 
-});

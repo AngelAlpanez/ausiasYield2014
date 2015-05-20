@@ -20,11 +20,31 @@ package net.daw.control.operation.generic.specific.implementation;
 import java.lang.reflect.InvocationTargetException;
 import javax.servlet.http.HttpServletRequest;
 import net.daw.control.operation.generic.implementation.ControlOperationGenImpl;
+import net.daw.helper.ParameterCooker;
+import net.daw.service.generic.specific.implementation.UsuarioServiceGenSpImpl;
 
 public class UsuarioControlOperationGenSpImpl extends ControlOperationGenImpl {
 
     public UsuarioControlOperationGenSpImpl(HttpServletRequest request) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, Exception {
         super(request);
+    }
+
+    @Override
+    public String set(HttpServletRequest request) throws Exception {
+
+        UsuarioServiceGenSpImpl oService = new UsuarioServiceGenSpImpl(strObject, "usuario", connection);
+        String result = "";
+
+        String strJson = ParameterCooker.prepareJson(request);
+        if (request.getSession().getAttribute("usuarioBean") != null) {
+
+            result = oService.set(strJson);
+        } else {
+
+            result = oService.registro(strJson);
+        }
+
+        return result;
     }
 
 }

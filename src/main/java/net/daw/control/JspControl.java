@@ -69,9 +69,16 @@ public class JspControl extends HttpServlet {
             //security check
             if (request.getSession().getAttribute("usuarioBean") == null) { //si no hay sesion
 
-                if ((ob.equals("usuario") && op.equals("form"))  || (ob.equals("producto") && op.equals("list"))) {
+                if (ob.equals("producto") && op.equals("list")) {
                     
-                } else {
+                } 
+                else if (ob.equals("tipousuario")) {
+                    
+                }
+                else if (ob.equals("usuario") && op.equals("form")){
+                }
+                
+                else {
                     ob = "usuario";
                     if (!op.equals("inicio") && !op.equals("login02")) {
                         op = "login01";

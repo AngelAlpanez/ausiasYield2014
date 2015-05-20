@@ -87,7 +87,7 @@
 
         <div class="menuSuperior2">
             <ul class="row">
-                <li class="col-md-2 col-md-offset-1"><a class="productosLink" href="jsp#/producto">Productos</a></li>
+                <li class="col-md-2 col-md-offset-1"><a class="productosLink" href="#">Productos</a></li>
                 <li class="col-md-2"><a href="jsp#/tipoproducto">Tipos de producto</a></li>
                 <li class="col-md-2"><a href="jsp#/pedido">Pedidos</a></li>
                 <li class="col-md-2"><a href="jsp#/lineapedido">Lineas de pedido</a></li>
@@ -138,7 +138,7 @@
         <script type="text/javascript"  src="./js/vendor/creole-parser.js"></script>
 
         <script type="text/javascript" src="./js/vendor/backstrech.js"></script>
-        <script type="text/javascript" src="./js/vendor/reload.js"></script>
+        
         <!--
         <script type="text/javascript"  src="./js/vendor/jquery-ui.js"></script>
         <script src="./js/vendor/jquery.validate.min.js"></script>
@@ -410,6 +410,7 @@
 
         </script>
         <script type="text/javascript" src="./js/vendor/scripts.js"></script>
+        <script type="text/javascript" src="./js/vendor/reload.js"></script>
     </body>
 </html>
 

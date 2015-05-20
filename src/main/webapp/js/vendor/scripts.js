@@ -24,7 +24,16 @@ $(document).ready(function () {
 //        var anchofinal = ancho - 800;
 //        $(".menuInfo").css("left", anchofinal);
 //    });
+$(".tablaProductos td:nth-child(5)").each(function () {
+        $(this).prependTo($(this).parent());
+        if ( $(this).html() === "") {
+            $(this).html("<img src=\"images/no-image.png    \" />");
+        }
+    });
 
+    $(".tablaProductos td:nth-child(4)").append(" &#128;");
+    $(".tablaProductos td:nth-child(5)").prepend("Stock: ");
+    
     $(function () {
         var imagenes = [
             "images/fondo1.jpg"
@@ -49,14 +58,6 @@ $(document).ready(function () {
 
 
 
-    $(".tablaProductos td:nth-child(5)").each(function () {
-        $(this).prependTo($(this).parent());
-        if ( $(this).html() === "") {
-            $(this).html("<img src=\"images/no-image.png    \" />");
-        }
-    });
-
-    $(".tablaProductos td:nth-child(4)").append(" &#128;");
-    $(".tablaProductos td:nth-child(5)").prepend("Stock: ");
+    
     
 });
