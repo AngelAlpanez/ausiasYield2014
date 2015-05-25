@@ -108,12 +108,13 @@
                                 notEmpty: {
                                     message: 'Debe introducir un precio'
                                 },
-                                double: {
-                                    message: 'El precio debe ser un numero decimal (ej. 50.20)'
+                                integer: {
+                                    message: 'El precio debe ser un numero entero'
                                 },
                                 stringLength: {
-                                    max: 255,
-                                    message: 'el precio debe tener como máximo 11 caracteres'
+                                    min: -0,
+                                    max: 99999999,
+                                    message: 'El precio debe estar entre 0 y 99999999'
                                 }
                             }
                         },
@@ -123,28 +124,26 @@
                                     message: 'Debe introducir un stock'
                                 },
                                 integer: {
-                                    message: 'El precio debe ser un entero'
+                                    message: 'El stock debe ser un entero'
                                 },
                                 between: {
                                     min: -0,
                                     max: 99999999,
-                                    message: 'El precio debe ser un entero entre 0 y 99999999'
+                                    message: 'El stock debe estar entre 0 y 99999999'
                                 }
                             }
 
-                        },
+                        }, 
                         id_tipoproducto: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un tipo de producto'
+                                    message: 'Debe elegir un tipo de producto'
                                 },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'El tipo producto debe tener como máximo 255 caracteres'
+                                integer: {
+                                    message: 'El identificador del tipo de producto debe ser un entero'
                                 }
-
                             }
-                        },
+                        }
                        
 
                     }

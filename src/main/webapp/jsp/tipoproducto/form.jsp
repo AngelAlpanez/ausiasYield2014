@@ -58,10 +58,10 @@
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
-                        titulo: {
+                        descripcion: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un título'
+                                    message: 'Debe introducir una descripcion'
                                 },
                                 stringLength: {
                                     max: 255,

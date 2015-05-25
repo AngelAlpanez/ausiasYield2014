@@ -40,21 +40,7 @@ function fProductoRoutes() {
         $('#indexContenidoJsp').spinner();
         var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
         oProductoControl.list($('#indexContenido'), paramsObject, null, oProductoModel, oProductoView);
-        //oProductoControl.listCuadros($('#indexContenido'), paramsObject, null, oProductoModel, oProductoView);
         $('#indexContenidoJsp').empty();
-        (function()
-{
-  if( window.localStorage )
-  {
-    if( !localStorage.getItem( 'firstLoad' ) )
-    {
-      localStorage[ 'firstLoad' ] = true;
-      window.location.reload();
-    }  
-    else
-      localStorage.removeItem( 'firstLoad' );
-  }
-})();
         return false;
     });
 

@@ -74,11 +74,6 @@
             language: 'es',
             showToday: true
         });
-        $('#cambio_group').datetimepicker({
-            pickTime: false,
-            language: 'es',
-            showToday: true
-        });
     
         //http://jqueryvalidation.org/documentation/
         $('#pedidoForm')
@@ -122,21 +117,17 @@
                      }
                 })
                 .on('change', '[name="id_usuario"]', function() {
-                    $('#documentoForm').bootstrapValidator('revalidateField', 'id_usuario');
+                    $('#pedidoForm').bootstrapValidator('revalidateField', 'id_usuario');
                 })
 
                 .on('change', '[name="fecha"]', function() {
-                    $('#documentoForm').bootstrapValidator('revalidateField', 'fecha');
+                    $('#pedidoForm').bootstrapValidator('revalidateField', 'fecha');
                 })
                 ;
         $('#alta_group').on('dp.change dp.show', function(e) {
-// Revalidate the date when user change it
-            $('#documentoForm').bootstrapValidator('revalidateField', 'alta_group');
+            $('#pedidoForm').bootstrapValidator('revalidateField', 'fecha');
         });
-        $('#cambio_group').on('dp.change dp.show', function(e) {
-// Revalidate the date when user change it
-            $('#documentoForm').bootstrapValidator('revalidateField', 'cambio_group');
-        });
+        
                
  
     });

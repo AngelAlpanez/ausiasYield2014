@@ -37,6 +37,12 @@ body {
     color: gray !important;
 }
 
+.mantenimientos a:hover {
+    color: black !important;
+}
+.col-md-1 {
+    width: auto !important;
+}
 .menuSuperior1{
     background: url("../images/textura.jpg")no-repeat center;
     background-size: 100% auto;
@@ -81,6 +87,10 @@ body {
     background: black;
     height: 50px;
     padding: 0;
+}
+
+.mantenimientos {
+    background: gray;
 }
 
 .menuSuperior2 li {
@@ -199,31 +209,28 @@ body {
 
 
 .tablaProductos td:nth-child(2) {
-    position: absolute;
-    display: none;
+
     
 }
 
 .tablaProductos td:nth-child(3) {
-    position: absolute;
-    margin-top: 30px;
-    border:0;
+
 }
 
 .tablaProductos td:nth-child(4) {
-    position: absolute;
-    margin-top: 60px;
-    border:0;
+
 }
 
 .tablaProductos td:nth-child(5) {
-    position: absolute;
-    margin-top: 60px;
-    margin-left: 50px;
-    border:0;
+
 }
 
 .tablaProductos img {
     width: 220px;
     height: 210px;
+}
+
+.view, .edit, .remove, .upload, .botonperfil {
+    visibility: hidden;
+    display: inline;
 }

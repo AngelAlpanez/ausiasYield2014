@@ -42,33 +42,32 @@ public class subir extends HttpServlet {
                     }
 
                 }
-                strMessage = "<h1>File Uploaded Successfully</h1>";
+                strMessage = "<h1>Imagen actualizada correctamente</h1>";
 
                 Iterator it = hash.entrySet().iterator();
                 Map.Entry e = (Map.Entry) it.next();
-                strMessage += e.getKey() + " " + e.getValue() + "<br/>";
                 int id = Integer.parseInt(e.getValue().toString());
 
                 //update del campo imagen de la base de datos
                 ConnectionInterface DataConnectionSource = new BoneConnectionPoolImpl();
                 Connection oConnection = DataConnectionSource.newConnection();
 
-                String ruta = "<img src=\"/images/" + name + "\"  width=\"150\" />";
+                String ruta = "<img src=\"/images/" + name + "\" />";
 
                 ProductoDaoGenSpImpl oProductoDAO = new ProductoDaoGenSpImpl("producto", oConnection);
                 oProductoDAO.updateOne(id, "producto", "imagen", ruta);
 
-                strMessage += "<img src=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/" + "/images/" + name + "\"  width=\"150\" /><br/>";
-                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Return</a><br/>";
+                strMessage += "<img src=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/" + "/images/" + name + "\"  width=\"250\" /><br/>";
+                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Volver a productos</a><br/>";
                 request.setAttribute("message", strMessage);
 
             } catch (Exception ex) {
-                request.setAttribute("message", "File Upload Failed: " + ex);
-                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Return</a><br/>";
+                request.setAttribute("message", "Subida de imagen fallida: " + ex);
+                strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Volver a productos</a><br/>";
             }
         } else {
             request.setAttribute("message", "Only serve file upload requests");
-            strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Return</a><br/>";
+            strMessage += "<a href=\"" + "http://" + request.getServerName() + ":" + request.getServerPort() + "/ausiasYield2014/jsp#/producto" + "\">Volver a productos</a><br/>";
         }
         request.getRequestDispatcher("/result.jsp").forward(request, response);
 

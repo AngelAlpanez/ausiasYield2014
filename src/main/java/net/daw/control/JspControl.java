@@ -25,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 import net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl;
 import net.daw.connection.implementation.BoneConnectionPoolImpl;
 import net.daw.connection.publicinterface.ConnectionInterface;
@@ -72,12 +73,9 @@ public class JspControl extends HttpServlet {
                 if (ob.equals("producto") && op.equals("list")) {
                     
                 } 
-                else if (ob.equals("tipousuario")) {
+                else if (ob.equals("usuario") && op.equals("form")){
                     
                 }
-                else if (ob.equals("usuario") && op.equals("form")){
-                }
-                
                 else {
                     ob = "usuario";
                     if (!op.equals("inicio") && !op.equals("login02")) {

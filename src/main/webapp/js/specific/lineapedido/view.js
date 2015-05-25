@@ -27,27 +27,20 @@ lineapedidoView.prototype.getClassNameLineapedido = function () {
 var oLineapedidoView = new lineapedidoView('lineapedido');
 
 
-//lineapedidoView.prototype.loadButtons = function (id) {
-//
-//    var botonera = "";
-//    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
-//    botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
-//    botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
-//    botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
-//    botonera += '</div></div>';
-//    return botonera;
-//
-//}
-lineapedidoView.prototype.loadFormValues = function (valores, campos) {
-//                    $('#lineapedido_form #titulo').val(valores['titulo']);
-//                    $('#lineapedido_form #contenido').val(valores['contenido']);
-//                    $('#lineapedido_form #alta').val(valores['alta']);
-//                    $('#lineapedido_form #cambio').val(valores['cambio']);
-//                    $('#lineapedido_form #hits').val(valores['hits']);
-//                    $('#lineapedido_form #id_usuario').val(valores['id_usuario']);
-//                    $('#lineapedido_form #etiquetas').val(valores['etiquetas']);
-//                    $('#lineapedido_form #publicado').val(valores['publicado']);
-//                    $('#lineapedido_form #portada').val(valores['portada']);
+lineapedidoView.prototype.loadButtons = function (id) {
+
+    var botonera = "";
+    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
+    botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
+    botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
+    botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
+    botonera += '</div></div>';
+    return botonera;
+
+}
+
+actividadView.prototype.loadFormValues = function (valores, campos) {
+    
     this.doFillForm(valores, campos);
 };
 
@@ -77,7 +70,7 @@ lineapedidoView.prototype.doEventsLoading = function () {
         //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "documento");
 
         $("#lineapedidoForm").append(thisObject.getEmptyModal());
-        util().loadForm('#modal01', thisObject.getFormHeader('Elección de producto'), "", thisObject.getFormFooter(), true);
+        util().loadForm('#modal01', thisObject.getFormHeader('Elección de tipo lineapedido'), "", thisObject.getFormFooter(), true);
 
         $('#lineapedidoForm').append(thisObject.getEmptyModal());
 
@@ -97,7 +90,7 @@ lineapedidoView.prototype.doEventsLoading = function () {
         //vista('usuario').cargaModalBuscarClaveAjena('#modal01', "documento");
 
         $("#lineapedidoForm").append(thisObject.getEmptyModal());
-        util().loadForm('#modal01', thisObject.getFormHeader('Elección de pedido'), "", thisObject.getFormFooter(), true);
+        util().loadForm('#modal01', thisObject.getFormHeader('Elección de tipo lineapedido'), "", thisObject.getFormFooter(), true);
 
         $('#lineapedidoForm').append(thisObject.getEmptyModal());
 
@@ -118,11 +111,13 @@ lineapedidoView.prototype.printValue = function (value, valor, recortar) {
     var strResult = "";
     if (/obj_/.test(valor)) {
         if (value[valor].id > 0) {
+            if (valor == "obj_producto") {
+                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + decodeURIComponent(value[valor].nombre) + '</a>';
+            } 
             if (valor == "obj_pedido") {
-                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].id + " : " +  value[valor].fecha + '</a>';
-            } else if (valor == "obj_producto") {
-                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + decodeURIComponent(value[valor].nombre) + " : " + value[valor].precio + "€" + '</a>';
-            }
+                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].id + " : " + value[valor].fecha + '</a>';
+            } 
+
         } else {
             strResult = '???';
         }

@@ -18,6 +18,7 @@
 package net.daw.control.operation.generic.implementation;
 
 import java.lang.reflect.Constructor;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -36,9 +37,10 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
 
     protected ConnectionInterface DataConnectionSource = null;
     protected Connection connection = null;
-    protected String strObject = null;    
+    protected String strObject = null;
     //protected boolean perm;
     protected TableServiceGenImpl oService = null;
+    UsuarioBeanGenSpImpl oUsuario = new UsuarioBeanGenSpImpl();
 
     public ControlOperationGenImpl(HttpServletRequest request) throws Exception {
         try {
@@ -57,25 +59,27 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     @Override
     public String get(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        String ob = ParameterCooker.prepareObject(request);
+        oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+        if (oUsuario.getId_tipousuario() == 2 && !ob.equals("producto")) {
+            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":get ERROR: no tienes permiso"));
+        } else {
             result = oService.get(ParameterCooker.prepareId(request));
             closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        }
         return result;
     }
 
     @Override
     public String getaggregateviewone(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        Integer id = ParameterCooker.prepareId(request);
+        String ob = ParameterCooker.prepareObject(request);
+        oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+        if ((oUsuario.getId_tipousuario() == 1) || (oUsuario.getId() == id && ob.equals("usuario"))) {
             result = result = oService.getAggregateViewOne(ParameterCooker.prepareId(request));
             closeDB();
-        //} else {
-        //    result = "error";
-        //}
-
+        }
         return result;
     }
 
@@ -83,8 +87,8 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     public String getprettycolumns(HttpServletRequest request) throws Exception {
         String result = "";
         //if (perm) {
-            result = oService.getPrettyColumns();
-            closeDB();
+        result = oService.getPrettyColumns();
+        closeDB();
         //} else {
         //    result = "error";
         //}
@@ -96,8 +100,8 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     public String getcolumns(HttpServletRequest request) throws Exception {
         String result = "";
         //if (perm) {
-            result = oService.getColumns();
-            closeDB();
+        result = oService.getColumns();
+        closeDB();
         //} else {
         //    result = "error";
         //}
@@ -109,12 +113,12 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     public String getpage(HttpServletRequest request) throws Exception {
         String result = "";
         //if (perm) {
-            Integer intRegsPerPag = ParameterCooker.prepareRpp(request);
-            Integer intPage = ParameterCooker.preparePage(request);
-            ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
-            HashMap<String, String> hmOrder = ParameterCooker.prepareOrder(request);
-            result = oService.getPage(intRegsPerPag, intPage, alFilter, hmOrder);
-            closeDB();
+        Integer intRegsPerPag = ParameterCooker.prepareRpp(request);
+        Integer intPage = ParameterCooker.preparePage(request);
+        ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
+        HashMap<String, String> hmOrder = ParameterCooker.prepareOrder(request);
+        result = oService.getPage(intRegsPerPag, intPage, alFilter, hmOrder);
+        closeDB();
         //} else {
         //    result = "error";
         //}
@@ -126,10 +130,10 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     public String getpages(HttpServletRequest request) throws Exception {
         String result = "";
         //if (perm) {
-            Integer intRegsPerPag = ParameterCooker.prepareRpp(request);
-            ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
-            result = oService.getPages(intRegsPerPag, alFilter);
-            closeDB();
+        Integer intRegsPerPag = ParameterCooker.prepareRpp(request);
+        ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
+        result = oService.getPages(intRegsPerPag, alFilter);
+        closeDB();
         //} else {
         //    result = "error";
         //}
@@ -140,9 +144,9 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     public String getregisters(HttpServletRequest request) throws Exception {
         String result = "";
         //if (perm) {
-            ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
-            result = oService.getCount(alFilter);
-            closeDB();
+        ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
+        result = oService.getCount(alFilter);
+        closeDB();
         //} else {
         //    result = "error";
         //}
@@ -152,56 +156,75 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     @Override
     public String getaggregateviewsome(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        String ob = ParameterCooker.prepareObject(request);
+        ArrayList filtro = ParameterCooker.prepareFilter(request);
+        oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+        if (request.getSession().getAttribute("usuarioBean") == null
+                || oUsuario.getId_tipousuario() == 1
+                || (oUsuario.getId_tipousuario() == 2 && ob.equals("producto"))
+                || (oUsuario.getId_tipousuario() == 2 && ob.equals("pedido") && filtro.size() != 0)
+                || (oUsuario.getId_tipousuario() == 2 && ob.equals("lineapedido") && filtro.size() != 0)
+                ) {
             Integer intRegsPerPag = ParameterCooker.prepareRpp(request);
             Integer intPage = ParameterCooker.preparePage(request);
             ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
             HashMap<String, String> hmOrder = ParameterCooker.prepareOrder(request);
             result = oService.getAggregateViewSome(intRegsPerPag, intPage, alFilter, hmOrder);
             closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        } else {
+            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getagg ERROR: no tienes permiso"));
+        }
         return result;
     }
 
     @Override
     public String remove(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        Integer id = ParameterCooker.prepareId(request);
+        oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+        String ob = ParameterCooker.prepareObject(request);
+        if (oUsuario.getId_tipousuario() == 1 || (oUsuario.getId() == id && ob.equals("usuario"))) {
             result = oService.remove(ParameterCooker.prepareId(request));
+            if ((oUsuario.getId() == id)) {
+                request.getSession().invalidate();
+            }
             closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        } else {
+            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":remove ERROR: no tienes permiso"));
+        }
         return result;
     }
 
     @Override
     public String set(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
-        
-
+        String ob = ParameterCooker.prepareObject(request);
+        oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+        if (oUsuario.getId_tipousuario() == 1 || 
+                (request.getSession().getAttribute("usuarioBean") == null && ob.equals("usuario")) || 
+                (oUsuario.getId_tipousuario() == 2 && !ob.equals("usuario"))) {
             result = oService.set(ParameterCooker.prepareJson(request));
             closeDB();
-        
-        //} else {
-        //    result = "error";
-        //}
+        } else {
+            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":set ERROR: no tienes permiso"));
+        }
         return result;
     }
 
     @Override
     public String updateOne(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        Integer id2 = ParameterCooker.prepareId(request);
+        String ob = ParameterCooker.prepareObject(request);
+        oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+        if (oUsuario.getId_tipousuario() == 1 || (oUsuario.getId() == id2 && ob.equals("usuario"))) {
             int id = Integer.parseInt(request.getParameter("id"));
             String tabla = request.getParameter("ob");
             String campo = request.getParameter("campo");
             String valor = request.getParameter("valor");
 
             result = oService.updateOne(id, tabla, campo, valor);
+        }
         //} else {
         //    result = "error";
         //}

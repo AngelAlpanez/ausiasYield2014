@@ -17,15 +17,14 @@
 --%>
 
 <%@page import="net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl"%>
-<%UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");%>
-<%
+<%UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
     if (user != null) {
         String us = user.getLogin();
         String usuario = us.substring(0, 1).toUpperCase() + us.substring(1);
         Integer id_usuario = user.getId();
 %>
 <li>
-    <a href="#">Bienvenido, <%=usuario%></a>
+    Bienvenido, <%=usuario%>
 </li>
 <li>
     <a href="jsp#/perfil/view/<%=id_usuario%>">Perfil</a>

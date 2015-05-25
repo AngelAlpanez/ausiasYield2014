@@ -15,15 +15,14 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 --%>
+<%@page import="java.sql.Connection"%>
 <%@page import="net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl"%>
 
 <form class="form-horizontal" role="form" action="#" id="usuarioForm" name="formulario">
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="id">Id:</label>
-        <div class="col-sm-2">
-            <input type="text" id="id" class="form-control"  name="id" placeholder="id" />
-        </div>
-    </div>
+    
+        
+            <input type="hidden" id="id" class="form-control"  name="id" placeholder="id" />
+        
     <div class="form-group">
         <label class="col-sm-2 control-label"  for="login">Nombre de Usuario:</label>
         <div class="col-sm-6">
@@ -51,23 +50,19 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="obj_tipousuario_id">Tipo de usuario: </label> 
-        <div class="col-sm-2">              
-            <input readonly="true"  class="form-control"  id="obj_tipousuario_id" class="input-mini" name="id_tipousuario" type="text" size="5" maxlength="5" />  
-        </div>
-        <div class="col-sm-1">              
-            <a class="btn btn-primary btn-sm" id="obj_tipousuario_button" href="#"><i class="glyphicon glyphicon-search"></i></a>
-        </div>        
-        <label class="col-sm-7" for="obj_usuario_desc" id="obj_tipousuario_desc"></label>                     
+    <%
+    UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+    if (user != null) {
+    int id_tipousuario = user.getId_tipousuario();
+        if (id_tipousuario == 1) {%>
+        <script>document.getElementById("casillatipousuario").innerHTML = "<label class=\"col-sm-2 control-label\" for=\"obj_tipousuario_id\">Tipo de usuario: </label><div class=\"col-sm-2\"><input readonly=\"true\"  class=\"form-control\"  id=\"obj_tipousuario_id\" class=\"input-mini\" name=\"id_tipousuario\" type=\"text\" size=\"5\" maxlength=\"5\" /></div><div class=\"col-sm-1\"><a class=\"btn btn-primary btn-sm\" id=\"obj_tipousuario_button\" href=\"#\"><i class=\"glyphicon glyphicon-search\"></i></a></div><label class=\"col-sm-7\" for=\"obj_usuario_desc\" id=\"obj_tipousuario_desc\"></label>";</script>
+    <%}%>
+    <%}%>
+        <div id="casillatipousuario" class="form-group">
+                 
     </div>
-
     
-
     
-
-    
-
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <div id="messages"></div>
@@ -106,6 +101,17 @@
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
+                        login: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Debe introducir un nombre de usuario'
+                                },
+                                stringLength: {
+                                    max: 255,
+                                    message: 'El nombre de usuario debe tener como máximo 255 caracteres'
+                                }
+                            }
+                        },
                         password: {
                             validators: {
                                 notEmpty: {
@@ -117,58 +123,25 @@
                                 }
                             }
                         },
-                        contenido: {
+                        ciudad: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir contenido'
+                                    message: 'Debe introducir una ciudad'
+                                },
+                                stringLength: {
+                                    max: 255,
+                                    message: 'La ciudad debe tener como máximo 255 caracteres'
                                 }
                             }
                         },
-                        alta_group: {
+                        direccion: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir una fecha de alta'
+                                    message: 'Debe introducir una direccion'
                                 },
-                                date: {
-                                    format: 'DD/MM/YYYY',
-                                    message: 'La fecha de alta no tiene formato DD/MM/YYYY'
-                                }
-                            }
-                        },
-                        cambio_group: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir una fecha de cambio'
-                                },
-                                date: {
-                                    format: 'DD/MM/YYYY',
-                                    message: 'La fecha de cambio no tiene formato DD/MM/YYYY'
-                                }
-                            }
-                        },
-                        hits: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir un número de hits'
-                                },
-                                integer: {
-                                    message: 'El valor de hits debe ser un entero'
-                                },
-                                between: {
-                                    min: -0,
-                                    max: 99999999,
-                                    message: 'El número de hits debe ser un entero entre 0 y 99999999'
-                                }
-                            }
-
-                        },
-                        id_usuario: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe elegir un usuario'
-                                },
-                                integer: {
-                                    message: 'El identificador de usuario debe ser un entero'
+                                stringLength: {
+                                    max: 255,
+                                    message: 'La direccion debe tener como máximo 255 caracteres'
                                 }
                             }
                         },
@@ -181,37 +154,16 @@
                                     message: 'El identificador de tipo de usuario debe ser un entero'
                                 }
                             }
-                        },
-                        etiquetas: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir una etiqueta'
-                                },
-                                stringLength: {
-                                    max: 100,
-                                    message: 'La longitud de las etiquetas debe ser de 100 caracteres como mucho'
-                                }
-                            }
                         }
 
                     }
-                })
-                .on('change', '[name="id_usuario"]', function() {
-                    $('#usuarioForm').bootstrapValidator('revalidateField', 'id_usuario');
                 })
 
                 .on('change', '[name="id_tipousuario"]', function() {
                     $('#usuarioForm').bootstrapValidator('revalidateField', 'id_tipousuario');
                 })
                 ;
-        $('#alta_group').on('dp.change dp.show', function(e) {
-// Revalidate the date when user change it
-            $('#usuarioForm').bootstrapValidator('revalidateField', 'alta_group');
-        });
-        $('#cambio_group').on('dp.change dp.show', function(e) {
-// Revalidate the date when user change it
-            $('#usuarioForm').bootstrapValidator('revalidateField', 'cambio_group');
-        });
+        
     });       
 
     

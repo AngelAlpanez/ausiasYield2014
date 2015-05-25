@@ -27,10 +27,10 @@
                 <input type="hidden" name="op" value="login02" />                
                 
                 <label class="control-label" for="inputLogin" style="margin-top: 15px">Usuario:</label>
-                <input value="rafael" class="inputLogin"  id="inputLogin" type="text" placeholder="Nombre de usuario" required="" autofocus="" name="login" /><br />
+                <input value="angel" class="inputLogin"  id="inputLogin" type="text" placeholder="Nombre de usuario" required="" autofocus="" name="login" /><br />
                 
                 <label class="control-label" for="password" style="margin-top: 15px">Contraseña:</label>
-                <input value="rafael" class="" type="password" id="inputPassword" placeholder="Contraseña"  required="" name="password" /><br />                                                            
+                <input value="angel" class="" type="password" id="inputPassword" placeholder="Contraseña"  required="" name="password" /><br />                                                            
                                
                 <button class="loginButton" type="submit"  style="margin-top: 15px">Iniciar sesión</button><br /><br />
                 

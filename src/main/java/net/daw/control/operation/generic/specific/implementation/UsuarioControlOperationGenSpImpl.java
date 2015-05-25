@@ -34,7 +34,6 @@ public class UsuarioControlOperationGenSpImpl extends ControlOperationGenImpl {
 
         UsuarioServiceGenSpImpl oService = new UsuarioServiceGenSpImpl(strObject, "usuario", connection);
         String result = "";
-
         String strJson = ParameterCooker.prepareJson(request);
         if (request.getSession().getAttribute("usuarioBean") != null) {
 

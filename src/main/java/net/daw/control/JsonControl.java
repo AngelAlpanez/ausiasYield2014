@@ -330,17 +330,9 @@ public class JsonControl extends HttpServlet {
                     ProductoControlOperationGenSpImpl oProductoControlOperation = new ProductoControlOperationGenSpImpl(request);
                     jsonResult = oProductoRoute.execute(request, oProductoControlOperation);
                 } else if (ParameterCooker.prepareObject(request).equals("usuario")) {
-                    
-                    
-                    
-                    
                     UsuarioControlRouteGenSpImpl oUsuarioRoute = new UsuarioControlRouteGenSpImpl();
                     UsuarioControlOperationGenSpImpl oUsuarioControlOperation = new UsuarioControlOperationGenSpImpl(request);
                     jsonResult = oUsuarioRoute.execute(request, oUsuarioControlOperation);
-                } else if (ParameterCooker.prepareObject(request).equals("tipousuario")) {
-                    TipousuarioControlRouteGenSpImpl oTipousuarioRoute = new TipousuarioControlRouteGenSpImpl();
-                        TipousuarioControlOperationGenSpImpl oTipousuarioControlOperation = new TipousuarioControlOperationGenSpImpl(request);
-                        jsonResult = oTipousuarioRoute.execute(request, oTipousuarioControlOperation);
                 } else {
                     jsonResult = "{\"error\" : \"No active server session\"}";
                 }

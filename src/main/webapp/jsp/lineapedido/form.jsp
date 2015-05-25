@@ -23,24 +23,7 @@
             <input type="text" id="id" class="form-control"  name="id" placeholder="id" />
         </div>
     </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="cantidad">Cantidad:</label>
-        <div class="col-sm-9">
-            <input type="text"  class="form-control pull-left"  id="cantidad" name="cantidad" size="15" placeholder="cantidad" />
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <label class="col-sm-2 control-label" for="obj_producto_id">Producto: </label> 
-        <div class="col-sm-2">              
-            <input readonly  class="form-control input-mini"  id="obj_producto_id" name="id_producto" type="text" size="5" maxlength="5" />  
-        </div>
-        <div class="col-sm-1">              
-            <a class="btn btn-primary btn-sm" id="obj_producto_button" href="#"><i class="glyphicon glyphicon-search"></i></a>
-        </div>        
-        <label class="col-sm-7" for="obj_producto_desc" id="obj_producto_desc"></label>                   
-    </div>
-    
+
     <div class="form-group">
         <label class="col-sm-2 control-label" for="obj_pedido_id">Pedido: </label> 
         <div class="col-sm-2">              
@@ -51,20 +34,40 @@
         </div>        
         <label class="col-sm-7" for="obj_pedido_desc" id="obj_pedido_desc"></label>                   
     </div>
-    
-    
-    
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div id="messages"></div>
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-primary" id="submitForm">Guardar</button>
-            </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="obj_producto_id">Producto: </label> 
+        <div class="col-sm-2">              
+            <input readonly  class="form-control input-mini"  id="obj_producto_id" name="id_producto" type="text" size="5" maxlength="5" />  
         </div>
+        <div class="col-sm-1">              
+            <a class="btn btn-primary btn-sm" id="obj_producto_button" href="#"><i class="glyphicon glyphicon-search"></i></a>
+        </div>        
+        <label class="col-sm-7" for="obj_producto_desc" id="obj_producto_desc"></label>                   
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="cantidad">Cantidad:</label>
+        <div class="col-sm-9">
+            <input type="text"  class="form-control pull-left"  id="cantidad" name="cantidad" size="15" placeholder="cantidad" />
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div id="messages"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" id="submitForm">Guardar</button>
+        </div>
+    </div>
 
 </form>
 
@@ -73,8 +76,10 @@
 
     $(document).ready(function () {
 
+
+
         //http://jqueryvalidation.org/documentation/
-        $('#pedidoForm')
+        $('#lineapedidoForm')
                 .bootstrapValidator({
                     container: '#messages',
                     feedbackIcons: {
@@ -83,93 +88,56 @@
                         validating: 'glyphicon glyphicon-refresh'
                     },
                     fields: {
-                        codigo: {
+                        cantidad: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un codigo'
-                                },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'El codigo debe tener como máximo 255 caracteres'
-                                }
-                            }
-                        },
-                        descripcion: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir una descripcion'
-                                },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'La descripcion debe tener como máximo 255 caracteres'
-                                }
-                            }
-                        },
-                        precio: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir un precio'
+                                    message: 'Debe introducir una cantidad'
                                 },
                                 integer: {
-                                    message: 'El precio debe ser un entero'
+                                    message: 'La cantidad debe ser un entero'
                                 },
                                 between: {
                                     min: -0,
                                     max: 99999999,
-                                    message: 'El precio debe ser un entero entre 0 y 99999999'
+                                    message: 'La cantidad debe ser un entero entre 0 y 99999999'
                                 }
                             }
 
                         },
-                        id_tipoproducto: {
+                        id_producto: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un ID Tipo producto'
+                                    message: 'Debe elegir un producto'
                                 },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'El tipo producto debe tener como máximo 255 caracteres'
+                                integer: {
+                                    message: 'El identificador de producto debe ser un entero'
                                 }
-
                             }
                         },
-                        id_proveedor: {
+                        id_pedido: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Debe introducir un ID Proveedor'
+                                    message: 'Debe elegir un pedido'
                                 },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'El proveedor debe tener como máximo 255 caracteres'
+                                integer: {
+                                    message: 'El identificador de pedido debe ser un entero'
                                 }
-
-                            }
-                        },
-                        path: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'Debe introducir un path'
-                                },
-                                stringLength: {
-                                    max: 255,
-                                    message: 'El path debe tener como máximo 255 caracteres'
-                                }
-
                             }
                         }
-
                     }
                 })
-                .on('change', '[name="id_proveedor"]', function() {
-                    $('#pedidoForm').bootstrapValidator('revalidateField', 'id_proveedor');
+
+                .on('change', '[name="id_pedido"]', function () {
+                    $('#lineapedidoForm').bootstrapValidator('revalidateField', 'id_pedido');
                 })
 
-                .on('change', '[name="id_tipoproducto"]', function() {
-                    $('#pedidoForm').bootstrapValidator('revalidateField', 'id_tipoproducto');
+
+                .on('change', '[name="id_producto"]', function () {
+                    $('#lineapedidoForm').bootstrapValidator('revalidateField', 'id_producto');
                 })
                 ;
 
-                ;
+        ;
 
     });
 

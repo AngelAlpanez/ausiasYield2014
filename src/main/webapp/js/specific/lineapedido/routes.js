@@ -82,11 +82,5 @@ function fLineapedidoRoutes() {
         return false;
     });
 
-    Path.map("#/lineapedido/duplicate/:id").to(function () {
-        $('#indexContenidoJsp').spinner();
-        var paramsObject = param().defaultizeUrlObjectParameters(param().getUrlObjectFromUrlString(this.params['url']));
-        oLineapedidoControl.duplicate($('#indexContenido'), paramsObject['id'], oLineapedidoModel, oLineapedidoView);
-        $('#indexContenidoJsp').empty();
-        return false;
-    });
+
 }

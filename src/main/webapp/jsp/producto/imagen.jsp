@@ -35,15 +35,15 @@
 
 
     
-        <h1>JUploading ajax: upload files to the server example</h1>
+        
         <div>
-            <h3>Choose File to Upload in Server </h3>
+            <h3>Elige la imagen para el producto seleccionado </h3>
             <form id="uploadForm" action="upload" method="post" enctype="multipart/form-data">
                 <input type="hidden" id="id" name="id" placeholder="id" />
                 
                 <input type="file" name="file" id="file"/><br/><br/>
                 
-                <input type="submit" value="upload file" /><br/>
+                <input type="submit" value="Subir" /><br/>
             </form>          
             <div id="spinner"></div>
         </div>

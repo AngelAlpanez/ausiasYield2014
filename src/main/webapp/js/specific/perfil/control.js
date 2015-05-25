@@ -24,3 +24,15 @@ perfilControl.prototype.getClassNamePerfil = function () {
     return this.getClassName() + "Control";
 };
 var oPerfilControl = new perfilControl('usuario');
+
+perfilControl.prototype.view = function (place, id, oModel, oView) {
+    $(place).empty();
+    var oDocumentoModel = oModel;
+    oDocumentoModel.loadAggregateViewOne(id);
+    $(place).append(oView.getPanel("Detalle de " + this.clase, oView.getObjectTable(oDocumentoModel.getCachedPrettyFieldNames(), oDocumentoModel.getCachedOne(), oDocumentoModel.getCachedFieldNames())));
+    $(place).append('<a class="btn btn-primary" href="jsp#/' + this.clase + '/edit/' + id + '">Editar</a>');
+    $(place).append('<a class="btn btn-primary" href="jsp#/' + this.clase + '/remove/' + id + '">Borrar</a>');
+    $(place).append('<a class="btn btn-primary" href="jsp#/' + this.clase + '/list/' + id + '">Listar</a>');
+    $(place).append('<a class="btn btn-primary" href="jsp#/pedido/list/page=1&rpp=10&vf=4&systemfilter=' + 'id_usuario' + '&systemfilteroperator=equals' + '&systemfiltervalue=' + id +'</a>');
+
+};

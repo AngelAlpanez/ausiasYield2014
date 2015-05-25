@@ -62,7 +62,7 @@
         <![endif]-->
     </head>
     <body>
-        
+
         <!--[if lt IE 7]>
         <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
@@ -85,14 +85,33 @@
             </div>
         </div>
 
+        <% if (user != null) {
+                if (id_tipousuario == 1) {
+        %>          
+        <div class="menuSuperior2 mantenimientos">
+            <ul class="row">
+                <li class="col-md-1 col-md-offset-3"><a href="jsp#/producto">Productos</a></li>
+                <li class="col-md-1"><a href="jsp#/tipoproducto">Tipos de producto</a></li>
+                <li class="col-md-1"><a href="jsp#/pedido">Pedidos</a></li>
+                <li class="col-md-1"><a href="jsp#/lineapedido">Lineas de pedido</a></li>
+                <li class="col-md-1"><a href="jsp#/usuario">Usuarios</a></li>
+
+            </ul>
+        </div>
+        <link rel="stylesheet" href="css/permisos.css">
+        <% }
+            }%>
+
         <div class="menuSuperior2">
             <ul class="row">
-                <li class="col-md-2 col-md-offset-1"><a class="productosLink" href="#">Productos</a></li>
-                <li class="col-md-2"><a href="jsp#/tipoproducto">Tipos de producto</a></li>
-                <li class="col-md-2"><a href="jsp#/pedido">Pedidos</a></li>
-                <li class="col-md-2"><a href="jsp#/lineapedido">Lineas de pedido</a></li>
-                <li class="col-md-2"><a href="jsp#/usuario">Usuarios</a></li>
-
+                <li class="col-md-1 col-md-offset-2"><a href="jsp#/producto">Todos los productos</a></li>
+                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1">Guitarras</a></li>
+                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=2">Bajos</a></li>
+                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=4">Baterias</a></li>
+                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=3">Microfonos</a></li>
+                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=5">Pedales</a></li>
+                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=8">Amplificadores</a></li>
+                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=6">Accesorios</a></li>
             </ul>
         </div>
 
@@ -115,13 +134,11 @@
             <div class="row">
                 <div class="col-md-12" id="contenidoParseado"></div>   
             </div>
-            <div class="row">
-                <div class="col-md-12"><hr><footer><p class="pull-right">&copy; <%=EstadoHelper.getAutor()%>: <%=EstadoHelper.getMailAutor()%> (<%=EstadoHelper.getAnyo()%>) - <%=EstadoHelper.getLicenciaLink()%></p></footer></div> 
-            </div>
+
         </div>         
 
 
-            
+
         <!-- carga de javascript   -->
 
         <script type="text/javascript"  src="./js/vendor/jquery-1.11.1.min.js"></script>
@@ -138,7 +155,7 @@
         <script type="text/javascript"  src="./js/vendor/creole-parser.js"></script>
 
         <script type="text/javascript" src="./js/vendor/backstrech.js"></script>
-        
+        <script type="text/javascript" src="./js/vendor/scripts.js"></script>
         <!--
         <script type="text/javascript"  src="./js/vendor/jquery-ui.js"></script>
         <script src="./js/vendor/jquery.validate.min.js"></script>
@@ -355,7 +372,7 @@
 
 
         <script src="js/specific/tipodocumento/model.js" charset="UTF-8"></script>
-        
+
         <script type="text/javascript">
 
             $(document).ready(function () {
@@ -409,8 +426,6 @@
             });
 
         </script>
-        <script type="text/javascript" src="./js/vendor/scripts.js"></script>
-        <script type="text/javascript" src="./js/vendor/reload.js"></script>
     </body>
 </html>
 

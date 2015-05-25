@@ -27,17 +27,18 @@ pedidoView.prototype.getClassNamePedido = function () {
 var oPedidoView = new pedidoView('pedido');
 
 
-//pedidoView.prototype.loadButtons = function (id) {
-//
-//    var botonera = "";
-//    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
-//    botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
-//    botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
-//    botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
-//    botonera += '</div></div>';
-//    return botonera;
-//
-//}
+pedidoView.prototype.loadButtons = function (id) {
+
+    var botonera = "";
+    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
+    botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><i class="glyphicon glyphicon-eye-open"></i></a>';
+    botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><i class="glyphicon glyphicon-pencil"></i></a>';
+    botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><i class="glyphicon glyphicon-remove"></i></a>';
+    botonera += '<a class="btn btn-default detallepedido" id="' + id + '"  href="jsp#/lineapedido/list/page=1&rpp=10&vf=4&systemfilter=' + 'id_pedido' + '&systemfilteroperator=equals' + '&systemfiltervalue=' + id +'"><i class="glyphicon glyphicon-book"></i></a>';
+    botonera += '</div></div>';
+    return botonera;
+
+}
 pedidoView.prototype.loadFormValues = function (valores, campos) {
 //                    $('#pedido_form #titulo').val(valores['titulo']);
 //                    $('#pedido_form #contenido').val(valores['contenido']);

@@ -16,6 +16,7 @@
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 --%>
 
+<%@page import="net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="net.daw.dao.generic.specific.implementation.PedidoDaoGenSpImpl"%>
 <%@page import="java.util.ArrayList"%>
@@ -24,7 +25,8 @@
     ArrayList<String> alColumnsNames;
     Iterator<String> oIterador;
     String strNombreMantenimiento = "pedido";
-    Connection connection = (Connection) request.getAttribute("connection");    
+    Connection connection = (Connection) request.getAttribute("connection");
+    UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
 %>
 <div class="row">
     <div class="col-md-12">
@@ -32,7 +34,12 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#pane1" data-toggle="tab">Paginación</a></li>                
                 <li><a href="#pane2" data-toggle="tab">Filtro</a></li>
+                <% if (user != null) {
+                            int id_tipousuario = user.getId_tipousuario();
+                            if (id_tipousuario == 1) {%>
                 <li><a href="#pane3" data-toggle="tab">Nuevo</a></li>
+                    <% }
+                        }%>
             </ul>
             <div class="tab-content">
                 <br />
@@ -117,6 +124,9 @@
                         </div>
                     </div>
                 </div>
+                <% if (user != null) {
+                        int id_tipousuario = user.getId_tipousuario();
+                        if (id_tipousuario == 1) {%>
                 <div id="pane3" class="tab-pane">                    
                     <div class="row">
                         <div class="col-md-12">
@@ -125,7 +135,7 @@
                                 <div class="panel-body">
                                     <br />
                                     <div class="text-center">
-                                        <a id="newButton" class="btn btn-primary" href='jsp#/<%=strNombreMantenimiento%>/new'>Crear un nuevo <%=strNombreMantenimiento%></a> 
+                                        <a class="btn btn-primary" href='jsp#/<%=strNombreMantenimiento%>/new'>Crear un nuevo <%=strNombreMantenimiento%></a> 
                                     </div>
                                     <br />
                                 </div>
@@ -133,6 +143,8 @@
                         </div>
                     </div>
                 </div>
+                <% }
+                                        }%>
 
             </div>
         </div>
