@@ -178,12 +178,27 @@ body {
     color: black;
     height: 200px;
     margin: 0 auto;
-    
+    font-size : 15px;
 }
 
+.logoutFinal {
+    background: white;
+    color: black;
+    height: 200px;
+    margin: 0 auto;
+    font-size : 15px;
+    padding: 50px;
+}
+.bienvenido {
+    color: #FF6600;
+}
 .logoutButton {
     max-width: 25px;
     max-height: 20px;
+}
+
+.inicio {
+    background: #C0C0C0 ;
 }
 
 .loginImage{
@@ -226,11 +241,17 @@ body {
 }
 
 .tablaProductos img {
-    width: 220px;
-    height: 210px;
+    width: 180px;
+    height: 170px;
 }
 
 .view, .edit, .remove, .upload, .botonperfil {
     visibility: hidden;
     display: inline;
+}
+
+
+
+.logoutFinal{
+    background: white;
 }

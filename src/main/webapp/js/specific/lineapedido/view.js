@@ -112,7 +112,8 @@ lineapedidoView.prototype.printValue = function (value, valor, recortar) {
     if (/obj_/.test(valor)) {
         if (value[valor].id > 0) {
             if (valor == "obj_producto") {
-                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + decodeURIComponent(value[valor].nombre) + '</a>';
+                strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' 
+                        + decodeURIComponent(value[valor].nombre) + " : " + value[valor].precio + " €" + '</a>';
             } 
             if (valor == "obj_pedido") {
                 strResult = '<a href="jsp#/' + valor.substring(4) + '/view/' + value[valor].id + '">' + value[valor].id + " : " + value[valor].fecha + '</a>';

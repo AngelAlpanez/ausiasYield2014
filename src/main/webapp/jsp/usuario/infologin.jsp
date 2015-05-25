@@ -23,8 +23,8 @@
         String usuario = us.substring(0, 1).toUpperCase() + us.substring(1);
         Integer id_usuario = user.getId();
 %>
-<li>
-    Bienvenido, <%=usuario%>
+<li class="bienvenido">
+    Bienvenido, <%=usuario%>!
 </li>
 <li>
     <a href="jsp#/perfil/view/<%=id_usuario%>">Perfil</a>
@@ -32,4 +32,4 @@
 <li><a href="jsp?ob=usuario&op=logout"><img class="logoutButton" src="./images/logout.png" /></a></li>
     <%} else {%>
 <li><a href="jsp?op=login01&ob=usuario">Iniciar Sesión</a></li>
-<li><a href="http://localhost:8081/ausiasYield2014/jsp#/usuario/new">Registrarse</a></li><%}%>
+<li><a href="jsp#/usuario/new">Registrarse</a></li><%}%>

@@ -15,6 +15,7 @@
  along with this program; if not, write to the Free Software
  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 --%>
-
-<h1>Vd. ha salido del sistema</h1>
-<h4>Hasta pronto.</h4>
+<div class="logoutFinal">
+<h1>Has cerrado sesión correctamente.</h1>
+<h4><a href="jsp"> Volver al inicio</a></h4>
+</div>

@@ -56,8 +56,8 @@ control.prototype.view = function (place, id, oModel, oView) {
     oDocumentoModel.loadAggregateViewOne(id);
     $(place).append(oView.getPanel("Detalle de " + this.clase, oView.getObjectTable(oDocumentoModel.getCachedPrettyFieldNames(), oDocumentoModel.getCachedOne(), oDocumentoModel.getCachedFieldNames())));
     $(place).append('<a class="btn btn-primary" href="jsp#/' + this.clase + '/edit/' + id + '">Editar</a>');
-    $(place).append('<a class="btn btn-primary" href="jsp#/' + this.clase + '/remove/' + id + '">Borrar</a>');
     $(place).append('<a class="btn btn-primary" href="jsp#/' + this.clase + '/list/' + id + '">Listar</a>');
+    $(place).append('<a class="btn btn-danger" href="jsp#/' + this.clase + '/remove/' + id + '">Borrar</a>');
 };
 control.prototype.edit = function (place, id, oModel, oView) {
     var thisObject = this;

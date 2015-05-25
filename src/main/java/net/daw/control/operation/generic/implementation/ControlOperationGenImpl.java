@@ -23,6 +23,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl;
 import net.daw.control.operation.publicinterface.ControlOperationInterface;
@@ -49,8 +52,7 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
             strObject = ParameterCooker.prepareObject(request);
             Constructor oConstructor = Class.forName("net.daw.service.generic.specific.implementation." + ParameterCooker.prepareCamelCaseObject(request) + "ServiceGenSpImpl").getConstructor(String.class, String.class, Connection.class);
             oService = (TableServiceGenImpl) oConstructor.newInstance(strObject, strObject, connection);
-            //PermissionManager oPermissionM = new PermissionManager();
-            //perm = oPermissionM.getPermission(request, connection);           
+                       
         } catch (Exception ex) {
             ExceptionBooster.boost(new Exception(this.getClass().getName() + ":ControlOperationGenImpl ERROR: " + ex.getMessage()));
         }
@@ -86,12 +88,10 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     @Override
     public String getprettycolumns(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        
         result = oService.getPrettyColumns();
         closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        
 
         return result;
     }
@@ -99,12 +99,10 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     @Override
     public String getcolumns(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        
         result = oService.getColumns();
         closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        
 
         return result;
     }
@@ -112,16 +110,14 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     @Override
     public String getpage(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        
         Integer intRegsPerPag = ParameterCooker.prepareRpp(request);
         Integer intPage = ParameterCooker.preparePage(request);
         ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
         HashMap<String, String> hmOrder = ParameterCooker.prepareOrder(request);
         result = oService.getPage(intRegsPerPag, intPage, alFilter, hmOrder);
         closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        
 
         return result;
     }
@@ -129,27 +125,23 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
     @Override
     public String getpages(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+       
         Integer intRegsPerPag = ParameterCooker.prepareRpp(request);
         ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
         result = oService.getPages(intRegsPerPag, alFilter);
         closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        
         return result;
     }
 
     @Override
     public String getregisters(HttpServletRequest request) throws Exception {
         String result = "";
-        //if (perm) {
+        
         ArrayList<FilterBeanHelper> alFilter = ParameterCooker.prepareFilter(request);
         result = oService.getCount(alFilter);
         closeDB();
-        //} else {
-        //    result = "error";
-        //}
+        
         return result;
     }
 
@@ -172,7 +164,7 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
             result = oService.getAggregateViewSome(intRegsPerPag, intPage, alFilter, hmOrder);
             closeDB();
         } else {
-            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getagg ERROR: no tienes permiso"));
+            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":getaggregateviewsome ERROR: no tienes permiso"));
         }
         return result;
     }
@@ -185,7 +177,7 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
         String ob = ParameterCooker.prepareObject(request);
         if (oUsuario.getId_tipousuario() == 1 || (oUsuario.getId() == id && ob.equals("usuario"))) {
             result = oService.remove(ParameterCooker.prepareId(request));
-            if ((oUsuario.getId() == id)) {
+            if (oUsuario.getId() == id && ob.equals("usuario")) {
                 request.getSession().invalidate();
             }
             closeDB();
@@ -224,10 +216,10 @@ public class ControlOperationGenImpl implements ControlOperationInterface {
             String valor = request.getParameter("valor");
 
             result = oService.updateOne(id, tabla, campo, valor);
+        } else {
+            ExceptionBooster.boost(new Exception(this.getClass().getName() + ":updateOne ERROR: no tienes permiso"));
         }
-        //} else {
-        //    result = "error";
-        //}
+        
         return result;
     }
 

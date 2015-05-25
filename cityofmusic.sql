@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 20-05-2015 a las 05:48:07
+-- Tiempo de generación: 25-05-2015 a las 10:43:48
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 5.4.39
 
@@ -906,18 +906,26 @@ CREATE TABLE IF NOT EXISTS `lineapedido` (
   `cantidad` int(15) DEFAULT NULL COMMENT 'Cantidad',
   `id_producto` int(15) DEFAULT NULL COMMENT 'Id Producto',
   `id_pedido` int(15) DEFAULT NULL COMMENT 'Id Pedido'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `lineapedido`
 --
 
 INSERT INTO `lineapedido` (`id`, `cantidad`, `id_producto`, `id_pedido`) VALUES
-(1, 1, 3, 1),
-(2, 2, 5, 1),
-(3, 1, 1, 2),
-(4, 3, 4, 2),
-(5, 1, 7, 2);
+(3, 1, 5, 2),
+(4, 2, 7, 2),
+(5, 2, 2, 3),
+(6, 1, 21, 4),
+(7, 1, 19, 5),
+(8, 3, 17, 5),
+(9, 1, 22, 5),
+(10, 1, 25, 6),
+(11, 4, 26, 6),
+(12, 1, 20, 6),
+(13, 1, 7, 6),
+(14, 2, 5, 7),
+(15, 1, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -1865,15 +1873,20 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `id` int(15) NOT NULL COMMENT 'Id',
   `fecha` date DEFAULT NULL COMMENT 'Fecha',
   `id_usuario` int(15) DEFAULT NULL COMMENT 'Id Usuario'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `pedido`
 --
 
 INSERT INTO `pedido` (`id`, `fecha`, `id_usuario`) VALUES
-(1, '2015-04-07', 1),
-(2, '2015-03-18', 2);
+(2, '2015-05-11', 31),
+(3, '2015-05-03', 38),
+(4, '2015-05-15', 31),
+(5, '2015-04-30', 31),
+(6, '2015-05-01', 40),
+(7, '2015-04-20', 40),
+(8, '2015-05-05', 41);
 
 -- --------------------------------------------------------
 
@@ -2050,23 +2063,32 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `nombre` varchar(255) DEFAULT NULL COMMENT 'Nombre',
   `precio` double(10,2) DEFAULT NULL COMMENT 'Precio',
   `stock` int(15) DEFAULT NULL COMMENT 'Stock',
-  `imagen` varchar(500) DEFAULT '<img>' COMMENT 'Imagen',
+  `imagen` varchar(500) DEFAULT NULL COMMENT 'Imagen',
   `id_tipoproducto` int(15) DEFAULT NULL COMMENT 'Id Tipo Producto'
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `imagen`, `id_tipoproducto`) VALUES
-(1, 'Bateria%20Yamaha%20Pro20', 760.00, 1, '<img src="/images/drumyamaha.jpg"  width="150" />', 4),
+(1, 'Bateria%20Yamaha%20Pro200', 760.00, 2, '<img src="/images/drumyamaha.jpg" />', 4),
 (2, 'Fender%20F100%20Acustica', 240.00, 4, '<img src="/images/acfender.jpg"  width="150" />', 1),
 (3, 'Microfono%20Audix%20OM50', 90.00, 2, '<img src="/images/audixom5.jpg"  width="150" />', 3),
 (4, 'Bajo Fender 300', 260.00, 4, '<img src="/images/bassfender.jpg"  width="150" />', 2),
-(5, 'Bajo Ibanez', 480.00, 5, '<img src="/images/ibanezarzir.jpg"  width="150" />', 2),
+(5, 'Bajo Ibanez', 480.00, 5, '<img src="/images/bassibanez.jpg"  width="150" />', 2),
 (6, 'Microfono BCT MC04', 120.00, 7, '<img src="/images/bctmc04.jpg"  width="150" />', 3),
 (7, 'Pedal Boss VE20', 300.00, 1, '<img src="/images/bossve20.jpg"  width="150" />', 5),
-(17, 'Plaro%20Ride%20Zyldjhan%2022''', 160.00, 12, '<img src="/images/ride.jpg"  width="150" />', 4);
+(17, 'Plaro%20Ride%20Zyldjhan%2022''', 160.00, 12, '<img src="/images/ride.jpg"  width="150" />', 4),
+(18, 'Guitarra%20MusicMan%20Series%2050', 2400.00, 5, '<img src="/images/musicman.jpg"  width="150" />', 1),
+(19, 'Altavoz%20Leem%20TS15', 255.00, 3, '%3Cimg%20src%3D%22/images/leemts15a.jpg%22%20%20width%3D%22150%22%20/%3E', 8),
+(20, 'Guitarra%20Ibanez%207%20Strings', 1200.00, 2, '<img src="/images/ibanezgrg.jpg"  width="150" />', 1),
+(21, 'Pedal%20Bateria%20Metal%20GR7A', 25.00, 8, '<img src="/images/pedal.jpg"  width="150" />', 4),
+(22, 'Pie%20Monacor%20122', 40.00, 12, '<img src="/images/piemonacor.jpg"  width="150" />', 6),
+(23, 'Pedalera%20X3G', 80.00, 4, '<img src="/images/pedalax3g.JPG"  width="150" />', 5),
+(24, 'Guitarra%20MusicMan%2060F', 800.00, 6, '<img src="/images/musicman7string.jpg" />', 1),
+(25, 'Microfono%20Shure%20SM58', 112.00, 5, '<img src="/images/shuresm58.jpg" />', 3),
+(26, 'Pack%20puas%20Rock', 5.00, 20, '<img src="/images/puas.jpg" />', 6);
 
 -- --------------------------------------------------------
 
@@ -2328,7 +2350,7 @@ INSERT INTO `tipooperacion` (`id`, `descripcion`) VALUES
 CREATE TABLE IF NOT EXISTS `tipoproducto` (
   `id` int(15) NOT NULL COMMENT 'Id Tipo Producto',
   `descripcion` varchar(255) DEFAULT NULL COMMENT 'Descripcion'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tipoproducto`
@@ -2340,7 +2362,8 @@ INSERT INTO `tipoproducto` (`id`, `descripcion`) VALUES
 (3, 'microfono'),
 (4, 'bateria'),
 (5, 'pedal'),
-(6, 'accesorio');
+(6, 'accesorio'),
+(8, 'amplificador');
 
 -- --------------------------------------------------------
 
@@ -2439,7 +2462,7 @@ INSERT INTO `tipotema` (`id`, `nombre`) VALUES
 CREATE TABLE IF NOT EXISTS `tipousuario` (
   `id` int(11) NOT NULL COMMENT 'Identificador',
   `descripcion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Descripción'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tipousuario`
@@ -2447,8 +2470,7 @@ CREATE TABLE IF NOT EXISTS `tipousuario` (
 
 INSERT INTO `tipousuario` (`id`, `descripcion`) VALUES
 (1, 'Administrador'),
-(2, 'Usuario'),
-(3, 'Visitante');
+(2, 'Usuario');
 
 -- --------------------------------------------------------
 
@@ -2509,47 +2531,25 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id_tipousuario` int(11) DEFAULT NULL COMMENT 'Tipo de usuario',
   `ciudad` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Ciudad',
   `direccion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Direccion'
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `login`, `password`, `id_tipousuario`, `ciudad`, `direccion`) VALUES
-(1, 'pepe', 'pepe', 2, 'Valencia', ''),
-(2, 'juan', 'juan', 3, 'Madrid', NULL),
-(3, 'maria', 'maria', 3, 'Barcelona', NULL),
-(4, 'antonia', 'antonia', 3, 'Sevilla', NULL),
-(5, 'edu', 'edu', 3, 'Zaragoza', NULL),
-(6, 'jose', 'jose', 3, 'Teruel', NULL),
-(7, 'silvia', 'silvia', 3, 'Huesca', NULL),
-(8, 'pedro', 'pedro', 3, 'Alicante', NULL),
-(9, 'raquel', 'raquel', 3, 'Castellón', NULL),
-(10, 'daniel', 'daniel', 3, 'Almería', NULL),
-(11, 'rafael', 'rafael', 1, 'A%20Coru%C3%B1a', 'C/%20Mar%2C%2012%20pta.%205'),
-(12, 'juan', 'juan', 3, 'Barcelona', NULL),
-(13, 'elena', 'elena', 3, 'Bilbao', NULL),
-(14, 'luis', 'luis', 3, 'Lugo', NULL),
-(15, 'alba', 'alba', 3, 'Cuenca', NULL),
-(16, 'amparo', 'amparo', 3, 'Ciudad Real', NULL),
-(17, 'ambrosio', 'ambrosio', 3, 'Guadalajara', NULL),
-(18, 'luisa', 'luisa', 3, 'Huelva', NULL),
-(19, 'leon', 'leon', 3, 'Granada', NULL),
-(20, 'rosa', 'rosa', 3, 'Cádiz', NULL),
-(21, 'capcom', 'capcom', 3, 'Jerez', NULL),
-(22, 'teleco', 'teleco', 3, 'Vallecas', NULL),
-(23, 'mercadona', 'mercadona', 3, 'Jaén', NULL),
-(24, 'vistaprint', 'vistaprint', 3, 'Valencia', NULL),
-(25, 'google', 'google', 3, 'California', NULL),
-(26, 'konami', 'konami', 3, 'Tokio', NULL),
-(27, 'orange', 'orange', 3, 'París', NULL),
-(28, 'samsung', 'samsung', 3, 'Cuenca', NULL),
-(29, 'gigabyte', 'gigabyte', 3, 'Oviedo', NULL),
-(30, 'microsoft', 'microsoft', 3, 'Albacete', NULL),
-(31, 'angel', 'angel', 1, '', ''),
-(32, 'angel2', 'angel2', 2, '', ''),
-(33, 'angel2', 'angel2', 2, '', ''),
-(34, 'angelillo', 'angel2', 2, '', '');
+(31, 'angel', 'angel', 1, 'El%20Puig', 'C/%20Maestra%20Heredia%2C%2010'),
+(38, 'rober', 'rober', 1, 'Valencia', 'C/%20La%20Plata%2C%208%20pta.%205'),
+(39, 'rafael', 'rafael', 1, 'Valencia', 'Av.%20Primado%20Reig%2C%2024%20pta.%20'),
+(40, 'pepe', 'pepe', 2, 'Rafelbunyol', 'C/%20Neptuno%2C%2020%20pta.%207'),
+(41, 'juan', 'juan', 2, 'Alicante', 'C/%20%20Victor%20Aguiles%2C%205%20pta.%2021'),
+(42, 'lydia', 'lydia', 2, 'Valencia', 'C/%20San%20Vicente%20de%20Paul%2C%207%20pta.%2017'),
+(43, 'maria', 'maria', 2, 'Barcelona', 'C/%20Prats%2C%201%20pta.%208'),
+(44, 'antonio', 'antonio', 2, 'Albacete', 'C/%20Marina%2C%209%20pta.%202'),
+(45, 'sergio', 'sergio', 2, 'Madrid', 'Av. Estacion, 43 pta. 12'),
+(46, 'jose', 'jose', 2, 'Sevilla', 'C/ Padre Jofre, pta. 1'),
+(48, 'andres', 'andres', 2, 'Granada', 'C/%20Santa%20Barbara%2C%205%20pta.%202'),
+(49, 'javier', 'javier', 2, 'Sevilla', 'C/%20La%20Paz%2C%20pta.%205');
 
 --
 -- Índices para tablas volcadas
@@ -2857,7 +2857,7 @@ ALTER TABLE `impuesto`
 -- AUTO_INCREMENT de la tabla `lineapedido`
 --
 ALTER TABLE `lineapedido`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=6;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `mensajeprivado`
 --
@@ -2892,7 +2892,7 @@ ALTER TABLE `ordenador`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=3;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id',AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `permiso`
 --
@@ -2912,7 +2912,7 @@ ALTER TABLE `pregunta`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Producto',AUTO_INCREMENT=18;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Producto',AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `propuesta`
 --
@@ -2957,7 +2957,7 @@ ALTER TABLE `tipooperacion`
 -- AUTO_INCREMENT de la tabla `tipoproducto`
 --
 ALTER TABLE `tipoproducto`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Tipo Producto',AUTO_INCREMENT=7;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Tipo Producto',AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tipopropuesta`
 --
@@ -2977,7 +2977,7 @@ ALTER TABLE `tipotema`
 -- AUTO_INCREMENT de la tabla `tipousuario`
 --
 ALTER TABLE `tipousuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `trabajo`
 --
@@ -2987,7 +2987,7 @@ ALTER TABLE `trabajo`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=35;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=55;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

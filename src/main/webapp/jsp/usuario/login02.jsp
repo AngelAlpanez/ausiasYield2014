@@ -17,16 +17,20 @@
 --%>
 
 <%@page import="net.daw.bean.generic.specific.implementation.UsuarioBeanGenSpImpl"%>
-<% UsuarioBeanGenSpImpl oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean"); %>
-<% if (oUsuario == null) { %>
+<% UsuarioBeanGenSpImpl oUsuario = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean"); 
+int id_usuario = oUsuario.getId();
+%>
+
 <div class="row">
-    <div class="col-md-7 col-md-offset-3 loginFinal">    
+    <div class="col-md-7 col-md-offset-3 loginFinal"> 
+        <% if (oUsuario == null) { %>
         <h1>Nombre de usuario o contraseña incorrectos.</h1>
         <h4>Por favor, inténtelo de nuevo.</h4>
         <a href="jsp?op=login01&ob=usuario" >Reintentar</a>
         <% } else {%>
-        <h1>Vd. ha entrado en el sistema</h1>
-        <h4>Bienvenido, <%=oUsuario.getLogin()%>. Ahora puede operar con los menús de la aplicación.</h4>
+        <h1>Has iniciado sesión correctamente.</h1>
+        Bienvenido, <%=oUsuario.getLogin()%>.
+        Puedes ver tu <a href="jsp#/perfil/view/<%=id_usuario%>" >perfil</a> y realizar compras.
         <% }%>
     </div>
 </div>
