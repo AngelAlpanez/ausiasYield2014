@@ -26,7 +26,17 @@ tipoproductoView.prototype.getClassNameTipoproducto = function () {
 };
 var oTipoproductoView = new tipoproductoView('tipoproducto');
 
+tipoproductoView.prototype.loadButtons = function (id) {
 
+    var botonera = "";
+    botonera += '<div class="btn-toolbar" role="toolbar"><div class="btn-group btn-group-xs">';
+    botonera += '<a class="btn btn-default view" id="' + id + '"  href="jsp#/' + this.clase + '/view/' + id + '"><img class="iconoMant" src="./images/ver.png"></a>';
+    botonera += '<a class="btn btn-default edit" id="' + id + '"  href="jsp#/' + this.clase + '/edit/' + id + '"><img class="iconoMant" src="./images/editar.png"></a>';
+    botonera += '<a class="btn btn-default remove" id="' + id + '"  href="jsp#/' + this.clase + '/remove/' + id + '"><img class="iconoMant" src="./images/eliminar.png"></a>';
+    botonera += '</div></div>';
+    return botonera;
+
+}
 
 tipoproductoView.prototype.printValue = function (value, valor, recortar) {
     var thisObject = this;

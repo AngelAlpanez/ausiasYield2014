@@ -27,6 +27,7 @@
     String strNombreMantenimiento = "lineapedido";
     Connection connection = (Connection) request.getAttribute("connection");
     UsuarioBeanGenSpImpl user = (UsuarioBeanGenSpImpl) request.getSession().getAttribute("usuarioBean");
+    int id = user.getId();
 %>
 
 <div class="row">
@@ -182,3 +183,5 @@
         </div>                
     </div>
 </div>
+
+<a class="volverpedidos" href="jsp#/pedido/list/page=1&rpp=10&vf=4&systemfilter=id_usuario&systemfilteroperator=equals&systemfiltervalue=<%=id%>">Volver a pedidos</a>

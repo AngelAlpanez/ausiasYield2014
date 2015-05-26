@@ -222,24 +222,6 @@ body {
 }
 
 
-
-.tablaProductos td:nth-child(2) {
-
-    
-}
-
-.tablaProductos td:nth-child(3) {
-
-}
-
-.tablaProductos td:nth-child(4) {
-
-}
-
-.tablaProductos td:nth-child(5) {
-
-}
-
 .tablaProductos img {
     width: 180px;
     height: 170px;
@@ -247,7 +229,7 @@ body {
 
 .view, .edit, .remove, .upload, .botonperfil {
     visibility: hidden;
-    display: inline;
+    
 }
 
 
@@ -255,3 +237,69 @@ body {
 .logoutFinal{
     background: white;
 }
+
+.view, .edit, .remove, .upload, .pedido {
+    width: 35px;
+    height: 35px;
+    border-radius: 25px !important;
+    border-color: black !important;
+    margin-left: 2px !important;
+    margin-bottom: 5px !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.view img, .edit img, .remove img, .upload img, .pedido img{
+    width: 80%;
+    height: 80%;
+    padding: 0;
+    margin: 0;
+    margin-top: 10%;
+}
+
+.view {
+    background: #00CCFF !important;
+}
+
+.view:hover {
+    background: #0099FF !important;
+}
+
+.edit {
+    background: #FF9900 !important;
+}
+
+.edit:hover {
+    background: #FF6600 !important;
+}
+
+.remove {
+    background: #FF0000 !important;
+}
+
+.remove:hover {
+    background: #B80000  !important;
+}
+
+.upload {
+    background: #00FF00 !important;
+    position: absolute !important;
+}
+
+.upload:hover {
+    background: #00CC00 !important;
+}
+
+.pedido {
+    background: #C8C8C8 !important;
+    position: absolute !important;
+}
+
+.pedido:hover {
+    background: #989898 !important;
+}
+
+.volverpedidos {
+    font-size: 1.3em;
+}
+
