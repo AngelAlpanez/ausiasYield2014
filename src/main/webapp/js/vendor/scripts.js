@@ -16,20 +16,21 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 $(document).ready(function () {
-    
-    
+   
     
 //    $(window).resize(function(){
 //        var ancho = $(window).width();
 //        var anchofinal = ancho - 800;
 //        $(".menuInfo").css("left", anchofinal);
 //    });
-$(".tablaProductos td:nth-child(5)").each(function () {
-        $(this).prependTo($(this).parent());
-        if ( $(this).html() === "") {
-            $(this).html("<img src=\"images/no-image.png    \" />");
-        }
-    });
+    setTimeout(function(){
+        $(".tablaProductos td:nth-child(5)").each(function () {
+
+            if ( $(this).html() === "") {
+                $(this).html("<img src=\"images/noimagen.jpg\" />");
+            }
+        });
+    }, 1);
 
     $(".tablaProductos td:nth-child(4)").append(" &#128;");
     $(".tablaProductos td:nth-child(5)").prepend("Stock: ");
