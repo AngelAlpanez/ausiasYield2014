@@ -178,3 +178,15 @@
         </div>                
     </div>
 </div>
+<script>
+    setTimeout(function(){
+        $(".tablaProductos td:nth-child(5)").each(function () {
+            if ( $(this).html() === "") {
+                $(this).html("<img src=\"images/noimagen.jpg\" />");
+            }
+        });
+    }, 1);
+
+    $(".tablaProductos td:nth-child(4)").append(" &#128;");
+    $(".tablaProductos td:nth-child(5)").prepend("Stock: ");
+</script>
