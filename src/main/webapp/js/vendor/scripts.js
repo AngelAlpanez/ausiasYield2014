@@ -17,12 +17,54 @@
  */
 $(document).ready(function () {
    
+
+    //SCRIPTS DEL MENU SUPERIOR
+$(document).ready(main);
+ 
+var contador = 1;
+ 
+function main () {
+	$('.menu_bar').click(function(){
+		if (contador == 1) {
+			$('nav').animate({
+				left: '0'
+			});
+			contador = 0;
+		} else {
+			contador = 1;
+			$('nav').animate({
+				left: '-100%'
+			});
+		}
+	});
+ 
+        $('.submenu1').click(function(){
+		$(this).children('.children').slideToggle();
+                $('.submenu2').children('.children').css({display:'none'});
+	});
+        $('.submenu2').click(function(){
+		$(this).children('.children').slideToggle();
+                $('.submenu1').children('.children').css({display:'none'});
+	});
+}       $('.bt-menu').click(function(){
+		$('.submenu1').children('.children').css({display:'none'});
+                $('.submenu2').children('.children').css({display:'none'});
+	});
     
-//    $(window).resize(function(){
-//        var ancho = $(window).width();
-//        var anchofinal = ancho - 800;
-//        $(".menuInfo").css("left", anchofinal);
-//    });
+//        $(window).resize(function(){
+//            var ancho = $(window).width();
+//            if (ancho > 840) {
+//                $("nav").css({display:'block', left:'0%'});
+//            }
+//            if (ancho < 840 ) {
+//                $("nav").css({display:'none', left:'0%'});
+//            }
+//        });
+        //FIN SCRIPTS DEL MENU SUPERIOR
+    
+    
+    
+    
     setTimeout(function(){
         $(".tablaProductos td:nth-child(5)").each(function () {
 
@@ -30,35 +72,10 @@ $(document).ready(function () {
                 $(this).html("<img src=\"images/noimagen.jpg\" />");
             }
         });
-    }, 1);
+    }, 5);
 
     $(".tablaProductos td:nth-child(4)").append(" &#128;");
     $(".tablaProductos td:nth-child(5)").prepend("Stock: ");
-    
-    $(function () {
-        var imagenes = [
-            "images/fondo1.jpg"
-                    , "images/fondo4.jpg"
-                    , "images/fondo2.jpg"
-                    , "images/fondo3.jpg"
-        ];
 
-        $(imagenes).each(function () {
-            $("<img/>")[0].src = this;
-        });
-
-        var index = 0;
-
-        $.backstretch(imagenes[index], {speed: 2500});
-
-        setInterval(function () {
-            index = (index >= imagenes.length - 1) ? 0 : index + 1;
-            $.backstretch(imagenes[index]);
-        }, 6000);
-    });
-
-
-
-    
     
 });

@@ -20,87 +20,156 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     Author     : al037124
 */
 
+* {
+	margin:0;
+	padding:0;
+}
+
+header {
+	width:100%;
+        font-size:14px;
+}
+
+header nav {
+	width:100%;
+	background:#E2C9A8;
+        position: absolute;
+        z-index: 1;
+}
+
+.logomenu img {
+    height: 58px;
+    padding: 5px;
+}
+
+.menu_bar {
+	display:none;
+}
+
+header nav ul {
+	overflow:hidden;
+	list-style:none;
+        padding:0;
+        margin:0;
+}
+
+header nav ul li {
+	float:left;
+}
+
+header nav ul li a {
+	color:black;
+	padding:20px;
+	display:block;
+	text-decoration:none;
+}
+
+header nav ul li span {
+	margin-right:10px;
+}
+
+header nav ul li a:hover {
+	background:#C6AF8F;
+}
+
+section {
+	padding:20px;
+}
+
+header nav .children {
+    position: absolute;
+    background:#E2C9A8;
+    display: none;
+}
+
+@media screen and (max-width:840px ) {
+        .logomenu img {
+            height: 50px;
+        }
+
+	header nav {
+           
+		width:220px;
+		height:auto;
+		left:-100%;
+		margin:0;
+	}
+
+	header nav ul li {
+		display:block;
+		float:none;
+	}
+
+	.menu_bar {
+		display:block;
+		width:100%;
+		background:#E2C9A8;
+	}
+        
+        .burgermenu{
+            float: right;
+            width: 40px;
+            height: 40px;
+            padding: 5px;
+        }
+        
+	.menu_bar .bt-menu {
+		display:block;
+		padding: 10px;
+		background:#E2C9A8;
+		color:#fff;
+		text-decoration:none;
+		font-weight: bold;
+		font-size:20px;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+        
+        .submenu1 .children {
+            left: 220px;
+            top: 58px;
+            display: none;
+        }
+        .submenu2 .children {
+            left: 220px;
+            top: 116px;
+            display: none;
+        }
+        
+        .logomenu {
+            display:none;
+        }
+        .infoSesion {
+            float: left;
+            margin:0;
+            padding:0;
+        }
+        
+}
+
+
+
+
+
+
+
+
+
+
+
 body {
-    background: url("../images/fondo1.jpg") no-repeat center center fixed;
+    background: url("../images/fondo2.jpg") no-repeat center center fixed;
     background-size: cover;
     overflow-x: hidden;
-}
-
-.menuSuperior1 a, .menuSuperior2 a{
-    color: white !important;
-    text-decoration: none !important;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.3s ease;
-}
-
-.menuSuperior1 a:hover, .menuSuperior2 a:hover {
-    color: gray !important;
-}
-
-.mantenimientos a:hover {
-    color: black !important;
-}
-.col-md-1 {
-    width: auto !important;
-}
-.menuSuperior1{
-    background: url("../images/textura.jpg")no-repeat center;
-    background-size: 100% auto;
-}
-.menuSuperior1 img{
-    width: 140px;
-    height: 120px;
-}
-
-.menuSuperior1 li {
-    text-decoration: none;
-    list-style: none;
-    float: left;
-    margin-top: 20px;
-    padding-right: 20px;
-}
-
-.menuInfo {
-    background: black;
-    width: 820px;
-    height: 60px;
-    position: absolute;
-    margin-top: 25px;
-    border-radius: 25px;
-    margin-left: 350px;
-    font-size: 15px;
-    
-}
-
-
-
-.menuHeader {
-    float: left;
+    margin: 0;
+    padding: 0;
 }
 
 .infoSesion {
     float: right;
     margin-right: 50px;
 }
-
-.menuSuperior2 {
-    background: black;
-    height: 50px;
-    padding: 0;
-}
-
-.mantenimientos {
-    background: gray;
-}
-
-.menuSuperior2 li {
-    list-style: none;
-    float: left;
-    padding-left: 40px;
-    font-size: 15px;
-    line-height: 50px;
-}
-
 
 .login{
     margin-top: 50px;
@@ -169,7 +238,7 @@ body {
 }
 
 .contenido {
-    margin-top: 60px;
+    padding-top: 130px;
     border-radius: 25px;
 }
 

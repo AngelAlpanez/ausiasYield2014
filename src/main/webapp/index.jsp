@@ -36,6 +36,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <title>Ajax Yield</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
@@ -68,27 +69,27 @@
         <![endif]-->
 
         <!-- Fixed navbar -->
-        <div class="menuSuperior1">
+        <!--<div class="menuSuperior1">
             <div class="container barra">
                 <div class="navbar-header">
                     <img src="images/logo.png" />
-                </div>               
+                </div>
                 <div class="menuInfo">
                     <ul class="menuHeader">
                         <li><a href="jsp">Inicio</a></li>
                     </ul>
 
                     <ul class="infoSesion">
-                        <jsp:include page="jsp/usuario/infologin.jsp" />
+                        
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <% if (user != null) {
                 if (id_tipousuario == 1) {
         %>          
-        <div class="menuSuperior2 mantenimientos">
+        <!--<div class="menuSuperior2 mantenimientos">
             <ul class="row">
                 <li class="col-md-1 col-md-offset-3"><a href="jsp#/producto">Productos</a></li>
                 <li class="col-md-1"><a href="jsp#/tipoproducto">Tipos de producto</a></li>
@@ -98,23 +99,75 @@
 
             </ul>
         </div>
-        <link rel="stylesheet" href="css/permisos.css">
+        <link rel="stylesheet" href="css/permisos.css">-->
         <% }
             }%>
 
-        <div class="menuSuperior2">
+        <!--<div class="menuSuperior2">
             <ul class="row">
-                <li class="col-md-1 col-md-offset-2"><a href="jsp#/producto">Todos los productos</a></li>
-                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1">Guitarras</a></li>
-                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=2">Bajos</a></li>
-                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=4">Baterias</a></li>
-                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=3">Microfonos</a></li>
-                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=5">Pedales</a></li>
-                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=8">Amplificadores</a></li>
-                <li class="col-md-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=6">Accesorios</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1 col-md-offset-2"><a href="jsp#/producto">Todos los productos</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1">Guitarras</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=2">Bajos</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=4">Baterias</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=3">Microfonos</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=5">Pedales</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=8">Amplificadores</a></li>
+                <li class="col-md-1 col-lg-1 col-sm-1 col-xs-1"><a href="jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=6">Accesorios</a></li>
             </ul>
-        </div>
-
+        </div>-->
+            
+            
+            
+           
+            <header>
+		<div class="menu_bar">
+			<a href="#" class="bt-menu logomenu"><img src="images/logo3.png" /><img class="burgermenu" src="images/burgermenu.png" /></a>
+                        
+		</div>
+ 
+		<nav>
+                    <ul>
+                        <li class="logomenu"><img src="images/logo3.png" /></li>
+			<li><a href="#"><span class="icon-rocket"></span>Inicio</a></li>
+                        <li class="submenu1">
+                            <a href="#"><span class="icon-rocket"></span>Productos<span class="caret icon-arrow-down6"></span></a>
+                            <ul class="children">
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1"><span class="icon-mail"></span>Productos<span class="icon-dot"></span></a></li>
+				<li><a href="#"><span class="icon-suitcase"></span>Guitarras</a></li>
+				<li><a href="#"><span class="icon-rocket"></span>Bajos</a></li>
+				<li><a href="#"><span class="icon-earth"></span>Baterias</a></li>
+				<li><a href="#"><span class="icon-mail"></span>Microfonos</a></li>
+                                <li><a href="#"><span class="icon-mail"></span>Pedales</a></li>
+                                <li><a href="#"><span class="icon-mail"></span>Amplificadores</a></li>
+                                <li><a href="#"><span class="icon-mail"></span>Accesorios</a></li>
+                            </ul>
+                        </li>
+                        <% if (user != null) {
+                            if (id_tipousuario == 1) {
+                        %>
+			<li class="submenu2">
+                            <a href="#"><span class="icon-rocket"></span>Mantenimientos<span class="caret icon-arrow-down6"></span></a>
+                            <ul class="children">
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1"><span class="icon-mail"></span>Productos<span class="icon-dot"></span></a></li>
+				<li><a href="#"><span class="icon-suitcase"></span>Guitarras</a></li>
+				<li><a href="#"><span class="icon-rocket"></span>Bajos</a></li>
+				<li><a href="#"><span class="icon-earth"></span>Baterias</a></li>
+				<li><a href="#"><span class="icon-mail"></span>Microfonos</a></li>
+                                <li><a href="#"><span class="icon-mail"></span>Pedales</a></li>
+                                <li><a href="#"><span class="icon-mail"></span>Amplificadores</a></li>
+                                <li><a href="#"><span class="icon-mail"></span>Accesorios</a></li>
+                            </ul>
+                        </li>
+                        <link rel="stylesheet" href="css/permisos.css">
+                        <% }
+                        } %>
+                        <jsp:include page="jsp/usuario/infologin.jsp" />
+                    </ul>
+		</nav>
+            </header>
+            
+            
+            
 
 
 
