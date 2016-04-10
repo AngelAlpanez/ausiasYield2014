@@ -95,6 +95,34 @@ productoView.prototype.doEventsLoading = function () {
     });
 };
 
+productoView.prototype.getBodyPageTable = function (page, fieldNames, visibleFields, tdbuttons) {
+    var thisObject = this;
+    var tabla = "";
+    $.each(page, function (index, value) {
+        tabla += '<tr>';
+        var numField = 0;
+        var id;
+        var strClaveAjena;
+        $.each(fieldNames, function (index, valor) {
+            if ("id" == valor) {
+                id = value[valor];
+            }
+            ;
+            numField++;
+            if (numField <= visibleFields) {
+                tabla += '<td>' + thisObject.printValue(value, valor, true) + '</td>';
+            }
+        });
+        tabla += '<td>';
+        tabla += tdbuttons(id);
+        tabla += '</td>';
+        tabla += '</tr>';
+    });
+    
+    return tabla;
+};
+
+
 productoView.prototype.printValue = function (value, valor, recortar) {
 
     var thisObject = this;

@@ -185,7 +185,7 @@
                 $(this).html("<img src=\"images/noimagen.jpg\" />");
             }
         });
-    }, 1);
+    }, 10);
 
     $(".tablaProductos td:nth-child(4)").append(" &#128;");
     $(".tablaProductos td:nth-child(5)").prepend("Stock: ");

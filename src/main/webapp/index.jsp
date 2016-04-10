@@ -128,18 +128,18 @@
 		<nav>
                     <ul>
                         <li class="logomenu"><img src="images/logo3.png" /></li>
-			<li><a href="#"><span class="icon-rocket"></span>Inicio</a></li>
+			<li><a href="http://localhost:8081/ausiasYield2014"><span class="icon-rocket"></span>Inicio</a></li>
                         <li class="submenu1">
-                            <a href="#"><span class="icon-rocket"></span>Productos<span class="caret icon-arrow-down6"></span></a>
+                            <a href="#"><span class="icon-rocket"></span>Catálogo<span class="caret icon-arrow-down6"></span></a>
                             <ul class="children">
-				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1"><span class="icon-mail"></span>Productos<span class="icon-dot"></span></a></li>
-				<li><a href="#"><span class="icon-suitcase"></span>Guitarras</a></li>
-				<li><a href="#"><span class="icon-rocket"></span>Bajos</a></li>
-				<li><a href="#"><span class="icon-earth"></span>Baterias</a></li>
-				<li><a href="#"><span class="icon-mail"></span>Microfonos</a></li>
-                                <li><a href="#"><span class="icon-mail"></span>Pedales</a></li>
-                                <li><a href="#"><span class="icon-mail"></span>Amplificadores</a></li>
-                                <li><a href="#"><span class="icon-mail"></span>Accesorios</a></li>
+				<li><a href="jsp#/producto"><span class="icon-mail"></span>Productos<span class="icon-dot"></span></a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1"><span class="icon-suitcase"></span>Guitarras</a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=2"><span class="icon-rocket"></span>Bajos</a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=4"><span class="icon-earth"></span>Baterias</a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=3"><span class="icon-mail"></span>Microfonos</a></li>
+                                <li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=5"><span class="icon-mail"></span>Pedales</a></li>
+                                <li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=8"><span class="icon-mail"></span>Amplificadores</a></li>
+                                <li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=6"><span class="icon-mail"></span>Accesorios</a></li>
                             </ul>
                         </li>
                         <% if (user != null) {
@@ -148,14 +148,11 @@
 			<li class="submenu2">
                             <a href="#"><span class="icon-rocket"></span>Mantenimientos<span class="caret icon-arrow-down6"></span></a>
                             <ul class="children">
-				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto/list/id=1&rpp=10&vf=6&filter=id_tipoproducto&filteroperator=like&filtervalue=1"><span class="icon-mail"></span>Productos<span class="icon-dot"></span></a></li>
-				<li><a href="#"><span class="icon-suitcase"></span>Guitarras</a></li>
-				<li><a href="#"><span class="icon-rocket"></span>Bajos</a></li>
-				<li><a href="#"><span class="icon-earth"></span>Baterias</a></li>
-				<li><a href="#"><span class="icon-mail"></span>Microfonos</a></li>
-                                <li><a href="#"><span class="icon-mail"></span>Pedales</a></li>
-                                <li><a href="#"><span class="icon-mail"></span>Amplificadores</a></li>
-                                <li><a href="#"><span class="icon-mail"></span>Accesorios</a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/producto"><span class="icon-mail"></span>Productos<span class="icon-dot"></span></a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/tipoproducto"><span class="icon-suitcase"></span>Categorías</a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/pedido"><span class="icon-rocket"></span>Pedidos</a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/lineapedido"><span class="icon-earth"></span>Líneas pedido</a></li>
+				<li><a href="http://localhost:8081/ausiasYield2014/jsp#/usuario"><span class="icon-mail"></span>Usuario</a></li>
                             </ul>
                         </li>
                         <link rel="stylesheet" href="css/permisos.css">
