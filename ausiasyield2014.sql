@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-05-2015 a las 10:43:48
+-- Tiempo de generación: 12-04-2016 a las 04:40:02
 -- Versión del servidor: 5.5.42
 -- Versión de PHP: 5.4.39
 
@@ -2065,30 +2065,31 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `stock` int(15) DEFAULT NULL COMMENT 'Stock',
   `imagen` varchar(500) DEFAULT NULL COMMENT 'Imagen',
   `id_tipoproducto` int(15) DEFAULT NULL COMMENT 'Id Tipo Producto'
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `imagen`, `id_tipoproducto`) VALUES
-(1, 'Bateria%20Yamaha%20Pro200', 760.00, 2, '<img src="/images/drumyamaha.jpg" />', 4),
-(2, 'Fender%20F100%20Acustica', 240.00, 4, '<img src="/images/acfender.jpg"  width="150" />', 1),
+(1, 'Bateria%20Pearl%20Pro20', 760.00, 2, '%3Cimg%20src%3D%22/images/pearldrum.jpg%22%20/%3E', 4),
+(2, 'Fender%20F10%20Acustica', 240.00, 4, '%3Cimg%20src%3D%22/images/acfender.jpg%22%20%20width%3D%22150%22%20/%3E', 1),
 (3, 'Microfono%20Audix%20OM50', 90.00, 2, '<img src="/images/audixom5.jpg"  width="150" />', 3),
 (4, 'Bajo Fender 300', 260.00, 4, '<img src="/images/bassfender.jpg"  width="150" />', 2),
 (5, 'Bajo Ibanez', 480.00, 5, '<img src="/images/bassibanez.jpg"  width="150" />', 2),
 (6, 'Microfono BCT MC04', 120.00, 7, '<img src="/images/bctmc04.jpg"  width="150" />', 3),
 (7, 'Pedal Boss VE20', 300.00, 1, '<img src="/images/bossve20.jpg"  width="150" />', 5),
 (17, 'Plaro%20Ride%20Zyldjhan%2022''', 160.00, 12, '<img src="/images/ride.jpg"  width="150" />', 4),
-(18, 'Guitarra%20MusicMan%20Series%2050', 2400.00, 5, '<img src="/images/musicman.jpg"  width="150" />', 1),
-(19, 'Altavoz%20Leem%20TS15', 255.00, 3, '%3Cimg%20src%3D%22/images/leemts15a.jpg%22%20%20width%3D%22150%22%20/%3E', 8),
+(18, 'Guitarra%20MusicMan%20Series%20500S', 2400.00, 5, '%3Cimg%20src%3D%22/images/musicman.jpg%22%20%20width%3D%22150%22%20/%3E', 1),
+(19, 'Altavoz%20Lem%20TS15', 255.00, 3, '%3Cimg%20src%3D%22/images/leemts15a.jpg%22%20%20width%3D%22150%22%20/%3E', 8),
 (20, 'Guitarra%20Ibanez%207%20Strings', 1200.00, 2, '<img src="/images/ibanezgrg.jpg"  width="150" />', 1),
 (21, 'Pedal%20Bateria%20Metal%20GR7A', 25.00, 8, '<img src="/images/pedal.jpg"  width="150" />', 4),
 (22, 'Pie%20Monacor%20122', 40.00, 12, '<img src="/images/piemonacor.jpg"  width="150" />', 6),
 (23, 'Pedalera%20X3G', 80.00, 4, '<img src="/images/pedalax3g.JPG"  width="150" />', 5),
 (24, 'Guitarra%20MusicMan%2060F', 800.00, 6, '<img src="/images/musicman7string.jpg" />', 1),
 (25, 'Microfono%20Shure%20SM58', 112.00, 5, '<img src="/images/shuresm58.jpg" />', 3),
-(26, 'Pack%20puas%20Rock', 5.00, 20, '<img src="/images/puas.jpg" />', 6);
+(26, 'Pack%20puas%20Rock', 5.00, 20, '<img src="/images/puas.jpg" />', 6),
+(28, 'Prueba%20amplificador', 450.00, 2, '', 8);
 
 -- --------------------------------------------------------
 
@@ -2531,7 +2532,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `id_tipousuario` int(11) DEFAULT NULL COMMENT 'Tipo de usuario',
   `ciudad` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Ciudad',
   `direccion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Direccion'
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -2912,7 +2913,7 @@ ALTER TABLE `pregunta`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Producto',AUTO_INCREMENT=27;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT COMMENT 'Id Producto',AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `propuesta`
 --
@@ -2987,7 +2988,7 @@ ALTER TABLE `trabajo`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=55;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT COMMENT 'Identificador',AUTO_INCREMENT=50;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
