@@ -60,7 +60,7 @@ model.prototype.loadAggregateViewSome = function (objParams) {
         this.cCountFields = this.cFieldNames.length;
         this.cPrettyFieldNames = pagina_objs.data.prettyColumns;
         this.cPrettyFieldNamesAcciones = this.cPrettyFieldNames;
-        this.cPrettyFieldNamesAcciones.push("acciones");
+        //this.cPrettyFieldNamesAcciones.push("acciones");
         this.cPage = pagina_objs.data.page.list;
         this.cPages = pagina_objs.data.pages.data;
         this.cRegisters = pagina_objs.data.registers.data;
@@ -124,7 +124,7 @@ model.prototype.getPrettyFieldNames = function () {
 model.prototype.getPrettyFieldNamesAcciones = function () {
     $.when(ajax().ajaxCallSync(this.urlJson + '&op=getprettycolumns', 'GET', '')).done(function (data) {
         prettyFieldNames = data;
-        prettyFieldNames.push("acciones");
+        //prettyFieldNames.push("acciones");
         this.cPrettyFieldNamesAcciones = prettyFieldNames;
         //prettyFieldNames = data['data'];
         //prettyFieldNames.push("acciones");

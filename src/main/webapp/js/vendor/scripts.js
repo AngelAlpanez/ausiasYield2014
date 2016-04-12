@@ -67,15 +67,12 @@ function main () {
     
     setTimeout(function(){
         $(".tablaProductos td:nth-child(5)").each(function () {
-
             if ( $(this).html() === "") {
                 $(this).html("<img src=\"images/noimagen.jpg\" />");
             }
         });
     }, 5);
 
-    $(".tablaProductos td:nth-child(4)").append(" &#128;");
-    $(".tablaProductos td:nth-child(5)").prepend("Stock: ");
 
     
 });

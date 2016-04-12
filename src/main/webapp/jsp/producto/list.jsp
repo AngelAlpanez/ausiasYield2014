@@ -152,7 +152,7 @@
 <div class="row">
     <div class="col-md-12" id="menuLateralList">
         <table class="table table-responsive table-hover table-striped table-condensed">
-            <thead id="tableHeaders"></thead>
+            <thead id="tableHeaders" class="cabeceraProducto"></thead>
             <tbody class="tablaProductos" id="tableBody"></tbody>
         </table>
         <div id="datos"></div>

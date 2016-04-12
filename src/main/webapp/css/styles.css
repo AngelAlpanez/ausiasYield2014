@@ -149,6 +149,272 @@ header nav .children {
 }
 
 
+.tablaProductos td:nth-child(1), .cabeceraProducto tr th:nth-child(1) {
+    display:none;
+}
+
+.tablaProductos tr td {
+    position: relative;
+}
+
+
+/************* PRODUCTOS MOVIL ************/
+@media screen and (max-width:751px) {
+.view, .edit, .remove, .upload, .pedido {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 25px !important;
+    border-color: black !important;
+    margin-left: 2px !important;
+    margin-bottom: 5px !important;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.tablaProductos td:nth-child(6), .cabeceraProducto tr th:nth-child(6) {
+    display:none;
+}
+.tablaProductos img {
+    width: 130px !important;
+    height: 130px !important;
+}
+
+/* NOMBRE */
+.tablaProductos tr td:nth-child(2) {
+    left:53%;
+    font-size:14px;
+    color:black;
+    font-weight: bold;
+}
+
+/* PRECIO */
+.tablaProductos tr td:nth-child(3) {
+    left: 130px;
+    top: 50px;
+    font-size:14px;
+    color:black;
+    width: 70px;
+}
+.tablaProductos tr td:nth-child(3):after {
+    content: ' \20AC';
+}
+
+/* STOCK */
+.tablaProductos tr td:nth-child(4) {
+    left: 60px;
+    top: 90px;
+    font-size:14px;
+    color:black;
+    width: 70px;
+}
+.tablaProductos tr td:nth-child(4):before {
+    content: 'Stock: ';
+}
+
+/* IMAGEN */
+.tablaProductos tr td:nth-child(5) {
+    right:45%;
+}
+
+/* CATEGORIA */
+.tablaProductos tr td:nth-child(6) {
+    right:268px;
+    font-size:11px;
+    color: black;
+    top: 130px;
+    width: 120px;
+}
+.tablaProductos tr td:nth-child(6):before {
+    content: 'Categoria: ';
+}
+
+/* BOTONES */
+.tablaProductos tr td:nth-child(7) {
+    right: 20px;
+    position: relative;
+}
+}
+
+
+
+
+/************* PRODUCTOS TABLET ************/
+@media screen and (min-width:752px) and (max-width:991px) {
+/* NOMBRE */
+.tablaProductos tr td:nth-child(2) {
+    left:33%;
+    font-size:14px;
+    color:black;
+    font-weight: bold;
+}
+
+/* PRECIO */
+.tablaProductos tr td:nth-child(3) {
+    left: 62px;
+    top: 50px;
+    font-size:14px;
+    color:black;
+    width: 70px;
+}
+.tablaProductos tr td:nth-child(3):after {
+    content: ' \20AC';
+}
+
+/* STOCK */
+.tablaProductos tr td:nth-child(4) {
+    right: 10px;
+    top: 90px;
+    font-size:14px;
+    color:black;
+    width: 70px;
+}
+.tablaProductos tr td:nth-child(4):before {
+    content: 'Stock: ';
+}
+
+/* IMAGEN */
+.tablaProductos tr td:nth-child(5) {
+    right:40%;
+    
+}
+
+/* CATEGORIA */
+.tablaProductos tr td:nth-child(6) {
+    right:268px;
+    font-size:11px;
+    color: black;
+    top: 130px;
+    width: 120px;
+}
+.tablaProductos tr td:nth-child(6):before {
+    content: 'Categoria: ';
+}
+
+/* BOTONES */
+.tablaProductos tr td:nth-child(7) {
+    right:15%;
+    
+}
+}
+
+
+
+
+/************* PRODUCTOS ESCRITORIO PEQUEÑO ************/
+@media screen and (min-width:992px) and (max-width:1199px) {
+/* NOMBRE */
+.tablaProductos tr td:nth-child(2) {
+    left:30%;
+    font-size:16px;
+    color:black;
+    font-weight: bold;
+}
+
+/* PRECIO */
+.tablaProductos tr td:nth-child(3) {
+    left: 40px;
+    top: 40px;
+    font-size:16px;
+    color:black;
+}
+.tablaProductos tr td:nth-child(3):after {
+    content: ' \20AC';
+}
+
+/* STOCK */
+.tablaProductos tr td:nth-child(4) {
+    right: 25px;
+    top: 80px;
+    font-size:16px;
+    color:black;
+}
+.tablaProductos tr td:nth-child(4):before {
+    content: 'Stock: ';
+}
+
+/* IMAGEN */
+.tablaProductos tr td:nth-child(5) {
+    right:35%;
+    
+}
+
+/* CATEGORIA */
+.tablaProductos tr td:nth-child(6) {
+    right:335px;
+    font-size:13px;
+    color:black;
+    top: 120px;
+}
+.tablaProductos tr td:nth-child(6):before {
+    content: 'Categoria: ';
+}
+
+/* BOTONES */
+.tablaProductos tr td:nth-child(7) {
+    right:15%;
+    
+}
+}
+
+
+
+
+
+/************* PRODUCTOS ESCRITORIO GRANDE ************/
+@media screen and (min-width:1200px) {
+/* NOMBRE */
+.tablaProductos tr td:nth-child(2) {
+    left:40%;
+    font-size:16px;
+    color:black;
+    font-weight: bold;
+}
+
+/* PRECIO */
+.tablaProductos tr td:nth-child(3) {
+    left: 160px;
+    top: 40px;
+    font-size:16px;
+    color:black;
+}
+.tablaProductos tr td:nth-child(3):after {
+    content: ' \20AC';
+}
+
+/* STOCK */
+.tablaProductos tr td:nth-child(4) {
+    left: 80px;
+    top: 80px;
+    font-size:16px;
+    color:black;
+}
+.tablaProductos tr td:nth-child(4):before {
+    content: 'Stock: ';
+}
+
+/* IMAGEN */
+.tablaProductos tr td:nth-child(5) {
+    right:35%;
+    
+}
+
+/* CATEGORIA */
+.tablaProductos tr td:nth-child(6) {
+    right:295px;
+    font-size:13px;
+    color:black;
+    top: 120px;
+}
+.tablaProductos tr td:nth-child(6):before {
+    content: 'Categoria: ';
+}
+
+/* BOTONES */
+.tablaProductos tr td:nth-child(7) {
+    right:15%;
+    
+}
+}
 
 
 
@@ -156,7 +422,43 @@ header nav .children {
 
 
 
+.inicio {
+    background: white !important;
+    color: black;
+    border-radius: 9px;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    top: -20px;
+}
 
+.centrar {
+    text-align: center;
+}
+
+.guitarsImg {
+    max-width:100%;
+    width:400px;
+    margin: 0 auto;
+}
+.fuenteInicio {
+    font-size: 15px;
+}
+.fuenteInicio p {
+    padding: 0 50px;
+}
+.music {
+    color: #996600;
+}
+
+.margin-top {
+    margin-top: 40px;
+}
+
+.table-condensed img{
+    max-width: 200px;
+    max-height: 200px;
+}
 
 body {
     background: url("../images/fondo2.jpg") no-repeat center center fixed;
@@ -174,7 +476,7 @@ body {
 .login{
     margin-top: 50px;
     padding: 50px;
-    background: #B8B8B8;
+    background: white;
     border-radius: 25px;
     color: black;
     font-size: 14px;
@@ -183,11 +485,10 @@ body {
     -moz-box-shadow: 13px 13px 13px 1px rgba(0,0,0,0.68);
     box-shadow: 13px 13px 13px 1px rgba(0,0,0,0.68);
 }
-
-.login h1 {
-    margin-left: 300px;
+.login form, .login h1 {
+    width: 100%;
+    text-align: center;
 }
-
 .loginButton {
 	-moz-box-shadow:inset 0px 0px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 0px 0px 0px #ffffff;
@@ -281,10 +582,6 @@ body {
     margin-left: 22px;
 }
 
-.registrarseButton {
-    margin-left: 90px;
-}
-
 * {
     
     font-family: 'Signika', sans-serif;
@@ -298,7 +595,6 @@ body {
 
 .view, .edit, .remove, .upload, .botonperfil {
     visibility: hidden;
-    
 }
 
 
@@ -319,8 +615,8 @@ body {
     transition: all 0.2s ease-in-out;
 }
 .view img, .edit img, .remove img, .upload img, .pedido img{
-    width: 80%;
-    height: 80%;
+    width: 80% !important;
+    height: 80% !important;
     padding: 0;
     margin: 0;
     margin-top: 10%;

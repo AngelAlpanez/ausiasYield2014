@@ -118,8 +118,8 @@ productoView.prototype.getBodyPageTable = function (page, fieldNames, visibleFie
         tabla += '</td>';
         tabla += '</tr>';
     });
-    
     return tabla;
+    
 };
 
 
